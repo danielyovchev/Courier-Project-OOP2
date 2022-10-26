@@ -7,9 +7,16 @@ import org.hibernate.cfg.Configuration;
 public class DBUtils {
     private static SessionFactory sessionFactory;
     private void setSessionFactory(){
-        sessionFactory = new Configuration().configure().buildSessionFactory();
+        try {
+            sessionFactory = new Configuration().configure().buildSessionFactory();
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+
     }
     public Session openSession(){
+
         return sessionFactory.openSession();
     }
     public void closeSession(){
