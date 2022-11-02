@@ -1,8 +1,8 @@
-module project.courier.presentation.presentation {
+module presentation {
     requires javafx.controls;
     requires javafx.fxml;
-    requires lombok;
-
+    requires static lombok;
+    requires service;
     opens project.courier.presentation to javafx.fxml;
     exports project.courier.presentation;
 }

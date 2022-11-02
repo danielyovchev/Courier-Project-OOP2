@@ -16,7 +16,7 @@ public class UserDB {
     private long id;
     private String username;
     private String email;
-    private int password;
+    private String password;
     private String firstName;
     private String lastName;
     @Enumerated(EnumType.STRING)
