@@ -6,7 +6,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.courier.presentation.CourierController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.courier.presentation.NewShipmentController">
    <children>
       <Label layoutX="245.0" layoutY="55.0" text="Client Registration Form" />
       <TextField layoutX="235.0" layoutY="99.0" />
@@ -23,6 +23,6 @@
       <Label layoutX="144.0" layoutY="272.0" prefHeight="18.0" prefWidth="60.0" text="Address   " textAlignment="RIGHT" />
       <Label layoutX="145.0" layoutY="103.0" text="Sender name" textAlignment="RIGHT" />
       <Label layoutX="143.0" layoutY="169.0" text="Office" />
-      <ComboBox layoutX="234.0" layoutY="306.0" prefWidth="150.0" promptText="Shipment category" />
+      <ComboBox fx:id="comboBox" layoutX="234.0" layoutY="306.0" prefWidth="150.0" promptText="Shipment category" />
    </children>
 </AnchorPane>

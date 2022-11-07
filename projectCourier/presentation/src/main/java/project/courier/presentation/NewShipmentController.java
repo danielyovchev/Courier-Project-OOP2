@@ -10,13 +10,13 @@ import java.util.ResourceBundle;
 
 public class NewShipmentController implements Initializable
 {
-    @FXML
-    private ComboBox <String> comboBox ;
 
+
+    public ComboBox comboBox;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle)
     {
-        comboBox.setItems(FXCollections.observableArrayList("Letter", "Parcel", "Package", "Cargo"));
+        comboBox.getItems().addAll(FXCollections.observableArrayList("Letter", "Parcel", "Package", "Cargo"));
     }
 }
