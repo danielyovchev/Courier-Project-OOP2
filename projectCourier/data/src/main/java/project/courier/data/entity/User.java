@@ -1,6 +1,7 @@
 package project.courier.data.entity;
 
 import jakarta.persistence.*;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -9,6 +10,7 @@ import project.courier.data.entity.enums.Role;
 @Getter
 @Setter
 @NoArgsConstructor
+@EqualsAndHashCode
 @Entity
 public class User {
     @Id

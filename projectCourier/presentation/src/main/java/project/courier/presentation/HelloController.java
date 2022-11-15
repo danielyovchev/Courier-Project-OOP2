@@ -5,7 +5,7 @@ import javafx.scene.control.Label;
 import project.courier.service.model.UserModel;
 
 public class HelloController{
-    //private MockAddUserInterface mockAddUser;
+    //private AddUserInterface mockAddUser;
     private MockAddUserInjector injector;
     @FXML
     private Label welcomeText;

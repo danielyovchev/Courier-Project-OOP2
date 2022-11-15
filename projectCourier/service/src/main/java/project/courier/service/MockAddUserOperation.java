@@ -3,10 +3,10 @@ package project.courier.service;
 import project.courier.data.entity.User;
 import project.courier.data.entity.enums.Role;
 import project.courier.service.interfaces.UserRepositoryInjector;
-import project.courier.service.interfaces.MockAddUserInterface;
+import project.courier.service.interfaces.AddUserInterface;
 import project.courier.service.model.UserModel;
 //@NoArgsConstructor
-public class MockAddUserOperation implements MockAddUserInterface {
+public class MockAddUserOperation implements AddUserInterface {
     //private UserRepositoryImpl addUserService;
 //    private UserRepository addUserInterface;
 //
