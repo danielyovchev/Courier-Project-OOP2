@@ -1,18 +1,18 @@
-package project.courier.data.crud;
+package project.courier.data.repository;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import project.courier.data.entity.UserDB;
+import project.courier.data.entity.User;
 import project.courier.data.util.DBUtils;
 
-public class AddUserService implements AddUserInterface{
+public class UserRepositoryImpl implements UserRepository {
     private final DBUtils dbUtils;
 
-    public AddUserService(DBUtils dbUtils) {
+    public UserRepositoryImpl(DBUtils dbUtils) {
         this.dbUtils = dbUtils;
     }
     @Override
-    public void addUser(UserDB user){
+    public void save(User user){
         Session session = dbUtils.openSession();
         Transaction transaction = session.beginTransaction();
         try{
