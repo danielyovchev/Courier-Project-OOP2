@@ -100,4 +100,22 @@ public class UserRepositoryImpl implements UserRepository {
         }
         return users;
     }
+
+    @Override
+    public Optional<User> findByUserAndPass(String username, String password) {
+        Session session = dbUtils.openSession();
+        Transaction transaction = session.beginTransaction();
+        User user = new User();
+        try {
+            user = session.createQuery("SELECT a from User a where username="+username+" AND password="+password, User.class).getSingleResult();
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        finally {
+            transaction.commit();
+            session.close();
+        }
+        return Optional.of(user);
+    }
 }
