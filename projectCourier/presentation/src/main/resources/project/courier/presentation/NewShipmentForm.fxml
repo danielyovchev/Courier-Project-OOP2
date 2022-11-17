@@ -6,23 +6,27 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.courier.presentation.NewShipmentController">
+<AnchorPane prefHeight="452.0" prefWidth="644.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.courier.presentation.NewShipmentController">
    <children>
-      <Label layoutX="245.0" layoutY="55.0" text="Client Registration Form" />
-      <TextField layoutX="235.0" layoutY="99.0" />
-      <TextField layoutX="235.0" layoutY="132.0" />
-      <TextField layoutX="234.0" layoutY="200.0" />
-      <TextField layoutX="234.0" layoutY="234.0" />
-      <TextField layoutX="235.0" layoutY="165.0" />
-      <TextField layoutX="234.0" layoutY="268.0" />
-      <Button layoutX="235.0" layoutY="348.0" mnemonicParsing="false" text="Register" />
-      <Button layoutX="320.0" layoutY="348.0" mnemonicParsing="false" text="Cancel" />
-      <Label layoutX="145.0" layoutY="136.0" text="Sender e-mail   " textAlignment="RIGHT" />
-      <Label layoutX="142.0" layoutY="204.0" text="Phone number" textAlignment="RIGHT" />
-      <Label layoutX="144.0" layoutY="238.0" text="City   " textAlignment="RIGHT" />
-      <Label layoutX="144.0" layoutY="272.0" prefHeight="18.0" prefWidth="60.0" text="Address   " textAlignment="RIGHT" />
-      <Label layoutX="145.0" layoutY="103.0" text="Sender name" textAlignment="RIGHT" />
-      <Label layoutX="143.0" layoutY="169.0" text="Office" />
-      <ComboBox fx:id="comboBox" layoutX="234.0" layoutY="306.0" prefWidth="150.0" promptText="Shipment category" />
+      <Label layoutX="256.0" layoutY="21.0" text="New Shipment Form" />
+      <TextField layoutX="246.0" layoutY="65.0" />
+      <TextField layoutX="246.0" layoutY="98.0" />
+      <TextField layoutX="245.0" layoutY="166.0" />
+      <TextField layoutX="245.0" layoutY="200.0" />
+      <TextField layoutX="246.0" layoutY="131.0" />
+      <TextField layoutX="245.0" layoutY="234.0" />
+      <Button layoutX="240.0" layoutY="387.0" mnemonicParsing="false" text="Register" />
+      <Button layoutX="339.0" layoutY="387.0" mnemonicParsing="false" text="Cancel" />
+      <Label layoutX="156.0" layoutY="102.0" text="Sender e-mail   " textAlignment="RIGHT" />
+      <Label layoutX="153.0" layoutY="170.0" text="Phone number" textAlignment="RIGHT" />
+      <Label layoutX="155.0" layoutY="204.0" text="City   " textAlignment="RIGHT" />
+      <Label layoutX="155.0" layoutY="238.0" prefHeight="18.0" prefWidth="60.0" text="Address   " textAlignment="RIGHT" />
+      <Label layoutX="156.0" layoutY="69.0" text="Sender name" textAlignment="RIGHT" />
+      <Label layoutX="154.0" layoutY="135.0" text="Office" />
+      <ComboBox fx:id="comboBox" layoutX="245.0" layoutY="345.0" prefWidth="150.0" promptText="Shipment category" />
+      <TextField layoutX="246.0" layoutY="266.0" />
+      <Label layoutX="156.0" layoutY="270.0" prefHeight="18.0" prefWidth="60.0" text="Date " textAlignment="RIGHT" />
+      <TextField fx:id="CourierID" layoutX="246.0" layoutY="305.0" />
+      <Label layoutX="156.0" layoutY="309.0" prefHeight="18.0" prefWidth="60.0" text="CourierID" textAlignment="RIGHT" />
    </children>
 </AnchorPane>
