@@ -12,6 +12,7 @@ import project.courier.data.entity.enums.Role;
 @NoArgsConstructor
 @EqualsAndHashCode
 @Entity
+@Table(schema = "public")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

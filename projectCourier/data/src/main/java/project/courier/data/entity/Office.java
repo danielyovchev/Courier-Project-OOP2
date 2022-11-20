@@ -11,6 +11,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @EqualsAndHashCode
 @Setter
+@Table(schema = "public")
 public class Office {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

@@ -15,6 +15,7 @@ import java.time.LocalDate;
 @Setter
 @EqualsAndHashCode
 @NoArgsConstructor
+@Table(schema = "public")
 public class Shipment {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -31,7 +32,7 @@ public class Shipment {
     private LocalDate dateReceived;
     @ManyToOne
     @JoinColumn(name = "clientId", insertable = false, updatable = false)
-    private Client client;
+    private Customer customer;
     @ManyToOne
     @JoinColumn(name = "courierId", insertable = false, updatable = false)
     private Courier courier;

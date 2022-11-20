@@ -1,7 +1,9 @@
-package project.courier.presentation;
+package project.courier.presentation.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import project.courier.presentation.services.MockAddUserInjector;
+import project.courier.presentation.services.MockAddUserInjectorImpl;
 import project.courier.service.model.UserModel;
 
 public class HelloController{
@@ -9,7 +11,6 @@ public class HelloController{
     private MockAddUserInjector injector;
     @FXML
     private Label welcomeText;
-
     @FXML
     protected void onHelloButtonClick() {
         welcomeText.setText("Welcome to JavaFX Application!");

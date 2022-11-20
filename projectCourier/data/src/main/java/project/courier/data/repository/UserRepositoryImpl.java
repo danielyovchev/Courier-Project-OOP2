@@ -71,7 +71,7 @@ public class UserRepositoryImpl implements UserRepository {
         Transaction transaction = session.beginTransaction();
         User user = new User();
         try {
-            user = session.createQuery("SELECT a from User a where id="+id.toString(), User.class).getSingleResult();
+            user = session.createQuery("SELECT a from User a where a.id='"+id+"'", User.class).getSingleResult();
         }
         catch (Exception e){
             e.printStackTrace();
@@ -107,7 +107,7 @@ public class UserRepositoryImpl implements UserRepository {
         Transaction transaction = session.beginTransaction();
         User user = new User();
         try {
-            user = session.createQuery("SELECT a from User a where username="+username+" AND password="+password, User.class).getSingleResult();
+            user = session.createQuery("SELECT a FROM User a WHERE a.username= '"+username+"' AND a.password='"+password+"'", User.class).getSingleResult();
         }
         catch (Exception e){
             e.printStackTrace();

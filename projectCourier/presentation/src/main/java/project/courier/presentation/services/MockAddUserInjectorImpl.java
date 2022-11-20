@@ -1,4 +1,4 @@
-package project.courier.presentation;
+package project.courier.presentation.services;
 
 import project.courier.service.MockAddUserOperation;
 import project.courier.service.interfaces.AddUserInterface;
