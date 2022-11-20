@@ -17,11 +17,11 @@ public class LoginUserImpl implements LoginUser {
             return result;
         }
         String role = String.valueOf(user.get().getRole());
-        if(role.toLowerCase().equals("admin")){
+        if(role.equalsIgnoreCase("admin")){
             result = "admin";
-        } else if (role.toLowerCase().equals("courier")) {
+        } else if (role.equalsIgnoreCase("courier")) {
             result = "courier";
-        } else if (role.toLowerCase().equals("customer")) {
+        } else if (role.equalsIgnoreCase("customer")) {
             result = "customer";
         }
         return result;
