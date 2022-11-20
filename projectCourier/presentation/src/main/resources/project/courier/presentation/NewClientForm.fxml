@@ -22,7 +22,7 @@
       <TextField layoutX="225.0" layoutY="294.0" />
       <Button layoutX="225.0" layoutY="338.0" mnemonicParsing="false" onAction="#RegisterClient" text="Register" />
       <Button layoutX="310.0" layoutY="338.0" mnemonicParsing="false" text="Cancel" />
-      <Label layoutX="134.0" layoutY="191.0" text="Password   " textAlignment="RIGHT" />
+      <Label layoutX="131.0" layoutY="191.0" text="Password   " textAlignment="RIGHT" />
       <TextField layoutX="224.0" layoutY="187.0" />
    </children>
 </AnchorPane>

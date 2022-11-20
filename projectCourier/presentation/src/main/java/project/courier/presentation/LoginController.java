@@ -9,12 +9,7 @@ import javafx.stage.Stage;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class LoginController implements Initializable {
+public class LoginController {
 
-    public ComboBox comboBox;
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        comboBox.getItems().addAll(FXCollections.observableArrayList("Client","Courier"));
-    }
 }
