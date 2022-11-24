@@ -1,5 +1,6 @@
 package project.courier.data.repository;
 
+import jakarta.persistence.NoResultException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import project.courier.data.entity.User;
@@ -105,9 +106,10 @@ public class UserRepositoryImpl implements UserRepository {
     public Optional<User> findByUserAndPass(String username, String password) {
         Session session = dbUtils.openSession();
         Transaction transaction = session.beginTransaction();
-        User user = new User();
+        Optional<User> user = Optional.of(new User());
         try {
-            user = session.createQuery("SELECT a FROM User a WHERE a.username= '"+username+"' AND a.password='"+password+"'", User.class).getSingleResult();
+            user = session.createQuery("SELECT a FROM User a WHERE a.username= '"+username+"' AND a.password='"+password+"'", User.class)
+                    .getResultList().stream().findFirst();
         }
         catch (Exception e){
             e.printStackTrace();
@@ -116,6 +118,6 @@ public class UserRepositoryImpl implements UserRepository {
             transaction.commit();
             session.close();
         }
-        return Optional.of(user);
+        return user;
     }
 }

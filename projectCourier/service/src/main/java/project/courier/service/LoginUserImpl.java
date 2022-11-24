@@ -1,6 +1,7 @@
 package project.courier.service;
 
 import project.courier.data.entity.User;
+import project.courier.service.exceptions.UserNotFoundException;
 import project.courier.service.interfaces.LoginUser;
 import project.courier.service.interfaces.UserRepositoryInjector;
 
@@ -13,8 +14,7 @@ public class LoginUserImpl implements LoginUser {
         UserRepositoryInjector injector = new UserRepositoryInjectorImpl();
         final Optional<User> user = injector.userRepository().findByUserAndPass(username, password);
         if(user.isEmpty()){
-            result = "undefined";
-            return result;
+            return "Wrong credentials";
         }
         String role = String.valueOf(user.get().getRole());
         if(role.equalsIgnoreCase("admin")){
