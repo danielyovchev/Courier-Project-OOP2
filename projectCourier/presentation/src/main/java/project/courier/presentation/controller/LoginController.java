@@ -48,7 +48,7 @@ public class LoginController {
                 alert.show();
             }
         } catch (Exception e){
-            Alert alert = new Alert(Alert.AlertType.ERROR, e.getMessage());
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Internal Server Error");
         }
     }
 }
