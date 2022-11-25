@@ -12,6 +12,11 @@
 
         <!-- DB schema will be updated if needed -->
         <property name="hibernate.hbm2ddl.auto">update</property>
-        <mapping class="project.courier.data.entity.UserDB"></mapping>
+        <mapping class="project.courier.data.entity.User"></mapping>
+        <mapping class="project.courier.data.entity.Company"></mapping>
+        <mapping class="project.courier.data.entity.Customer"></mapping>
+        <mapping class="project.courier.data.entity.Courier"></mapping>
+        <mapping class="project.courier.data.entity.Office"></mapping>
+        <mapping class="project.courier.data.entity.Shipment"></mapping>
     </session-factory>
 </hibernate-configuration>

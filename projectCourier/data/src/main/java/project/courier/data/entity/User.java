@@ -1,24 +1,27 @@
 package project.courier.data.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import project.courier.data.entity.enums.Role;
 
 @Getter
 @Setter
 @NoArgsConstructor
+@EqualsAndHashCode
 @Entity
-public class UserDB {
+@Table(schema = "public")
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     private String username;
     private String email;
-    private int password;
+    private String password;
     private String firstName;
     private String lastName;
+    @Enumerated(EnumType.STRING)
+    private Role role;
 }
