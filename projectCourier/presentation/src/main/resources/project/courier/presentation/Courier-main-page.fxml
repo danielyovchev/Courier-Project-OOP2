@@ -7,32 +7,32 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.courier.presentation.CourierController">
    <children>
-      <AnchorPane layoutX="14.0" layoutY="5.0" prefHeight="400.0" prefWidth="600.0">
+      <AnchorPane layoutX="7.0" layoutY="3.0" prefHeight="400.0" prefWidth="600.0">
          <children>
-            <MenuBar layoutY="1.0" prefHeight="26.0" prefWidth="459.0">
-               <menus>
-                  <Menu mnemonicParsing="false" text="Register new customer">
-                     <items>
-                        <MenuItem mnemonicParsing="false" text="Close" />
-                     </items>
-                  </Menu>
-                  <Menu mnemonicParsing="false" text="New shipment">
-                     <items>
-                        <MenuItem mnemonicParsing="false" text="Delete" />
-                     </items>
-                  </Menu>
-                  <Menu mnemonicParsing="false" text="и тн.">
-                     <items>
-                        <MenuItem mnemonicParsing="false" text="About" />
-                     </items>
-                  </Menu>
-               </menus>
-            </MenuBar>
             <Button layoutX="513.0" layoutY="343.0" mnemonicParsing="false" text="Log out" />
-            <Text layoutX="502.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Courier's name" />
+            <Text layoutX="491.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Courier's name" />
+            <MenuBar layoutX="-7.0" layoutY="1.0" prefHeight="17.0" prefWidth="414.0">
+              <menus>
+                <Menu mnemonicParsing="false" text="Clients">
+                  <items>
+                    <MenuItem mnemonicParsing="false" onAction="#newClientClick" text="Register new client" />
+                        <MenuItem onAction="#newShipmentClick" text="Register new shipment" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Account">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="Delete" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Help">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="About" />
+                  </items>
+                </Menu>
+              </menus>
+            </MenuBar>
          </children>
       </AnchorPane>
    </children>

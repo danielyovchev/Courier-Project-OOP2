@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.AdminMainPage">
    <children>
       <MenuBar layoutX="14.0" layoutY="14.0" prefHeight="26.0" prefWidth="459.0">
         <menus>
@@ -21,7 +21,7 @@
               <MenuItem mnemonicParsing="false" text="Delete" />
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="Register new customer? и тн.">
+          <Menu mnemonicParsing="false" text="Register new client? и тн.">
             <items>
               <MenuItem mnemonicParsing="false" text="About" />
             </items>

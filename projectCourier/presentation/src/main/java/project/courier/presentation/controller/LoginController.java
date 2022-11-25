@@ -11,13 +11,13 @@ import project.courier.service.LoginUserImpl;
 
 public class LoginController {
     @FXML
-    private TextField textFieldEmail;
+    private TextField textFieldUsername;
     @FXML
     private TextField textFieldPassword;
     @FXML
     private void onLoginClick(){
         final LoginUserInjector loginUserInjector = LoginUserImpl::new;
-        final String username = textFieldEmail.getText();
+        final String username = textFieldUsername.getText();
         final String password = textFieldPassword.getText();
         final String role = loginUserInjector.getLogin().checkLogin(username, password);
         try {
