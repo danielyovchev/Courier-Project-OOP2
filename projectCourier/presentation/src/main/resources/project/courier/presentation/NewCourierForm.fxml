@@ -5,7 +5,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.courier.presentation.NewCourierForm">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label layoutX="232.0" layoutY="55.0" text="Courier Registration Form" />
       <Label layoutX="158.0" layoutY="104.0" text="Name" textAlignment="RIGHT" />
@@ -16,7 +16,7 @@
       <TextField layoutX="247.0" layoutY="133.0" />
       <TextField layoutX="246.0" layoutY="203.0" />
       <TextField layoutX="247.0" layoutY="237.0" />
-      <Button layoutX="239.0" layoutY="289.0" mnemonicParsing="false" onAction="#RegisterCourier" text="Register" />
+      <Button layoutX="239.0" layoutY="289.0" mnemonicParsing="false" text="Register" />
       <Button layoutX="344.0" layoutY="289.0" mnemonicParsing="false" text="Cancel" />
       <Label layoutX="156.0" layoutY="169.0" text="Password" textAlignment="RIGHT" />
       <TextField layoutX="246.0" layoutY="165.0" />
