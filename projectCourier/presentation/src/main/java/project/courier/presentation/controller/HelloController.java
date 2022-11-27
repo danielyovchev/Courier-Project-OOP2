@@ -15,7 +15,7 @@ public class HelloController{
     protected void onHelloButtonClick() {
         welcomeText.setText("Welcome to JavaFX Application!");
         injector = new MockAddUserInjectorImpl();
-        //mockAddUser = new MockAddUserOperation();
+        //mockAddUser = new AddUserOperation();
         UserModel model = new UserModel();
         model.setEmail("admin3@courier.bg");
         model.setUsername("admin2");
@@ -23,7 +23,7 @@ public class HelloController{
         model.setFirstName("Admin3");
         model.setLastName("Admin3");
         model.setType("ADMIN");
-        injector.getService().addAdmin(model);
+        injector.getService().addUser(model);
         //mockAddUser.addAdmin(model);
     }
 

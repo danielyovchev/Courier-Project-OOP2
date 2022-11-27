@@ -18,7 +18,9 @@ public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    private String name;
+    private String firstName;
+    private String lastName;
+    private String email;
     @OneToMany(targetEntity = Company.class, cascade = CascadeType.ALL)
     @MapKeyColumn(name = "companyId")
     private Set<Long> companies;

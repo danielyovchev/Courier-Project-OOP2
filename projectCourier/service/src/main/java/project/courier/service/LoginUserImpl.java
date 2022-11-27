@@ -1,9 +1,9 @@
 package project.courier.service;
 
 import project.courier.data.entity.User;
-import project.courier.service.exceptions.UserNotFoundException;
+import project.courier.service.injector.UserRepositoryInjectorImpl;
 import project.courier.service.interfaces.LoginUser;
-import project.courier.service.interfaces.UserRepositoryInjector;
+import project.courier.service.injector.interfaces.UserRepositoryInjector;
 
 import java.util.Optional;
 

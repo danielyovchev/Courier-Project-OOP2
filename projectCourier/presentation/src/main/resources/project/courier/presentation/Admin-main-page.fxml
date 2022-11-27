@@ -13,16 +13,19 @@
         <menus>
           <Menu mnemonicParsing="false" text="Register new company">
             <items>
+                <fx:include source="NewCompanyForm.fxml"/>
               <MenuItem mnemonicParsing="false" text="Close" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Register new courier">
             <items>
+                <fx:include source="NewCourierForm.fxml"/>
               <MenuItem mnemonicParsing="false" text="Delete" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Register new client? и тн.">
             <items>
+                <fx:include source="NewClientForm.fxml"/>
               <MenuItem mnemonicParsing="false" text="About" />
             </items>
           </Menu>

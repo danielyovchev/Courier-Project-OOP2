@@ -16,7 +16,8 @@ public class Courier {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    private String name;
+    private String firstName;
+    private String lastName;
     private long companyId;
     @ManyToOne
     @JoinColumn(name = "companyId", insertable = false, updatable = false)

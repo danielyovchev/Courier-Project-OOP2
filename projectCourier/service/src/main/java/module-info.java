@@ -4,4 +4,6 @@ module service {
     exports project.courier.service;
     exports project.courier.service.model;
     exports project.courier.service.interfaces;
+    exports project.courier.service.injector;
+    exports project.courier.service.injector.interfaces;
 }
