@@ -11,7 +11,7 @@ public class LoginUserImpl implements LoginUser {
     @Override
     public String checkLogin(String username, String password) {
         String result="";
-        UserRepositoryInjector injector = new UserRepositoryInjectorImpl();
+        final UserRepositoryInjector injector = new UserRepositoryInjectorImpl();
         final Optional<User> user = injector.userRepository().findByUserAndPass(username, password);
         if(user.isEmpty()){
             return "Wrong credentials";

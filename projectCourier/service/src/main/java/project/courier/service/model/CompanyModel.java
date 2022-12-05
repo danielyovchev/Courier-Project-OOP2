@@ -1,5 +1,6 @@
 package project.courier.service.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -7,8 +8,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class CourierModel {
-    private String firstName;
-    private String lastName;
-    private long companyId;
+@AllArgsConstructor
+public class CompanyModel {
+    private String name;
 }
