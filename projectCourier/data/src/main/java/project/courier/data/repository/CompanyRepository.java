@@ -9,6 +9,6 @@ public interface CompanyRepository {
     void save(Company company);
     void update(Company company);
     void delete(Company company);
-    Optional<Company> getById(long id);
-    List<Company> getAll();
+    Optional<Company> findById(long id);
+    List<Company> findAll();
 }
