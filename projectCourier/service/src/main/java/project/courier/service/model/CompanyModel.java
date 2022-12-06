@@ -11,4 +11,5 @@ import lombok.Setter;
 @AllArgsConstructor
 public class CompanyModel {
     private String name;
+    private String bulstat;
 }

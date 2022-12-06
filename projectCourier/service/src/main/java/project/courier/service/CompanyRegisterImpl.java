@@ -12,6 +12,7 @@ public class CompanyRegisterImpl implements CompanyRegister {
         final CompanyRepositoryInjector injector = new CompanyRepositoryInjectorImpl();
         Company company = new Company();
         company.setName(companyModel.getName());
+        company.setBulstat(companyModel.getBulstat());
         injector.getCompanyRepository().save(company);
     }
 }
