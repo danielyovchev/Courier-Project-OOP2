@@ -18,6 +18,7 @@ public class Courier {
     private long id;
     private String firstName;
     private String lastName;
+    private String email;
     private long companyId;
     @ManyToOne
     @JoinColumn(name = "companyId", insertable = false, updatable = false)
