@@ -14,6 +14,7 @@ public class CustomerRegisterImpl implements CustomerRegister {
         customer.setFirstName(customerModel.getFirstName());
         customer.setLastName(customerModel.getLastName());
         customer.setEmail(customerModel.getEmail());
+        customer.setPhone(customerModel.getPhone());
         injector.getCustomerRepository().save(customer);
     }
 }

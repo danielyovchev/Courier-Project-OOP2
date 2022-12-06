@@ -20,6 +20,7 @@ public class Customer {
     private long id;
     private String firstName;
     private String lastName;
+    private String phone;
     private String email;
     @OneToMany(targetEntity = Company.class, cascade = CascadeType.ALL)
     @MapKeyColumn(name = "companyId")
