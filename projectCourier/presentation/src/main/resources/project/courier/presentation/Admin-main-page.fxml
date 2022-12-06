@@ -6,28 +6,26 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.AdminMainPage">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.courier.presentation.AdminController">
    <children>
-      <MenuBar layoutX="14.0" layoutY="14.0" prefHeight="26.0" prefWidth="459.0">
+      <Button layoutX="511.0" layoutY="344.0" mnemonicParsing="false" text="Log out" />
+      <MenuBar prefHeight="26.0" prefWidth="600.0">
         <menus>
-          <Menu mnemonicParsing="false" text="Register new company">
+          <Menu mnemonicParsing="false" text="Courier">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#NewCourierMenu" text="New Courier" />
+               </items></Menu>
+          <Menu mnemonicParsing="false" text="Office">
             <items>
-              <MenuItem mnemonicParsing="false" text="Close" />
+              <MenuItem mnemonicParsing="false" onAction="#NewOfficeMenu" text="New Office" />
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="Register new courier">
+          <Menu mnemonicParsing="false" text="Company">
             <items>
-              <MenuItem mnemonicParsing="false" text="Delete" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Register new client? и тн.">
-            <items>
-              <MenuItem mnemonicParsing="false" text="About" />
+              <MenuItem mnemonicParsing="false" onAction="#NewCompanyMenu" text="New Company" />
             </items>
           </Menu>
         </menus>
       </MenuBar>
-      <Button layoutX="511.0" layoutY="344.0" mnemonicParsing="false" text="Log out" />
    </children>
 </AnchorPane>
