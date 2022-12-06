@@ -21,7 +21,7 @@ public class AdminController {
     private Parent root;
     @FXML
     private MenuItem regCompany;
-
+    @FXML
     public void openCompanyRegForm(ActionEvent actionEvent) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/project/courier/presentation/NewCompanyForm.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
@@ -29,5 +29,8 @@ public class AdminController {
         stage.setTitle("Admin");
         stage.setScene(scene);
         stage.show();
+    }
+    public void registerCompany(){
+        newCompanyController.registerCompany();
     }
 }

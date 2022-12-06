@@ -1,5 +1,7 @@
 package project.courier.data.repository;
 
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 import project.courier.data.entity.Company;
 import project.courier.data.util.DBUtils;
 
@@ -15,7 +17,19 @@ public class CompanyRepositoryImpl implements CompanyRepository {
 
     @Override
     public void save(Company company) {
+        Session session = dbUtils.openSession();
+        Transaction transaction = session.beginTransaction();
+        try{
+            session.save(company);
 
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        finally {
+            transaction.commit();
+            session.close();
+        }
     }
 
     @Override
