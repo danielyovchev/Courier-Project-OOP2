@@ -9,6 +9,6 @@ public interface ShipmentRepository {
     void save(Shipment shipment);
     void update(Shipment shipment);
     void delete(Shipment shipment);
-    Optional<Shipment> getById(long id);
-    List<Shipment> getAll();
+    Optional<Shipment> findById(long id);
+    List<Shipment> findAll();
 }

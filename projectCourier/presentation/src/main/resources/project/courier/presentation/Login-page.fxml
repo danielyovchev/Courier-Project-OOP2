@@ -7,7 +7,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.courier.presentation.controller.LoginController">
     <children>
-        <Button layoutX="271.0" layoutY="244.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="65.0" text="Log in" />
+        <Button layoutX="271.0" layoutY="244.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="65.0" text="Log in" onAction="#onLoginClick" />
         <Label layoutX="154.0" layoutY="149.0" text="username" />
         <TextField fx:id="textFieldUsername" layoutX="223.0" layoutY="145.0" prefHeight="26.0" prefWidth="162.0" />
         <Label layoutX="154.0" layoutY="197.0" text="password" />

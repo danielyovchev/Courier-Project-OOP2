@@ -1,11 +1,11 @@
 package project.courier.presentation.services;
 
-import project.courier.service.MockAddUserOperation;
+import project.courier.service.AddUserOperation;
 import project.courier.service.interfaces.AddUserInterface;
 
-public class MockAddUserInjectorImpl implements MockAddUserInjector {
+public class AddUserInjectorImpl implements AddUserInjector {
     @Override
     public AddUserInterface getService() {
-        return new MockAddUserOperation();
+        return new AddUserOperation();
     }
 }

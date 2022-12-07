@@ -1,6 +1,5 @@
 package project.courier.data.repository;
 
-import jakarta.persistence.NoResultException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import project.courier.data.entity.User;

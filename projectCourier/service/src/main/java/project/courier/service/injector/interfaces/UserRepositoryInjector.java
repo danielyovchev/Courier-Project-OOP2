@@ -1,4 +1,4 @@
-package project.courier.service.interfaces;
+package project.courier.service.injector.interfaces;
 
 import project.courier.data.repository.UserRepository;
 

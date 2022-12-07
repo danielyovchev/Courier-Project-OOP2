@@ -9,6 +9,6 @@ public interface OfficeRepository {
     void save(Office office);
     void update(Office office);
     void delete(Office office);
-    Optional<Office> getById(long id);
-    List<Office> getAll();
+    Optional<Office> findById(long id);
+    List<Office> findAll();
 }
