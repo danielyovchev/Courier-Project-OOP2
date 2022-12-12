@@ -3,8 +3,10 @@ package project.courier.data.repository;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import project.courier.data.entity.Company;
+import project.courier.data.entity.User;
 import project.courier.data.util.DBUtils;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -44,11 +46,37 @@ public class CompanyRepositoryImpl implements CompanyRepository {
 
     @Override
     public Optional<Company> findById(long id) {
-        return Optional.empty();
+        Session session = dbUtils.openSession();
+        Transaction transaction = session.beginTransaction();
+        Company company = new Company();
+        try {
+            company = session.createQuery("SELECT a from Company a where a.id='"+id+"'", Company.class).getSingleResult();
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        finally {
+            transaction.commit();
+            session.close();
+        }
+        return Optional.of(company);
     }
 
     @Override
     public List<Company> findAll() {
-        return null;
+        Session session = dbUtils.openSession();
+        Transaction transaction = session.beginTransaction();
+        List<Company> companies = new ArrayList<>();
+        try {
+            companies = session.createQuery("SELECT a from Company a", Company.class).getResultList();
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        finally {
+            transaction.commit();
+            session.close();
+        }
+        return companies;
     }
 }

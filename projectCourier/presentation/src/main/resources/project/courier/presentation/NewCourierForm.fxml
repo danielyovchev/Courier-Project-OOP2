@@ -21,7 +21,7 @@
       <Label layoutX="155.0" layoutY="241.0" text="Company" textAlignment="RIGHT" />
       <TextField layoutX="247.0" layoutY="237.0" />
       <Button onAction="#registerCourier" layoutX="239.0" layoutY="289.0" mnemonicParsing="false" text="Register" />
-      <Button layoutX="344.0" layoutY="289.0" mnemonicParsing="false" text="Cancel" />
+      <Button layoutX="344.0" layoutY="289.0" mnemonicParsing="false" onAction="#closeForm" fx:id="closeBtn" text="Cancel" />
 
    </children>
 </AnchorPane>
