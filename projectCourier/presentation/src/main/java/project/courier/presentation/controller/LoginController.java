@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import project.courier.presentation.services.LoginUserInjector;
@@ -13,12 +14,12 @@ public class LoginController {
     @FXML
     private TextField textFieldUsername;
     @FXML
-    private TextField textFieldPassword;
+    private PasswordField passFieldPassword;
     @FXML
     private void onLoginClick(){
         final LoginUserInjector loginUserInjector = LoginUserImpl::new;
         final String username = textFieldUsername.getText();
-        final String password = textFieldPassword.getText();
+        final String password = passFieldPassword.getText();
         final String role = loginUserInjector.getLogin().checkLogin(username, password);
         try {
             if (role.equals("admin")) {

@@ -79,4 +79,22 @@ public class CompanyRepositoryImpl implements CompanyRepository {
         }
         return companies;
     }
+
+    @Override
+    public Optional<Company> findByName(String name) {
+        Session session = dbUtils.openSession();
+        Transaction transaction = session.beginTransaction();
+        Company company = new Company();
+        try {
+            company = session.createQuery("SELECT a from Company a where a.name='"+name+"'", Company.class).getSingleResult();
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        finally {
+            transaction.commit();
+            session.close();
+        }
+        return Optional.of(company);
+    }
 }
