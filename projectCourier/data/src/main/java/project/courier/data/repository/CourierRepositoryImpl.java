@@ -36,12 +36,39 @@ public class CourierRepositoryImpl implements CourierRepository {
 
     @Override
     public void update(Courier courier) {
-
+        Session session = dbUtils.openSession();
+        Transaction transaction = session.beginTransaction();
+        try
+        {
+            session.update(courier);
+        }
+        catch ( Exception e)
+        {
+            e.printStackTrace();
+        }
+        finally {
+            transaction.commit();
+            session.close();
+        }
     }
 
     @Override
     public void delete(Courier courier) {
+        Session session = dbUtils.openSession();
+        Transaction transaction = session.beginTransaction();
 
+        try
+        {
+            session.delete(courier);
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+        finally {
+            transaction.commit();
+            session.close();
+        }
     }
 
     @Override
