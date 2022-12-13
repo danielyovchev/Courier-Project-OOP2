@@ -6,8 +6,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import project.courier.presentation.services.AddOfficeInjector;
+import project.courier.presentation.services.AddOfficeInjectorImpl;
 import project.courier.service.GetAllCompaniesImpl;
 import project.courier.service.interfaces.GetAllCompanies;
+import project.courier.service.model.OfficeModel;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -21,7 +24,11 @@ public class NewOfficeController implements Initializable {
     private Button closeBtn;
     @FXML
     public void registerOffice(){
-
+        final AddOfficeInjector officeInjector = new AddOfficeInjectorImpl();
+        final OfficeModel officeModel = new OfficeModel();
+        officeModel.setCity(officeCity.getText());
+        officeModel.setCompany((String) companyName.getValue());
+        officeInjector.addOffice().addOffice(officeModel);
     }
     @FXML
     public void closeForm(){
