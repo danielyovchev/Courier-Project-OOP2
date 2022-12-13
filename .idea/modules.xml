@@ -3,6 +3,10 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/Courier-Project-OOP2.iml" filepath="$PROJECT_DIR$/.idea/Courier-Project-OOP2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/projectCourier/data/data.iml" filepath="$PROJECT_DIR$/projectCourier/data/data.iml" />
+      <module fileurl="file://$PROJECT_DIR$/projectCourier/presentation/presentation.iml" filepath="$PROJECT_DIR$/projectCourier/presentation/presentation.iml" />
+      <module fileurl="file://$PROJECT_DIR$/projectCourier/projectCourier.iml" filepath="$PROJECT_DIR$/projectCourier/projectCourier.iml" />
+      <module fileurl="file://$PROJECT_DIR$/projectCourier/service/service.iml" filepath="$PROJECT_DIR$/projectCourier/service/service.iml" />
     </modules>
   </component>
 </project>
