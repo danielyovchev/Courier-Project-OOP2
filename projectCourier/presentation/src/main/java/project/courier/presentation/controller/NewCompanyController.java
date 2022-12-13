@@ -8,7 +8,6 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import project.courier.data.entity.Company;
 import project.courier.presentation.services.CompanyRegisterInjector;
 import project.courier.presentation.services.CompanyRegisterInjectorImpl;
 import project.courier.service.model.CompanyModel;
