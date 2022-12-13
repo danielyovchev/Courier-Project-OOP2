@@ -1,16 +1,23 @@
 package project.courier.presentation.controller;
 
 
+import javafx.collections.ObservableArray;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import project.courier.data.entity.Company;
 import project.courier.presentation.services.CompanyRegisterInjector;
 import project.courier.presentation.services.CompanyRegisterInjectorImpl;
 import project.courier.service.model.CompanyModel;
 
-public class NewCompanyController {
+import java.net.URL;
+import java.util.List;
+import java.util.ResourceBundle;
+
+public class NewCompanyController implements Initializable {
     @FXML
     private TextField companyName;
     @FXML
@@ -29,5 +36,12 @@ public class NewCompanyController {
     public void closeForm(){
         Stage stage = (Stage) closeButton.getScene().getWindow();
         stage.close();
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+
+
+
     }
 }
