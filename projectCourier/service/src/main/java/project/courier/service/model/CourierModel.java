@@ -11,5 +11,5 @@ public class CourierModel {
     private String firstName;
     private String lastName;
     private String email;
-    private long companyId;
+    private String company;
 }

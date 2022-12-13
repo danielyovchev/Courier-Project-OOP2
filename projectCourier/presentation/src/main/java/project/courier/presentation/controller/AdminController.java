@@ -18,10 +18,6 @@ public class AdminController {
     @FXML
     private NewCustomerController newCustomerController;
     @FXML
-    private Parent root;
-    @FXML
-    private MenuItem regCompany;
-    @FXML
     public void openCompanyRegForm(ActionEvent actionEvent) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/project/courier/presentation/NewCompanyForm.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
@@ -30,7 +26,22 @@ public class AdminController {
         stage.setScene(scene);
         stage.show();
     }
-    public void registerCompany(){
-        newCompanyController.registerCompany();
+    @FXML
+    public void openCourierRegForm(ActionEvent actionEvent) throws IOException{
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/project/courier/presentation/NewCourierForm.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        Stage stage = new Stage();
+        stage.setTitle("Admin");
+        stage.setScene(scene);
+        stage.show();
+    }
+    @FXML
+    public void openCustomerRegForm(ActionEvent actionEvent) throws IOException{
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/project/courier/presentation/NewClientForm.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        Stage stage = new Stage();
+        stage.setTitle("Admin");
+        stage.setScene(scene);
+        stage.show();
     }
 }

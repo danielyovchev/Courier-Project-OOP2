@@ -20,11 +20,13 @@
           </Menu>
           <Menu mnemonicParsing="false" text="Register new courier">
             <items>
+
 <!--                <fx:include source="NewCourierForm.fxml"/>-->
+                <MenuItem fx:id="regCourie" mnemonicParsing="false" text="Register Courier" onAction="#openCourierRegForm"/>
               <MenuItem mnemonicParsing="false" text="Delete" />
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="Register new client? и тн.">
+          <Menu mnemonicParsing="false" text="Register new client" onAction="#openCustomerRegForm">
             <items>
 <!--                <fx:include source="NewClientForm.fxml"/>-->
               <MenuItem mnemonicParsing="false" text="About" />

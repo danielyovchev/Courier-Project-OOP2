@@ -4,7 +4,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
-
+<?import javafx.scene.control.ComboBox?>
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.courier.presentation.controller.NewCourierController">
    <children>
       <Label layoutX="231.0" layoutY="37.0" text="Courier Registration Form" />
@@ -19,9 +19,9 @@
       <Label layoutX="155.0" layoutY="207.0" text="username" textAlignment="RIGHT" />
       <TextField fx:id="username" layoutX="246.0" layoutY="203.0" />
       <Label layoutX="155.0" layoutY="241.0" text="Company" textAlignment="RIGHT" />
-      <TextField layoutX="247.0" layoutY="237.0" />
+      <ComboBox fx:id="companies" layoutX="247.0" layoutY="237.0"/>
       <Button onAction="#registerCourier" layoutX="239.0" layoutY="289.0" mnemonicParsing="false" text="Register" />
-      <Button layoutX="344.0" layoutY="289.0" mnemonicParsing="false" text="Cancel" />
+      <Button layoutX="344.0" layoutY="289.0" mnemonicParsing="false" onAction="#closeForm" fx:id="closeBtn" text="Cancel" />
 
    </children>
 </AnchorPane>

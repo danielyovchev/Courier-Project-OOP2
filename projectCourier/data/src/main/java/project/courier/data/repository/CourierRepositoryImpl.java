@@ -1,8 +1,12 @@
 package project.courier.data.repository;
 
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 import project.courier.data.entity.Courier;
+import project.courier.data.entity.User;
 import project.courier.data.util.DBUtils;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -15,7 +19,19 @@ public class CourierRepositoryImpl implements CourierRepository {
 
     @Override
     public void save(Courier courier) {
+        Session session = dbUtils.openSession();
+        Transaction transaction = session.beginTransaction();
+        try{
+            session.save(courier);
 
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        finally {
+            transaction.commit();
+            session.close();
+        }
     }
 
     @Override
@@ -30,11 +46,37 @@ public class CourierRepositoryImpl implements CourierRepository {
 
     @Override
     public Optional<Courier> findById(long id) {
-        return Optional.empty();
+        Session session = dbUtils.openSession();
+        Transaction transaction = session.beginTransaction();
+        Courier courier = new Courier();
+        try {
+            courier = session.createQuery("SELECT a from Courier a where a.id='"+id+"'", Courier.class).getSingleResult();
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        finally {
+            transaction.commit();
+            session.close();
+        }
+        return Optional.of(courier);
     }
 
     @Override
     public List<Courier> findAll() {
-        return null;
+        Session session = dbUtils.openSession();
+        Transaction transaction = session.beginTransaction();
+        List<Courier> couriers = new ArrayList<>();
+        try {
+            couriers = session.createQuery("SELECT a from Courier a", Courier.class).getResultList();
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        finally {
+            transaction.commit();
+            session.close();
+        }
+        return couriers;
     }
 }
