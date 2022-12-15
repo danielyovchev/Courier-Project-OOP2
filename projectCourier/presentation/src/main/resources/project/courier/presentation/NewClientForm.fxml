@@ -9,20 +9,18 @@
    <children>
       <Label layoutX="235.0" layoutY="45.0" text="Client Registration Form" />
       <Label layoutX="136.0" layoutY="93.0" text="First name" textAlignment="RIGHT" />
+      <TextField fx:id="firstName" layoutX="225.0" layoutY="89.0" />
       <Label layoutX="136.0" layoutY="126.0" text="Last name" textAlignment="RIGHT" />
-      <Label layoutX="135.0" layoutY="159.0" text="E-mail   " textAlignment="RIGHT" />
+      <TextField fx:id="lastName" layoutX="225.0" layoutY="122.0" />
+      <Label layoutX="135.0" layoutY="159.0" text="E-mail" textAlignment="RIGHT" />
+      <TextField fx:id="email" layoutX="225.0" layoutY="155.0" />
+      <Label layoutX="131.0" layoutY="191.0" text="Password" textAlignment="RIGHT" />
+      <TextField fx:id="password" layoutX="224.0" layoutY="187.0" />
       <Label layoutX="129.0" layoutY="229.0" text="Phone number" textAlignment="RIGHT" />
-      <Label layoutX="131.0" layoutY="263.0" text="City   " textAlignment="RIGHT" />
-      <Label layoutX="131.0" layoutY="297.0" prefHeight="18.0" prefWidth="60.0" text="Address   " textAlignment="RIGHT" />
-      <TextField layoutX="225.0" layoutY="89.0" />
-      <TextField layoutX="225.0" layoutY="122.0" />
-      <TextField layoutX="225.0" layoutY="155.0" />
-      <TextField layoutX="224.0" layoutY="225.0" />
-      <TextField layoutX="225.0" layoutY="259.0" />
-      <TextField layoutX="225.0" layoutY="294.0" />
-      <Button layoutX="225.0" layoutY="338.0" mnemonicParsing="false" text="Register" />
-      <Button layoutX="310.0" layoutY="338.0" mnemonicParsing="false" text="Cancel" />
-      <Label layoutX="131.0" layoutY="191.0" text="Password   " textAlignment="RIGHT" />
-      <TextField layoutX="224.0" layoutY="187.0" />
+      <TextField fx:id="phone" layoutX="224.0" layoutY="225.0" />
+      <Label layoutX="131.0" layoutY="263.0" text="Username" textAlignment="RIGHT" />
+      <TextField fx:id="username" layoutX="225.0" layoutY="259.0" />
+      <Button layoutX="225.0" layoutY="338.0" mnemonicParsing="false" text="Register" onAction="#registerCustomer"/>
+      <Button layoutX="310.0" layoutY="338.0" mnemonicParsing="false" text="Cancel" onAction="#closeForm" fx:id="closeBtn" />
    </children>
 </AnchorPane>

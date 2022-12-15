@@ -10,5 +10,6 @@ public interface CourierRepository {
     void update(Courier courier);
     void delete(Courier courier);
     Optional<Courier> findById(long id);
+    Optional<Courier> findByUsername(String username);
     List<Courier> findAll();
 }

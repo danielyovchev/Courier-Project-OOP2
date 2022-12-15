@@ -19,10 +19,5 @@ public class AddUserOperation implements AddUserInterface {
         user.setLastName(userModel.getLastName());
         user.setRole(Role.valueOf(userModel.getType().toUpperCase()));
         injector.userRepository().save(user);
-        if(userModel.getType().equalsIgnoreCase("courier")){
-
-        } else if (userModel.getType().equalsIgnoreCase("customer")) {
-
-        }
     }
 }

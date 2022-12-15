@@ -7,6 +7,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import project.courier.presentation.logConstants.CurrentUser;
 import project.courier.presentation.services.LoginUserInjector;
 import project.courier.service.LoginUserImpl;
 
@@ -29,20 +30,24 @@ public class LoginController {
                 stage.setTitle("Admin");
                 stage.setScene(scene);
                 stage.show();
+                CurrentUser.role="admin";
             } else if (role.equals("courier")) {
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Courier-main-page.fxml"));
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/project/courier/presentation/Courier-main-page.fxml"));
                 Scene scene = new Scene(fxmlLoader.load(), 600, 450);
                 Stage stage = new Stage();
                 stage.setTitle("Courier");
                 stage.setScene(scene);
                 stage.show();
+                CurrentUser.role="courier";
+                CurrentUser.username=username;
             } else if (role.equals("customer")) {
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Client-main-page.fxml"));
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/project/courier/presentation/Client-main-page.fxml"));
                 Scene scene = new Scene(fxmlLoader.load(), 600, 450);
                 Stage stage = new Stage();
                 stage.setTitle("Customer");
                 stage.setScene(scene);
                 stage.show();
+                CurrentUser.role="customer";
             }
             else {
                 Alert alert = new Alert(Alert.AlertType.ERROR, role);

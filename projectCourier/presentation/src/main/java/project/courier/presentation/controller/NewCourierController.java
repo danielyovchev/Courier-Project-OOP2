@@ -38,17 +38,6 @@ public class NewCourierController implements Initializable {
     private ComboBox<String> companies;
     @FXML
     private Button closeBtn;
-//    @FXML
-//    public void showBox(ActionEvent event){
-//        final GetAllCompanies getAllCompanies = new GetAllCompaniesImpl();
-//        getAllCompanies.getNames().forEach(e -> companies.getItems().add(e));
-//        companies.show();
-//        Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
-//        HBox hBox = new HBox(companies);
-//        Scene scene = new Scene(hBox);
-//        stage.setScene(scene);
-//        stage.show();
-//    }
     @FXML
     public void registerCourier(){
         final CourierRegisterInjector injector = new CourierRegisterInjectorImpl();

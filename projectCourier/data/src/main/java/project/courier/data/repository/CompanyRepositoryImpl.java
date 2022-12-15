@@ -36,12 +36,39 @@ public class CompanyRepositoryImpl implements CompanyRepository {
 
     @Override
     public void update(Company company) {
-
+        Session session = dbUtils.openSession();
+        Transaction transaction = session.beginTransaction();
+        try
+        {
+            session.update(company);
+        }
+        catch ( Exception e)
+        {
+            e.printStackTrace();
+        }
+        finally {
+            transaction.commit();
+            session.close();
+        }
     }
 
     @Override
     public void delete(Company company) {
+        Session session = dbUtils.openSession();
+        Transaction transaction = session.beginTransaction();
 
+        try
+        {
+            session.delete(company);
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+        finally {
+            transaction.commit();
+            session.close();
+        }
     }
 
     @Override
