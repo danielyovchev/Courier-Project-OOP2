@@ -90,6 +90,23 @@ public class CourierRepositoryImpl implements CourierRepository {
     }
 
     @Override
+    public Optional<Courier> findByUsername(String username) {
+        Session session = dbUtils.openSession();
+        Transaction transaction = session.beginTransaction();
+        Courier courier = new Courier();
+        try {
+            courier = session.createQuery("SELECT a from Courier a where a.username='"+username+"'", Courier.class).getSingleResult();
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        finally {
+            transaction.commit();
+            session.close();
+        }
+        return Optional.of(courier);
+    }
+    @Override
     public List<Courier> findAll() {
         Session session = dbUtils.openSession();
         Transaction transaction = session.beginTransaction();

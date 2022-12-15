@@ -22,7 +22,8 @@ public class Customer {
     private String lastName;
     private String phone;
     private String email;
-    @OneToMany(targetEntity = Company.class, cascade = CascadeType.ALL)
-    @MapKeyColumn(name = "companyId")
-    private Set<Long> companies;
+    private Long companyId;
+    @ManyToOne
+    @JoinColumn(name = "companyId", insertable = false, updatable = false)
+    private Company company;
 }

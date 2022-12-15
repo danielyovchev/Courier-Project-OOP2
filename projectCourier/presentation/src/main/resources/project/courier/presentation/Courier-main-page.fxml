@@ -17,7 +17,7 @@
               <menus>
                 <Menu mnemonicParsing="false" text="Clients">
                   <items>
-                    <MenuItem mnemonicParsing="false" text="Register new client" />
+                    <MenuItem mnemonicParsing="false" text="Register new client" onAction="#openCustomerRegForm" />
                         <MenuItem text="Register new shipment" />
                   </items>
                 </Menu>
