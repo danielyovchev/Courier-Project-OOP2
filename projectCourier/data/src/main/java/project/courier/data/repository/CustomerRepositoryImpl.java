@@ -87,6 +87,27 @@ public class CustomerRepositoryImpl implements CustomerRepository{
     }
 
     @Override
+    public Optional<Customer> findByEmail(String email) {
+        Session session = dbUtils.openSession();
+        Transaction transaction = session.beginTransaction();
+        Customer customer = new Customer();
+
+        try
+        {
+            customer = session.createQuery("SELECT a from Courier a where a.email='"+email+"'", Customer.class).getSingleResult();
+        }
+        catch ( Exception e)
+        {
+            e.printStackTrace();
+        }
+        finally {
+            transaction.commit();
+            session.close();
+        }
+        return Optional.of(customer);
+    }
+
+    @Override
     public List<Customer> findAll() {
         Session session = dbUtils.openSession();
         Transaction transaction = session.beginTransaction();
