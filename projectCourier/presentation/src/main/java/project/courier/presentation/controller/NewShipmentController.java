@@ -1,13 +1,24 @@
 package project.courier.presentation.controller;
 
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import project.courier.presentation.logConstants.CurrentUser;
+import project.courier.presentation.services.ShipmentRegisterInjector;
+import project.courier.presentation.services.ShipmentRegisterInjectorImpl;
+import project.courier.service.GetAllOfficesImpl;
+import project.courier.service.interfaces.GetAllOffices;
+import project.courier.service.model.ShipmentModel;
 
-public class NewShipmentController {
+import java.net.URL;
+import java.util.Arrays;
+import java.util.ResourceBundle;
+
+public class NewShipmentController implements Initializable {
     @FXML
     private Button closeBtn;
     @FXML
@@ -27,10 +38,31 @@ public class NewShipmentController {
     @FXML
     private ComboBox<String> typeList;
     @FXML
-    public void registerShipment(){}
+    public void registerShipment(){
+        final ShipmentRegisterInjector injector = new ShipmentRegisterInjectorImpl();
+        final ShipmentModel model = new ShipmentModel();
+        model.setFirstName(firstName.getText());
+        model.setLastName(lastName.getText());
+        model.setEmail(email.getText());
+        model.setPhone(phone.getText());
+        model.setCity(city.getText());
+        model.setDateSent(sentDate.getValue());
+        model.setOffice(officeList.getValue());
+        model.setType(typeList.getValue());
+        model.setCourierUsername(CurrentUser.username);
+        injector.register().registerShipment(model);
+    }
     @FXML
     public void closeForm(){
         Stage stage = (Stage) closeBtn.getScene().getWindow();
         stage.close();
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        final GetAllOffices getAllOffices = new GetAllOfficesImpl();
+        getAllOffices.getOfficesByCity(city.getText()).forEach(e -> officeList.getItems().add(e));
+        String[] types = {"ENVELOPE", "PARCEL", "PACKAGE", "CARGO"};
+        Arrays.stream(types).forEach(e -> typeList.getItems().add(e));
     }
 }

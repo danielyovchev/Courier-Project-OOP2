@@ -9,10 +9,10 @@ import project.courier.service.injector.ShipmentRepositoryInjectorImpl;
 import project.courier.service.injector.interfaces.CourierRepositoryInjector;
 import project.courier.service.injector.interfaces.CustomerRepositoryInjector;
 import project.courier.service.injector.interfaces.ShipmentRepositoryInjector;
-import project.courier.service.interfaces.RegisterShipment;
+import project.courier.service.interfaces.ShipmentRegister;
 import project.courier.service.model.ShipmentModel;
 
-public class RegisterShipmentImpl implements RegisterShipment {
+public class ShipmentRegisterImpl implements ShipmentRegister {
     @Override
     public void registerShipment(ShipmentModel model) {
         final ShipmentRepositoryInjector injector = new ShipmentRepositoryInjectorImpl();

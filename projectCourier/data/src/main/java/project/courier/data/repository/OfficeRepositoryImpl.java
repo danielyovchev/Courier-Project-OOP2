@@ -89,6 +89,24 @@ public class OfficeRepositoryImpl implements OfficeRepository {
     }
 
     @Override
+    public List<Office> findAllByCity(String city) {
+        Session session = dbUtils.openSession();
+        Transaction transaction = session.beginTransaction();
+        List<Office> offices = new ArrayList<>();
+        try {
+            offices = session.createQuery("SELECT a from Office a where a.city='"+city+"'", Office.class).getResultList();
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        finally {
+            transaction.commit();
+            session.close();
+        }
+        return offices;
+    }
+
+    @Override
     public List<Office> findAll() {
         Session session = dbUtils.openSession();
         Transaction transaction = session.beginTransaction();
