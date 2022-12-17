@@ -19,7 +19,7 @@ public class ShipmentRegisterImpl implements ShipmentRegister {
         final CourierRepositoryInjector courierRepositoryInjector = new CourierRepositoryInjectorImpl();
         final CustomerRepositoryInjector customerRepositoryInjector = new CustomerRepositoryInjectorImpl();
         final Long courierId = courierRepositoryInjector.getCourierRepository()
-                .findByUsername(model.getUsername()).get().getId();
+                .findByUsername(model.getCourierUsername()).get().getId();
         final Long customerId = customerRepositoryInjector.getCustomerRepository().findByEmail(model.getEmail()).get().getId();
         double price = 0;
         if(model.getType().equalsIgnoreCase("ENVELOPE")){
