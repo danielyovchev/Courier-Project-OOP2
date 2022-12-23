@@ -13,7 +13,7 @@ import project.courier.service.interfaces.ShipmentDelivery;
 import java.util.List;
 
 public class OrganizeShipmentsImpl implements OrganizeShipments {
-    @Override
+    /*@Override
     public void organize() {
         final ShipmentRepositoryInjector shipmentRepo = new ShipmentRepositoryInjectorImpl();
         final OfficeRepositoryInjector officeRepo = new OfficeRepositoryInjectorImpl();
@@ -24,6 +24,18 @@ public class OrganizeShipmentsImpl implements OrganizeShipments {
                     .findByOfficeAndStatus(o.getId(), ShipmentStatus.IN_OFFICE).stream().toList();
             shipmentDelivery.deliver(shipments);
         });
+    }*/
 
+    @Override
+    public void run() {
+        final ShipmentRepositoryInjector shipmentRepo = new ShipmentRepositoryInjectorImpl();
+        final OfficeRepositoryInjector officeRepo = new OfficeRepositoryInjectorImpl();
+        final ShipmentDelivery shipmentDelivery = new ShipmentDeliveryImpl();
+        List<Office> offices = officeRepo.getOfficeRepository().findAll();
+        offices.forEach(o -> {
+            List<Shipment> shipments = shipmentRepo.getShipmentRepository()
+                    .findByOfficeAndStatus(o.getId(), ShipmentStatus.IN_OFFICE).stream().toList();
+            shipmentDelivery.deliver(shipments);
+        });
     }
 }

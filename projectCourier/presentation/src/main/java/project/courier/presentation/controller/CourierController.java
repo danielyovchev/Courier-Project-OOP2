@@ -16,7 +16,7 @@ public class CourierController {
     private Button logOutBtn;
 
     @FXML
-    public void openCustomerRegForm() throws IOException{
+    public void openCustomerRegForm(ActionEvent actionEvent) throws IOException{
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/project/courier/presentation/NewClientForm.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         Stage stage = new Stage();

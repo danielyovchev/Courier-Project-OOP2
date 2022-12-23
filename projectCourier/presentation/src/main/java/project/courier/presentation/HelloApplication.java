@@ -4,8 +4,12 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import project.courier.service.OrganizeShipmentsImpl;
+import project.courier.service.interfaces.OrganizeShipments;
 
 import java.io.IOException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class HelloApplication extends Application {
     @Override
@@ -18,6 +22,9 @@ public class HelloApplication extends Application {
     }
 
     public static void main(String[] args) {
+        ExecutorService executor = Executors.newSingleThreadExecutor();
+        final OrganizeShipments organizeShipments = new OrganizeShipmentsImpl();
+        executor.submit(organizeShipments);
         launch();
     }
 }
