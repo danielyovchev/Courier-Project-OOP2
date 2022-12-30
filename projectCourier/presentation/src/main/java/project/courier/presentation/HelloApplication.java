@@ -10,6 +10,8 @@ import project.courier.service.interfaces.OrganizeShipments;
 import java.io.IOException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 public class HelloApplication extends Application {
     @Override
@@ -22,9 +24,11 @@ public class HelloApplication extends Application {
     }
 
     public static void main(String[] args) {
-        ExecutorService executor = Executors.newSingleThreadExecutor();
+        ScheduledExecutorService executorService = Executors.newSingleThreadScheduledExecutor();
+        //ExecutorService executor = Executors.newSingleThreadExecutor();
         final OrganizeShipments organizeShipments = new OrganizeShipmentsImpl();
-        executor.submit(organizeShipments);
+        //executor.submit(organizeShipments);
+        executorService.scheduleAtFixedRate(organizeShipments, 0, 1, TimeUnit.MINUTES);
         launch();
     }
 }

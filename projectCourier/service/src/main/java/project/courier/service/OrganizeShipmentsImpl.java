@@ -11,6 +11,7 @@ import project.courier.service.interfaces.OrganizeShipments;
 import project.courier.service.interfaces.ShipmentDelivery;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class OrganizeShipmentsImpl implements OrganizeShipments {
     /*@Override
@@ -33,9 +34,16 @@ public class OrganizeShipmentsImpl implements OrganizeShipments {
         final ShipmentDelivery shipmentDelivery = new ShipmentDeliveryImpl();
         List<Office> offices = officeRepo.getOfficeRepository().findAll();
         offices.forEach(o -> {
-            List<Shipment> shipments = shipmentRepo.getShipmentRepository()
-                    .findByOfficeAndStatus(o.getId(), ShipmentStatus.IN_OFFICE).stream().toList();
-            shipmentDelivery.deliver(shipments);
+            try {
+                List<Shipment> shipments = shipmentRepo.getShipmentRepository()
+                        .findByOfficeAndStatus(o.getId(), ShipmentStatus.IN_OFFICE).stream()
+                        .toList();
+                shipmentDelivery.deliver(shipments);
+                TimeUnit.SECONDS.sleep(10);
+                shipmentDelivery.receive(shipments);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
         });
     }
 }

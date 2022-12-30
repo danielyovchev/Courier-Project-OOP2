@@ -25,6 +25,15 @@ public class CourierController {
         stage.show();
     }
     @FXML
+    public void openShipmentRegisterForm(ActionEvent actionEvent) throws IOException{
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/project/courier/presentation/NewShipmentForm.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        Stage stage = new Stage();
+        stage.setTitle("Courier");
+        stage.setScene(scene);
+        stage.show();
+    }
+    @FXML
     public void logOut() throws IOException {
         Stage stage = (Stage) logOutBtn.getScene().getWindow();
         stage.close();
