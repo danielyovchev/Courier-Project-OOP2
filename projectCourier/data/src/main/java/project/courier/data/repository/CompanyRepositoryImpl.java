@@ -3,7 +3,6 @@ package project.courier.data.repository;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import project.courier.data.entity.Company;
-import project.courier.data.entity.User;
 import project.courier.data.util.DBUtils;
 
 import java.util.ArrayList;
