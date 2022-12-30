@@ -25,9 +25,7 @@ public class HelloApplication extends Application {
 
     public static void main(String[] args) {
         ScheduledExecutorService executorService = Executors.newSingleThreadScheduledExecutor();
-        //ExecutorService executor = Executors.newSingleThreadExecutor();
         final OrganizeShipments organizeShipments = new OrganizeShipmentsImpl();
-        //executor.submit(organizeShipments);
         executorService.scheduleAtFixedRate(organizeShipments, 0, 1, TimeUnit.MINUTES);
         launch();
     }

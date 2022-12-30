@@ -10,6 +10,7 @@ public interface OfficeRepository {
     void update(Office office);
     void delete(Office office);
     Optional<Office> findById(long id);
+    Optional<Office> findByCity(String city);
     List<Office> findAllByCity(String city);
     List<Office> findAll();
 }

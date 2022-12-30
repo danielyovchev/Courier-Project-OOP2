@@ -14,19 +14,6 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class OrganizeShipmentsImpl implements OrganizeShipments {
-    /*@Override
-    public void organize() {
-        final ShipmentRepositoryInjector shipmentRepo = new ShipmentRepositoryInjectorImpl();
-        final OfficeRepositoryInjector officeRepo = new OfficeRepositoryInjectorImpl();
-        final ShipmentDelivery shipmentDelivery = new ShipmentDeliveryImpl();
-        List<Office> offices = officeRepo.getOfficeRepository().findAll();
-        offices.forEach(o -> {
-            List<Shipment> shipments = shipmentRepo.getShipmentRepository()
-                    .findByOfficeAndStatus(o.getId(), ShipmentStatus.IN_OFFICE).stream().toList();
-            shipmentDelivery.deliver(shipments);
-        });
-    }*/
-
     @Override
     public void run() {
         final ShipmentRepositoryInjector shipmentRepo = new ShipmentRepositoryInjectorImpl();

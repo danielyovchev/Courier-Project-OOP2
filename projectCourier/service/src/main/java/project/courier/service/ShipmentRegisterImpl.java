@@ -25,7 +25,8 @@ public class ShipmentRegisterImpl implements ShipmentRegister {
                 .findByUsername(model.getCourierUsername()).get().getId();
         final Long customerId = customerRepositoryInjector.getCustomerRepository()
                 .findByEmail(model.getEmail()).get().getId();
-        //final Long officeId = officeRepo.getOfficeRepository();
+        final Long officeId = officeRepo.getOfficeRepository()
+                .findByCity(model.getCity()).get().getId();
         double price = 0;
         if(model.getType().equalsIgnoreCase("ENVELOPE")){
             price= 2.50;
@@ -42,7 +43,7 @@ public class ShipmentRegisterImpl implements ShipmentRegister {
         Shipment shipment = Shipment.builder()
                 .customerId(customerId)
                 .courierId(courierId)
-                .officeId(1)
+                .officeId(officeId)
                 .destination(model.getCity())
                 .dateSent(model.getDateSent())
                 .category(ShipmentCategory.valueOf(model.getType().toUpperCase()))
