@@ -15,4 +15,6 @@ public interface ShipmentRepository {
     List<Shipment> findAll();
     List<Shipment> findByOfficeAndStatus(Long id, ShipmentStatus status);
     List<Shipment> findByOfficeAndDate(Long id, LocalDate date);
+    List<Shipment> findAllBetweenDates(LocalDate date1, LocalDate date2);
+    List<Shipment> findAllByCustomer(Long id);
 }
