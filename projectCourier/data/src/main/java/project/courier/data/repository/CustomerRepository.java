@@ -10,5 +10,6 @@ public interface CustomerRepository {
     void update(Customer customer);
     void delete(Customer customer);
     Optional<Customer> findById(long id);
+    Optional<Customer> findByEmail(String email);
     List<Customer> findAll();
 }

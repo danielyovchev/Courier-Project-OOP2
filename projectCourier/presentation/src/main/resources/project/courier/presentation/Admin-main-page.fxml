@@ -18,13 +18,21 @@
               <MenuItem mnemonicParsing="false" text="Close" />
             </items>
           </Menu>
+            <Menu mnemonicParsing="false" text="Register new office">
+                <items>
+                    <!--                <fx:include source="NewClientForm.fxml"/>-->
+                    <MenuItem fx:id="regOffice" mnemonicParsing="false" text="Add Office" onAction="#openOfficeRegForm" />
+                </items>
+            </Menu>
           <Menu mnemonicParsing="false" text="Register new courier">
             <items>
+
 <!--                <fx:include source="NewCourierForm.fxml"/>-->
+                <MenuItem fx:id="regCourier" mnemonicParsing="false" text="Register Courier" onAction="#openCourierRegForm"/>
               <MenuItem mnemonicParsing="false" text="Delete" />
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="Register new client? и тн.">
+          <Menu mnemonicParsing="false" text="Register new client" onAction="#openCustomerRegForm">
             <items>
 <!--                <fx:include source="NewClientForm.fxml"/>-->
               <MenuItem mnemonicParsing="false" text="About" />
@@ -32,6 +40,6 @@
           </Menu>
         </menus>
       </MenuBar>
-      <Button layoutX="511.0" layoutY="344.0" mnemonicParsing="false" text="Log out" />
+      <Button fx:id="logOutBtn" onAction="#logOut" layoutX="511.0" layoutY="344.0" mnemonicParsing="false" text="Log out" />
    </children>
 </AnchorPane>

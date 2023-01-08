@@ -2,8 +2,8 @@ package project.courier.data.repository;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import project.courier.data.entity.Company;
 import project.courier.data.entity.Courier;
+import project.courier.data.entity.User;
 import project.courier.data.util.DBUtils;
 
 import java.util.ArrayList;
@@ -18,8 +18,7 @@ public class CourierRepositoryImpl implements CourierRepository {
     }
 
     @Override
-    public void save(Courier courier)
-    {
+    public void save(Courier courier) {
         Session session = dbUtils.openSession();
         Transaction transaction = session.beginTransaction();
         try{
@@ -37,7 +36,6 @@ public class CourierRepositoryImpl implements CourierRepository {
 
     @Override
     public void update(Courier courier) {
-
         Session session = dbUtils.openSession();
         Transaction transaction = session.beginTransaction();
         try
@@ -52,12 +50,10 @@ public class CourierRepositoryImpl implements CourierRepository {
             transaction.commit();
             session.close();
         }
-
     }
 
     @Override
     public void delete(Courier courier) {
-
         Session session = dbUtils.openSession();
         Transaction transaction = session.beginTransaction();
 
@@ -77,17 +73,13 @@ public class CourierRepositoryImpl implements CourierRepository {
 
     @Override
     public Optional<Courier> findById(long id) {
-
         Session session = dbUtils.openSession();
         Transaction transaction = session.beginTransaction();
         Courier courier = new Courier();
-
-        try
-        {
+        try {
             courier = session.createQuery("SELECT a from Courier a where a.id='"+id+"'", Courier.class).getSingleResult();
         }
-        catch ( Exception e)
-        {
+        catch (Exception e){
             e.printStackTrace();
         }
         finally {
@@ -98,13 +90,29 @@ public class CourierRepositoryImpl implements CourierRepository {
     }
 
     @Override
+    public Optional<Courier> findByUsername(String username) {
+        Session session = dbUtils.openSession();
+        Transaction transaction = session.beginTransaction();
+        Courier courier = new Courier();
+        try {
+            courier = session.createQuery("SELECT a from Courier a where a.username='"+username+"'", Courier.class).getSingleResult();
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        finally {
+            transaction.commit();
+            session.close();
+        }
+        return Optional.of(courier);
+    }
+    @Override
     public List<Courier> findAll() {
-
         Session session = dbUtils.openSession();
         Transaction transaction = session.beginTransaction();
         List<Courier> couriers = new ArrayList<>();
         try {
-            couriers = session.createQuery("SELECT a from Company a", Courier.class).getResultList();
+            couriers = session.createQuery("SELECT a from Courier a", Courier.class).getResultList();
         }
         catch (Exception e){
             e.printStackTrace();
@@ -114,7 +122,5 @@ public class CourierRepositoryImpl implements CourierRepository {
             session.close();
         }
         return couriers;
-
-
     }
 }

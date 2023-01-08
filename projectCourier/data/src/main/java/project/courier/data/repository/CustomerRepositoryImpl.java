@@ -2,7 +2,6 @@ package project.courier.data.repository;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import project.courier.data.entity.Courier;
 import project.courier.data.entity.Customer;
 import project.courier.data.util.DBUtils;
 
@@ -46,7 +45,6 @@ public class CustomerRepositoryImpl implements CustomerRepository{
         } finally {
             transaction.commit();
             session.close();
-
         }
     }
 
@@ -67,18 +65,36 @@ public class CustomerRepositoryImpl implements CustomerRepository{
         }
     }
 
-
-
     @Override
     public Optional<Customer> findById(long id) {
-
         Session session = dbUtils.openSession();
         Transaction transaction = session.beginTransaction();
         Customer customer = new Customer();
 
         try
         {
-            customer = session.createQuery("SELECT a from Courier a where a.id='"+id+"'", Customer.class).getSingleResult();
+            customer = session.createQuery("SELECT a from Customer a where a.id='"+id+"'", Customer.class).getSingleResult();
+        }
+        catch ( Exception e)
+        {
+            e.printStackTrace();
+        }
+        finally {
+            transaction.commit();
+            session.close();
+        }
+        return Optional.of(customer);
+    }
+
+    @Override
+    public Optional<Customer> findByEmail(String email) {
+        Session session = dbUtils.openSession();
+        Transaction transaction = session.beginTransaction();
+        Customer customer = new Customer();
+
+        try
+        {
+            customer = session.createQuery("SELECT a from Customer a where a.email='"+email+"'", Customer.class).getSingleResult();
         }
         catch ( Exception e)
         {
@@ -93,12 +109,11 @@ public class CustomerRepositoryImpl implements CustomerRepository{
 
     @Override
     public List<Customer> findAll() {
-
         Session session = dbUtils.openSession();
         Transaction transaction = session.beginTransaction();
         List<Customer> customers = new ArrayList<>();
         try {
-            customers = session.createQuery("SELECT a from Company a", Customer.class).getResultList();
+            customers = session.createQuery("SELECT a from Customer a", Customer.class).getResultList();
         }
         catch (Exception e){
             e.printStackTrace();

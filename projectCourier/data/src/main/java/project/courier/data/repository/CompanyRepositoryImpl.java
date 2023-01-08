@@ -35,26 +35,24 @@ public class CompanyRepositoryImpl implements CompanyRepository {
 
     @Override
     public void update(Company company) {
-
-            Session session = dbUtils.openSession();
-            Transaction transaction = session.beginTransaction();
-            try
-            {
-                session.update(company);
-            }
-            catch ( Exception e)
-            {
-                e.printStackTrace();
-            }
-            finally {
-                transaction.commit();
-                session.close();
-            }
+        Session session = dbUtils.openSession();
+        Transaction transaction = session.beginTransaction();
+        try
+        {
+            session.update(company);
+        }
+        catch ( Exception e)
+        {
+            e.printStackTrace();
+        }
+        finally {
+            transaction.commit();
+            session.close();
+        }
     }
 
     @Override
-    public void delete(Company company)
-    {
+    public void delete(Company company) {
         Session session = dbUtils.openSession();
         Transaction transaction = session.beginTransaction();
 
@@ -70,7 +68,6 @@ public class CompanyRepositoryImpl implements CompanyRepository {
             transaction.commit();
             session.close();
         }
-
     }
 
     @Override
@@ -78,13 +75,10 @@ public class CompanyRepositoryImpl implements CompanyRepository {
         Session session = dbUtils.openSession();
         Transaction transaction = session.beginTransaction();
         Company company = new Company();
-
-        try
-        {
+        try {
             company = session.createQuery("SELECT a from Company a where a.id='"+id+"'", Company.class).getSingleResult();
         }
-        catch ( Exception e)
-        {
+        catch (Exception e){
             e.printStackTrace();
         }
         finally {
@@ -110,5 +104,23 @@ public class CompanyRepositoryImpl implements CompanyRepository {
             session.close();
         }
         return companies;
+    }
+
+    @Override
+    public Optional<Company> findByName(String name) {
+        Session session = dbUtils.openSession();
+        Transaction transaction = session.beginTransaction();
+        Company company = new Company();
+        try {
+            company = session.createQuery("SELECT a from Company a where a.name='"+name+"'", Company.class).getSingleResult();
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        finally {
+            transaction.commit();
+            session.close();
+        }
+        return Optional.of(company);
     }
 }

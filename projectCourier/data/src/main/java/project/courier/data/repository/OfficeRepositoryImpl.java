@@ -2,7 +2,6 @@ package project.courier.data.repository;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import project.courier.data.entity.Customer;
 import project.courier.data.entity.Office;
 import project.courier.data.util.DBUtils;
 
@@ -18,8 +17,7 @@ public class OfficeRepositoryImpl implements OfficeRepository {
     }
 
     @Override
-    public void save(Office office)
-    {
+    public void save(Office office) {
         Session session = dbUtils.openSession();
         Transaction transaction = session.beginTransaction();
         try{
@@ -54,7 +52,6 @@ public class OfficeRepositoryImpl implements OfficeRepository {
 
     @Override
     public void delete(Office office) {
-
         Session session = dbUtils.openSession();
         Transaction transaction = session.beginTransaction();
         try{
@@ -68,7 +65,6 @@ public class OfficeRepositoryImpl implements OfficeRepository {
             transaction.commit();
             session.close();
         }
-
     }
 
     @Override
@@ -90,6 +86,45 @@ public class OfficeRepositoryImpl implements OfficeRepository {
             session.close();
         }
         return Optional.of(office);
+    }
+
+    @Override
+    public Optional<Office> findByCity(String city) {
+        Session session = dbUtils.openSession();
+        Transaction transaction = session.beginTransaction();
+        Office office = new Office();
+
+        try
+        {
+            office = session.createQuery("SELECT a from Office a where a.city='"+city+"'", Office.class).getSingleResult();
+        }
+        catch ( Exception e)
+        {
+            e.printStackTrace();
+        }
+        finally {
+            transaction.commit();
+            session.close();
+        }
+        return Optional.of(office);
+    }
+
+    @Override
+    public List<Office> findAllByCity(String city) {
+        Session session = dbUtils.openSession();
+        Transaction transaction = session.beginTransaction();
+        List<Office> offices = new ArrayList<>();
+        try {
+            offices = session.createQuery("SELECT a from Office a where a.city='"+city+"'", Office.class).getResultList();
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        finally {
+            transaction.commit();
+            session.close();
+        }
+        return offices;
     }
 
     @Override

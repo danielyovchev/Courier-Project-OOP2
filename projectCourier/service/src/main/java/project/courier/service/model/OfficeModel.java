@@ -9,10 +9,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class CustomerModel {
-    private String firstName;
-    private String lastName;
-    private String email;
-    private String phone;
+public class OfficeModel {
+    private String city;
     private String company;
 }

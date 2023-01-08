@@ -10,5 +10,6 @@ public interface CompanyRepository {
     void update(Company company);
     void delete(Company company);
     Optional<Company> findById(long id);
+    Optional<Company> findByName(String name);
     List<Company> findAll();
 }
