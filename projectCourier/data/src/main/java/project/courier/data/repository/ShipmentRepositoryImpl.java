@@ -143,4 +143,40 @@ public class ShipmentRepositoryImpl implements ShipmentRepository {
         }
         return shipments;
     }
+
+    @Override
+    public List<Shipment> findAllBetweenDates(LocalDate date1, LocalDate date2) {
+        Session session = dbUtils.openSession();
+        Transaction transaction = session.beginTransaction();
+        List<Shipment> shipments = new ArrayList<>();
+        try {
+            shipments = session.createQuery("SELECT a from Shipment a where a.dateSent>'"+date1+"' and a.dateSent<'"+date2+"'", Shipment.class).getResultList();
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        finally {
+            transaction.commit();
+            session.close();
+        }
+        return shipments;
+    }
+
+    @Override
+    public List<Shipment> findAllByCustomer(Long id) {
+        Session session = dbUtils.openSession();
+        Transaction transaction = session.beginTransaction();
+        List<Shipment> shipments = new ArrayList<>();
+        try {
+            shipments = session.createQuery("SELECT a from Shipment a where a.customerId='"+id+"'", Shipment.class).getResultList();
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        finally {
+            transaction.commit();
+            session.close();
+        }
+        return shipments;
+    }
 }
