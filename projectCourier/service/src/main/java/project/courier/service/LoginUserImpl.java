@@ -13,6 +13,15 @@ public class LoginUserImpl implements LoginUser {
         String result="";
         final UserRepositoryInjector injector = new UserRepositoryInjectorImpl();
         final Optional<User> user = injector.userRepository().findByUserAndPass(username, password);
+
+        if(username.isEmpty())
+        {
+            return "No username";
+        }
+        if(password.isEmpty())
+        {
+            return "No password";
+        }
         if(user.isEmpty()){
             return "Wrong credentials";
         }
