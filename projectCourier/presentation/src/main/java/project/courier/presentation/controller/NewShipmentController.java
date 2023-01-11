@@ -19,6 +19,7 @@ import java.util.Arrays;
 import java.util.ResourceBundle;
 
 public class NewShipmentController implements Initializable {
+
     @FXML
     private Button closeBtn;
     @FXML

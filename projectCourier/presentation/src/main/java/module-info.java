@@ -3,7 +3,6 @@ module presentation {
     requires javafx.fxml;
     requires static lombok;
     requires service;
-    //requires data;
     opens project.courier.presentation to javafx.fxml;
     exports project.courier.presentation;
     exports project.courier.presentation.controller;

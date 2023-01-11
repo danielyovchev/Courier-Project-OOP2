@@ -71,7 +71,7 @@ public class UserRepositoryImpl implements UserRepository {
         Transaction transaction = session.beginTransaction();
         User user = new User();
         try {
-            user = session.createQuery("SELECT a from User a where a.id='"+id+"'", User.class).getSingleResult();
+            user = session.createQuery("SELECT a from User ser a where a.id=+'"+id+"'", User.class).getSingleResult();
         }
         catch (Exception e){
             e.printStackTrace();
@@ -99,6 +99,25 @@ public class UserRepositoryImpl implements UserRepository {
             session.close();
         }
         return users;
+    }
+
+    @Override
+    public Optional<User> findByUsername(String username) {
+        Session session = dbUtils.openSession();
+        Transaction transaction = session.beginTransaction();
+        Optional<User> user = Optional.of(new User());
+        try {
+            user = session.createQuery("SELECT a FROM User a WHERE a.username= '"+username+"'", User.class)
+                    .getResultList().stream().findFirst();
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        finally {
+            transaction.commit();
+            session.close();
+        }
+        return user;
     }
 
     @Override
