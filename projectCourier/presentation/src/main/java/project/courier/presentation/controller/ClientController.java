@@ -1,5 +1,7 @@
 package project.courier.presentation.controller;
 
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -18,6 +20,7 @@ import project.courier.service.model.ShipmentModel;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class ClientController implements Initializable {
@@ -26,9 +29,8 @@ public class ClientController implements Initializable {
     @FXML
     private TableColumn <ShipmentModel, Long> shipmentId;
     @FXML
-    private TableColumn <ShipmentModel,Long> fromOffice;
-    @FXML
-    private TableColumn <ShipmentModel,Long> orderId;
+    private TableColumn <ShipmentModel,String> fromOffice;
+
     @FXML
     private TableColumn <ShipmentModel,String> shipmentCategory;
     @FXML
@@ -57,7 +59,16 @@ public class ClientController implements Initializable {
 
         final ShipmentProvider shipmentProvider = new ShipmentProviderImpl();
         final GetUserId getUserId = new GetUserIdImpl();
-        shipmentProvider.getCustomerShipments(getUserId.getId(CurrentUser.username));
+
+        for (ShipmentModel shipment:shipmentProvider.getCustomerShipments(getUserId.getId(CurrentUser.username)))
+              {
+            fromOffice.setCellValueFactory(c -> new SimpleStringProperty(shipment.getOffice()));
+            shipmentCategory.setCellValueFactory(c -> new SimpleStringProperty(shipment.getType()));
+            destinationOffice.setCellValueFactory(c-> new SimpleStringProperty(shipment.getCity()));
+           // orderPrice.setCellValueFactory((c -> new SimpleDoubleProperty((shipment.get))));
+
+        }
+
 
     }
 }

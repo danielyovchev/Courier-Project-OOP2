@@ -77,7 +77,7 @@ public class CourierRepositoryImpl implements CourierRepository {
         Transaction transaction = session.beginTransaction();
         Courier courier = new Courier();
         try {
-            courier = session.createQuery("SELECT a from Courier a where a.id='"+id+"'", Courier.class).getSingleResult();
+            courier = session.createQuery("SELECT a from courier a where a.id='"+id+"'", Courier.class).getSingleResult();
         }
         catch (Exception e){
             e.printStackTrace();
@@ -95,7 +95,7 @@ public class CourierRepositoryImpl implements CourierRepository {
         Transaction transaction = session.beginTransaction();
         Courier courier = new Courier();
         try {
-            courier = session.createQuery("SELECT a from Courier a where a.username='"+username+"'", Courier.class).getSingleResult();
+            courier = session.createQuery("SELECT a from courier a where a.username='"+username+"'", Courier.class).getSingleResult();
         }
         catch (Exception e){
             e.printStackTrace();
@@ -112,7 +112,7 @@ public class CourierRepositoryImpl implements CourierRepository {
         Transaction transaction = session.beginTransaction();
         List<Courier> couriers = new ArrayList<>();
         try {
-            couriers = session.createQuery("SELECT a from Courier a", Courier.class).getResultList();
+            couriers = session.createQuery("SELECT a from courier a", Courier.class).getResultList();
         }
         catch (Exception e){
             e.printStackTrace();
