@@ -1,5 +1,7 @@
 package project.courier.presentation.controller;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -7,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import project.courier.presentation.HelloApplication;
 import project.courier.presentation.logConstants.CurrentUser;
@@ -25,21 +28,22 @@ public class ClientController implements Initializable {
     @FXML
     private Button logOutBtn;
     @FXML
-    private TableColumn <ShipmentTableModel, Long> shipmentId;
+    private TableView<ShipmentTableModel> shipmentsView = new TableView<>();
     @FXML
-    private TableColumn <ShipmentTableModel,String> office;
+    private TableColumn <ShipmentTableModel, Long> shipmentId = new TableColumn<>();
     @FXML
-    private TableColumn <ShipmentTableModel,String> category;
+    private TableColumn <ShipmentTableModel, String> office = new TableColumn<>();
     @FXML
-    private TableColumn <ShipmentTableModel,String> destination;
+    private TableColumn <ShipmentTableModel, String> category = new TableColumn<>();
     @FXML
-    private TableColumn <ShipmentTableModel,String> status;
+    private TableColumn <ShipmentTableModel, String> destination = new TableColumn<>();
     @FXML
-    private TableColumn <ShipmentTableModel,Double> price;
+    private TableColumn <ShipmentTableModel, String> status = new TableColumn<>();
     @FXML
-    private TableColumn<ShipmentTableModel, LocalDate> dateSent;
+    private TableColumn <ShipmentTableModel, Double> price = new TableColumn<>();
     @FXML
-    private TableView shipmentsView;
+    private TableColumn<ShipmentTableModel, LocalDate> dateSent = new TableColumn<>();
+
     @FXML
     public void logOut() throws IOException {
         Stage stage = (Stage) logOutBtn.getScene().getWindow();
@@ -51,19 +55,25 @@ public class ClientController implements Initializable {
         stage.show();
         CurrentUser.role="none";
     }
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
+    private ObservableList<ShipmentTableModel> getModels(){
         final ShipmentProvider shipmentProvider = new ShipmentProviderImpl();
         final GetUserId getUserId = new GetUserIdImpl();
-        shipmentProvider.getCustomerShipments(getUserId.getId(CurrentUser.username)).stream()
-                .forEach(el -> shipmentsView.getItems().add(el));
-//        for (ShipmentModel shipment:shipmentProvider.getCustomerShipments(getUserId.getId(CurrentUser.username)))
-//        {
-//            fromOffice.setCellValueFactory(c -> new SimpleStringProperty(shipment.getOffice()));
-//            shipmentCategory.setCellValueFactory(c -> new SimpleStringProperty(shipment.getType()));
-//            destinationOffice.setCellValueFactory(c-> new SimpleStringProperty(shipment.getCity()));
-//            // orderPrice.setCellValueFactory((c -> new SimpleDoubleProperty((shipment.get))));
-//
+        return FXCollections.observableList(shipmentProvider
+                .getCustomerShipments(getUserId.getId(CurrentUser.username)).stream().toList());
+    }
+    private void displayTable(){
+        ObservableList<ShipmentTableModel> shipments = getModels();
+        shipmentId.setCellValueFactory(new PropertyValueFactory<>("shipmentId"));
+        office.setCellValueFactory(new PropertyValueFactory<>("office"));
+        category.setCellValueFactory(new PropertyValueFactory<>("category"));
+        destination.setCellValueFactory(new PropertyValueFactory<>("destination"));
+        status.setCellValueFactory(new PropertyValueFactory<>("status"));
+        price.setCellValueFactory(new PropertyValueFactory<>("price"));
+        dateSent.setCellValueFactory(new PropertyValueFactory<>("dateSent"));
+        shipmentsView.setItems(shipments);
+    }
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        displayTable();
     }
 }

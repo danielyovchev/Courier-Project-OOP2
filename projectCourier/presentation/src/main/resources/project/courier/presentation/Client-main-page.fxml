@@ -35,7 +35,7 @@
       <Text layoutX="14.0" layoutY="89.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Orders information:" />
       <ButtonBar layoutX="14.0" layoutY="235.0" prefHeight="40.0" prefWidth="200.0" />
     <Button fx:id="logOutBtn" layoutX="519.0" layoutY="360.0" mnemonicParsing="false" onAction="#logOut" text="Log out" />
-      <TableView layoutX="32.0" layoutY="109.0" prefHeight="226.0" prefWidth="525.0">
+      <TableView fx:id="shipmentsView" layoutX="32.0" layoutY="109.0" prefHeight="226.0" prefWidth="525.0">
         <columns>
           <TableColumn fx:id="shipmentId" prefWidth="75.0" text="shipment id" />
           <TableColumn fx:id="category" prefWidth="75.0" text="category" />
