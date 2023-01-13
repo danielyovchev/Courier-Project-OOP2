@@ -24,30 +24,32 @@ public class LoginController {
         final String role = loginUserInjector.getLogin().checkLogin(username, password);
         try {
             if (role.equals("admin")) {
+                CurrentUser.role="admin";
+                CurrentUser.username=username;
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/project/courier/presentation/Admin-main-page.fxml"));
                 Scene scene = new Scene(fxmlLoader.load());
                 Stage stage = new Stage();
                 stage.setTitle("Admin");
                 stage.setScene(scene);
                 stage.show();
-                CurrentUser.role="admin";
             } else if (role.equals("courier")) {
+                CurrentUser.role="courier";
+                CurrentUser.username=username;
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/project/courier/presentation/Courier-main-page.fxml"));
                 Scene scene = new Scene(fxmlLoader.load(), 600, 450);
                 Stage stage = new Stage();
                 stage.setTitle("Courier");
                 stage.setScene(scene);
                 stage.show();
-                CurrentUser.role="courier";
-                CurrentUser.username=username;
             } else if (role.equals("customer")) {
+                CurrentUser.role="customer";
+                CurrentUser.username=username;
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/project/courier/presentation/Client-main-page.fxml"));
                 Scene scene = new Scene(fxmlLoader.load(), 600, 450);
                 Stage stage = new Stage();
                 stage.setTitle("Customer");
                 stage.setScene(scene);
                 stage.show();
-                CurrentUser.role="customer";
             }
             else {
                 Alert alert = new Alert(Alert.AlertType.ERROR, role);

@@ -4,6 +4,7 @@ import project.courier.service.injector.ShipmentRepositoryInjectorImpl;
 import project.courier.service.injector.interfaces.ShipmentRepositoryInjector;
 import project.courier.service.interfaces.ShipmentProvider;
 import project.courier.service.model.ShipmentModel;
+import project.courier.service.model.ShipmentTableModel;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -44,18 +45,16 @@ public class ShipmentProviderImpl implements ShipmentProvider {
     }
 
     @Override
-    public List<ShipmentModel> getCustomerShipments(Long id) {
+    public List<ShipmentTableModel> getCustomerShipments(Long id) {
         return shipmentRepositoryInjector.getShipmentRepository().findAllByCustomer(id).stream()
-                .map(s -> ShipmentModel.builder()
-                        .type(s.getCategory().toString())
+                .map(s -> ShipmentTableModel.builder()
+                        .shipmentId(s.getId())
+                        .category(s.getCategory().toString())
                         .dateSent(s.getDateSent())
-                        .email("")
-                        .office("")
-                        .phone("")
-                        .courierUsername("")
-                        .city(s.getDestination())
-                        .firstName("")
-                        .lastName("")
+                        .office("ad")
+                        .destination("sad")
+                        .price(s.getPrice())
+                        .status(s.getStatus().toString())
                         .build()).toList();
     }
 }

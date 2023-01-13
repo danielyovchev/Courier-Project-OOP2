@@ -38,12 +38,12 @@
       <TableView layoutX="32.0" layoutY="109.0" prefHeight="226.0" prefWidth="525.0">
         <columns>
           <TableColumn fx:id="shipmentId" prefWidth="75.0" text="shipment id" />
-          <TableColumn fx:id="shipmentCategory" prefWidth="75.0" text="category" />
-            <TableColumn fx:id="fromOffice" prefWidth="75.0" text="from office" />
-            <TableColumn fx:id="destinationOffice" prefWidth="75.0" text="destination" />
+          <TableColumn fx:id="category" prefWidth="75.0" text="category" />
+            <TableColumn fx:id="office" prefWidth="75.0" text="from office" />
+            <TableColumn fx:id="destination" prefWidth="75.0" text="destination" />
             <TableColumn fx:id="dateSent" prefWidth="75.0" text="sent date" />
-            <TableColumn fx:id="orderPrice" prefWidth="75.0" text="price" />
-            <TableColumn fx:id="orderStatus" prefWidth="75.0" text="status" />
+            <TableColumn fx:id="price" prefWidth="75.0" text="price" />
+            <TableColumn fx:id="status" prefWidth="75.0" text="status" />
         </columns>
       </TableView>
    </children>

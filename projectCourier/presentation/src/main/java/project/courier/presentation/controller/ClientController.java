@@ -14,29 +14,30 @@ import project.courier.service.GetUserIdImpl;
 import project.courier.service.ShipmentProviderImpl;
 import project.courier.service.interfaces.GetUserId;
 import project.courier.service.interfaces.ShipmentProvider;
-import project.courier.service.model.ShipmentModel;
+import project.courier.service.model.ShipmentTableModel;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 public class ClientController implements Initializable {
     @FXML
     private Button logOutBtn;
     @FXML
-    private TableColumn <ShipmentModel, Long> shipmentId;
+    private TableColumn <ShipmentTableModel, Long> shipmentId;
     @FXML
-    private TableColumn <ShipmentModel,Long> fromOffice;
+    private TableColumn <ShipmentTableModel,String> office;
     @FXML
-    private TableColumn <ShipmentModel,Long> orderId;
+    private TableColumn <ShipmentTableModel,String> category;
     @FXML
-    private TableColumn <ShipmentModel,String> shipmentCategory;
+    private TableColumn <ShipmentTableModel,String> destination;
     @FXML
-    private TableColumn <ShipmentModel,String> destinationOffice;
+    private TableColumn <ShipmentTableModel,String> status;
     @FXML
-    private TableColumn <ShipmentModel,String> orderStatus;
+    private TableColumn <ShipmentTableModel,Double> price;
     @FXML
-    private TableColumn <ShipmentModel,Double> orderPrice;
+    private TableColumn<ShipmentTableModel, LocalDate> dateSent;
     @FXML
     private TableView shipmentsView;
     @FXML
@@ -52,12 +53,17 @@ public class ClientController implements Initializable {
     }
 
     @Override
-    public void initialize(URL location, ResourceBundle resources)
-    {
-
+    public void initialize(URL location, ResourceBundle resources) {
         final ShipmentProvider shipmentProvider = new ShipmentProviderImpl();
         final GetUserId getUserId = new GetUserIdImpl();
-        shipmentProvider.getCustomerShipments(getUserId.getId(CurrentUser.username));
-
+        shipmentProvider.getCustomerShipments(getUserId.getId(CurrentUser.username)).stream()
+                .forEach(el -> shipmentsView.getItems().add(el));
+//        for (ShipmentModel shipment:shipmentProvider.getCustomerShipments(getUserId.getId(CurrentUser.username)))
+//        {
+//            fromOffice.setCellValueFactory(c -> new SimpleStringProperty(shipment.getOffice()));
+//            shipmentCategory.setCellValueFactory(c -> new SimpleStringProperty(shipment.getType()));
+//            destinationOffice.setCellValueFactory(c-> new SimpleStringProperty(shipment.getCity()));
+//            // orderPrice.setCellValueFactory((c -> new SimpleDoubleProperty((shipment.get))));
+//
     }
 }
