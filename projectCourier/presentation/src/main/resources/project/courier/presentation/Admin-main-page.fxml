@@ -8,7 +8,7 @@
 
 <AnchorPane fx:id="root" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.courier.presentation.controller.AdminController">
    <children>
-      <MenuBar layoutX="14.0" layoutY="14.0" prefHeight="26.0" prefWidth="473.0">
+      <MenuBar layoutX="14.0" layoutY="14.0" prefHeight="26.0" prefWidth="558.0">
         <menus>
           <Menu mnemonicParsing="false" text="Register new company">
             <items>
@@ -31,12 +31,17 @@
               <MenuItem mnemonicParsing="false" text="Delete" />
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="Statistics">
+          <Menu mnemonicParsing="false" text="Register client">
             <items>
 <!--                <fx:include source="NewClientForm.fxml"/>-->
-              <MenuItem fx:id="showStatistics" mnemonicParsing="false" onAction="#showStatistics" text="Show" />
+              <MenuItem fx:id="CustomerReg" mnemonicParsing="false" onAction="#openCustomerRegForm" text="Show" />
             </items>
           </Menu>
+            <Menu mnemonicParsing="false" text="Statistics">
+               <items>
+                  <MenuItem fx:id="showStatistics1" mnemonicParsing="false" onAction="#showStatistics" text="Show" />
+               </items>
+            </Menu>
         </menus>
       </MenuBar>
       <Button fx:id="logOutBtn" layoutX="511.0" layoutY="344.0" mnemonicParsing="false" onAction="#logOut" text="Log out" />
