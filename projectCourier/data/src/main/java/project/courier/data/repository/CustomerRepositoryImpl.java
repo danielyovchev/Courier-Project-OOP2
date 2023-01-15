@@ -112,6 +112,27 @@ public class CustomerRepositoryImpl implements CustomerRepository{
     }
 
     @Override
+    public Optional<Customer> findByCompanyId(long companyId) {
+        Session session = dbUtils.openSession();
+        Transaction transaction = session.beginTransaction();
+        Customer customer = new Customer();
+
+        try
+        {
+            customer = session.createQuery("SELECT a from Customer a where a.companyId='"+companyId+"'", Customer.class).getSingleResult();
+        }
+        catch ( Exception e)
+        {
+            e.printStackTrace();
+        }
+        finally {
+            transaction.commit();
+            session.close();
+        }
+        return Optional.of(customer);
+    }
+
+    @Override
     public List<Customer> findAll() {
         Session session = dbUtils.openSession();
         Transaction transaction = session.beginTransaction();

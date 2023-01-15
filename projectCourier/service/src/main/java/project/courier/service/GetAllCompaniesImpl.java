@@ -9,6 +9,8 @@ import project.courier.service.interfaces.GetAllCompanies;
 import java.util.List;
 
 public class GetAllCompaniesImpl implements GetAllCompanies {
+
+    final CompanyRepositoryInjector companyRepositoryInjector = new CompanyRepositoryInjectorImpl();
     @Override
     public List<String> getNames() {
         final CompanyRepositoryInjector injector = new CompanyRepositoryInjectorImpl();
@@ -22,5 +24,10 @@ public class GetAllCompaniesImpl implements GetAllCompanies {
         return courierRepositoryInjector.getCourierRepository().findByUsername(username)
                 .map(el -> injector.getCompanyRepository().findById(el.getCompanyId()))
                 .map(c -> c.get().getName()).get();
+    }
+
+    @Override
+    public List<Long> getAllId() {
+        return companyRepositoryInjector.getCompanyRepository().findAll().stream().map(c -> c.getId()).toList();
     }
 }

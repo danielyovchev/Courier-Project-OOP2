@@ -17,4 +17,7 @@ public interface ShipmentRepository {
     List<Shipment> findByOfficeAndDate(Long id, LocalDate date);
     List<Shipment> findAllBetweenDates(LocalDate date1, LocalDate date2);
     List<Shipment> findAllByCustomer(Long id);
+    int countByCustomerId (Long id);
+    //int countByCompanyId (Long id);
+
 }

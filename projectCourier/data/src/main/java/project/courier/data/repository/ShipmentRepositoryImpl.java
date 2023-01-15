@@ -179,4 +179,43 @@ public class ShipmentRepositoryImpl implements ShipmentRepository {
         }
         return shipments;
     }
+
+    @Override
+    public int countByCustomerId(Long id) {
+        Session session = dbUtils.openSession();
+        Transaction transaction = session.beginTransaction();
+        int count = 0;
+        try {
+            count = Integer.parseInt((String.valueOf(session.createQuery("SELECT count(*) from Shipment a where a.customerId='"+id+"'", Shipment.class))));
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        finally {
+            transaction.commit();
+            session.close();
+        }
+        return count;
+    }
+
+    /*
+    @Override
+    public int countByCompanyId(Long id) {
+        Session session = dbUtils.openSession();
+        Transaction transaction = session.beginTransaction();
+        int count = 0;
+        try {
+            count = Integer.parseInt((String.valueOf(session.createQuery("SELECT count(*) from Shipment a where a.companyId='"+id+"'", Shipment.class))));
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        finally {
+            transaction.commit();
+            session.close();
+        }
+        return count;
+    }
+*/
+
 }
