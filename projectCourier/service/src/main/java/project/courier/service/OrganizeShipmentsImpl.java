@@ -26,7 +26,7 @@ public class OrganizeShipmentsImpl implements OrganizeShipments {
                         .findByOfficeAndStatus(o.getId(), ShipmentStatus.IN_OFFICE).stream()
                         .toList();
                 shipmentDelivery.deliver(shipments);
-                TimeUnit.SECONDS.sleep(10);
+                TimeUnit.MINUTES.sleep(1);
                 shipmentDelivery.receive(shipments);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
