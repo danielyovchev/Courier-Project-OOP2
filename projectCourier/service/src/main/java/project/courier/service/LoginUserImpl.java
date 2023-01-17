@@ -24,6 +24,7 @@ public class LoginUserImpl implements LoginUser {
             return "No password";
         }
         if(user.isEmpty()){
+            logger.warn("No user found");
             return "Wrong credentials";
         }
         String role = String.valueOf(user.get().getRole());

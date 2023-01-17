@@ -11,7 +11,7 @@ import project.courier.presentation.logConstants.CurrentUser;
 import project.courier.presentation.services.ShipmentRegisterInjector;
 import project.courier.presentation.services.ShipmentRegisterInjectorImpl;
 import project.courier.service.GetAllOfficesImpl;
-import project.courier.service.exceptions.UserNotFoundException;
+import project.courier.service.exceptions.CustomerNotFoundException;
 import project.courier.service.interfaces.GetAllOffices;
 import project.courier.service.model.ShipmentModel;
 
@@ -55,7 +55,7 @@ public class NewShipmentController implements Initializable {
         try {
             injector.register().registerShipment(model);
         }
-        catch (UserNotFoundException exception){
+        catch (CustomerNotFoundException exception){
             System.out.println("errr");
         }
 

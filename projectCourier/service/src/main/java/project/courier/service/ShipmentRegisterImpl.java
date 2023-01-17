@@ -31,7 +31,6 @@ public class ShipmentRegisterImpl implements ShipmentRegister {
                 .findByUsername(model.getCourierUsername()).get().getId();
         final Customer customer = customerRepositoryInjector.getCustomerRepository()
                 .findByEmail(model.getEmail()).orElse(null);
-        //to do maybe try catch around repo, no result exception, getSingleResult throws it, use list maybe?
         if(customer == null){
             logger.error("No customer found");
             throw new CustomerNotFoundException();
