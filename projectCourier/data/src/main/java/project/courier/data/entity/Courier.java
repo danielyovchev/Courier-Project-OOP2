@@ -15,12 +15,12 @@ import lombok.Setter;
 public class Courier {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private Long id;
     private String firstName;
     private String lastName;
     private String email;
     private String username;
-    private long companyId;
+    private Long companyId;
     @ManyToOne
     @JoinColumn(name = "companyId", insertable = false, updatable = false)
     private Company company;
