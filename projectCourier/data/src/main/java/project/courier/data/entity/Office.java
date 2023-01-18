@@ -15,9 +15,9 @@ import lombok.Setter;
 public class Office {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private Long id;
     private String city;
-    private long companyId;
+    private Long companyId;
     @ManyToOne
     @JoinColumn(name = "companyId", insertable = false, updatable = false)
     private Company company;

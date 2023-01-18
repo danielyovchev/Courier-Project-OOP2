@@ -18,10 +18,10 @@ import java.time.LocalDate;
 public class Shipment {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
-    private long customerId;
-    private long courierId;
-    private long officeId;
+    private Long id;
+    private Long customerId;
+    private Long courierId;
+    private Long officeId;
     private String destination;
     @Enumerated(EnumType.STRING)
     private ShipmentCategory category;

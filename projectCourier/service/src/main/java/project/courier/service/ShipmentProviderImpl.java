@@ -1,6 +1,8 @@
 package project.courier.service;
 
+import project.courier.service.injector.OfficeRepositoryInjectorImpl;
 import project.courier.service.injector.ShipmentRepositoryInjectorImpl;
+import project.courier.service.injector.interfaces.OfficeRepositoryInjector;
 import project.courier.service.injector.interfaces.ShipmentRepositoryInjector;
 import project.courier.service.interfaces.ShipmentProvider;
 import project.courier.service.model.ShipmentModel;
@@ -11,6 +13,7 @@ import java.util.List;
 
 public class ShipmentProviderImpl implements ShipmentProvider {
     final ShipmentRepositoryInjector shipmentRepositoryInjector = new ShipmentRepositoryInjectorImpl();
+    final OfficeRepositoryInjector officeRepositoryInjector = new OfficeRepositoryInjectorImpl();
     @Override
     public List<ShipmentModel> getShipmentsBetweenDates(LocalDate date1, LocalDate date2) {
         return shipmentRepositoryInjector.getShipmentRepository().findAllBetweenDates(date1, date2).stream()
@@ -51,8 +54,8 @@ public class ShipmentProviderImpl implements ShipmentProvider {
                         .shipmentId(s.getId())
                         .category(s.getCategory().toString())
                         .dateSent(s.getDateSent())
-                        .office("ad")
-                        .destination("sad")
+                        .office(officeRepositoryInjector.getOfficeRepository().findById(s.getOfficeId()).toString())
+                        .destination(s.getDestination())
                         .price(s.getPrice())
                         .status(s.getStatus().toString())
                         .build()).toList();

@@ -77,7 +77,7 @@ public class CustomerRepositoryImpl implements CustomerRepository{
 
         try
         {
-            customer = session.createQuery("SELECT a from Customer a where a.id='"+id+"'", Customer.class).getSingleResult();
+            customer = session.createQuery("SELECT a from Customer a where a.id='"+id+"'", Customer.class).getSingleResultOrNull();
         }
         catch ( Exception e)
         {
@@ -94,11 +94,10 @@ public class CustomerRepositoryImpl implements CustomerRepository{
     public Optional<Customer> findByEmail(String email) {
         Session session = dbUtils.openSession();
         Transaction transaction = session.beginTransaction();
-        Customer customer = new Customer();
-
+        Optional<Customer> customer = Optional.of(new Customer());
         try
         {
-            customer = session.createQuery("SELECT a from Customer a where a.email='"+email+"'", Customer.class).getSingleResult();
+            customer = session.createQuery("SELECT a from Customer a where a.email='"+email+"'", Customer.class).getResultList().stream().findFirst();
         }
         catch ( Exception e)
         {
@@ -108,7 +107,7 @@ public class CustomerRepositoryImpl implements CustomerRepository{
             transaction.commit();
             session.close();
         }
-        return Optional.of(customer);
+        return customer;
     }
 
     @Override

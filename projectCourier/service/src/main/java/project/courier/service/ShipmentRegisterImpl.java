@@ -1,8 +1,13 @@
 package project.courier.service;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import project.courier.data.entity.Customer;
+import project.courier.data.entity.Office;
 import project.courier.data.entity.Shipment;
 import project.courier.data.entity.enums.ShipmentCategory;
 import project.courier.data.entity.enums.ShipmentStatus;
+import project.courier.service.exceptions.CustomerNotFoundException;
 import project.courier.service.injector.CourierRepositoryInjectorImpl;
 import project.courier.service.injector.CustomerRepositoryInjectorImpl;
 import project.courier.service.injector.OfficeRepositoryInjectorImpl;
@@ -15,6 +20,7 @@ import project.courier.service.interfaces.ShipmentRegister;
 import project.courier.service.model.ShipmentModel;
 
 public class ShipmentRegisterImpl implements ShipmentRegister {
+    private static final Logger logger = LogManager.getLogger(ShipmentRegisterImpl.class);
     @Override
     public void registerShipment(ShipmentModel model) {
         final ShipmentRepositoryInjector injector = new ShipmentRepositoryInjectorImpl();
@@ -23,10 +29,14 @@ public class ShipmentRegisterImpl implements ShipmentRegister {
         final CustomerRepositoryInjector customerRepositoryInjector = new CustomerRepositoryInjectorImpl();
         final Long courierId = courierRepositoryInjector.getCourierRepository()
                 .findByUsername(model.getCourierUsername()).get().getId();
-        final Long customerId = customerRepositoryInjector.getCustomerRepository()
-                .findByEmail(model.getEmail()).get().getId();
-        final Long officeId = officeRepo.getOfficeRepository()
-                .findByCity(model.getCity()).get().getId();
+        final Customer customer = customerRepositoryInjector.getCustomerRepository()
+                .findByEmail(model.getEmail()).orElse(null);
+        if(customer == null){
+            logger.error("No customer found");
+            throw new CustomerNotFoundException();
+        }
+        final Office office = officeRepo.getOfficeRepository()
+                .findByCity(model.getOffice()).get();
         double price = 0;
         if(model.getType().equalsIgnoreCase("ENVELOPE")){
             price= 2.50;
@@ -41,9 +51,9 @@ public class ShipmentRegisterImpl implements ShipmentRegister {
             price=10.50;
         }
         Shipment shipment = Shipment.builder()
-                .customerId(customerId)
+                .customerId(customer.getId())
                 .courierId(courierId)
-                .officeId(officeId)
+                .officeId(office.getId())
                 .destination(model.getCity())
                 .dateSent(model.getDateSent())
                 .category(ShipmentCategory.valueOf(model.getType().toUpperCase()))
@@ -51,5 +61,6 @@ public class ShipmentRegisterImpl implements ShipmentRegister {
                 .price(price)
                 .build();
         injector.getShipmentRepository().save(shipment);
+        logger.info("Shipment with id {} registered", shipment.getId());
     }
 }

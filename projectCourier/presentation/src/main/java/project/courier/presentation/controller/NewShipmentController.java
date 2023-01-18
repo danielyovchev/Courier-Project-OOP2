@@ -11,6 +11,7 @@ import project.courier.presentation.logConstants.CurrentUser;
 import project.courier.presentation.services.ShipmentRegisterInjector;
 import project.courier.presentation.services.ShipmentRegisterInjectorImpl;
 import project.courier.service.GetAllOfficesImpl;
+import project.courier.service.exceptions.CustomerNotFoundException;
 import project.courier.service.interfaces.GetAllOffices;
 import project.courier.service.model.ShipmentModel;
 
@@ -51,7 +52,13 @@ public class NewShipmentController implements Initializable {
         model.setOffice(officeList.getValue());
         model.setType(typeList.getValue());
         model.setCourierUsername(CurrentUser.username);
-        injector.register().registerShipment(model);
+        try {
+            injector.register().registerShipment(model);
+        }
+        catch (CustomerNotFoundException exception){
+            System.out.println("errr");
+        }
+
     }
     @FXML
     public void closeForm(){

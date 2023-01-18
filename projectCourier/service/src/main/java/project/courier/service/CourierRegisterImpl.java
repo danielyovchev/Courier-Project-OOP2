@@ -1,5 +1,7 @@
 package project.courier.service;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import project.courier.data.entity.Courier;
 import project.courier.service.injector.CompanyRepositoryInjectorImpl;
 import project.courier.service.injector.CourierRepositoryInjectorImpl;
@@ -9,6 +11,7 @@ import project.courier.service.interfaces.CourierRegister;
 import project.courier.service.model.CourierModel;
 
 public class CourierRegisterImpl implements CourierRegister {
+    private static final Logger logger = LogManager.getLogger(CourierRegisterImpl.class);
     @Override
     public void addCourier(CourierModel courierModel) {
         final CourierRepositoryInjector injector = new CourierRepositoryInjectorImpl();
@@ -20,5 +23,6 @@ public class CourierRegisterImpl implements CourierRegister {
         courier.setEmail(courierModel.getEmail());
         courier.setCompanyId(courierId);
         injector.getCourierRepository().save(courier);
+        logger.info("Courier" + courierModel.getFirstName()+" "+courierModel.getLastName() +"registered");
     }
 }
