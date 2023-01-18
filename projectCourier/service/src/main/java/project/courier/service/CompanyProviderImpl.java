@@ -17,4 +17,9 @@ public class CompanyProviderImpl implements CompanyProvider {
                 map(company -> CompanyTableModel.builder().companyId(company.getId()).shipmentCount(1)
                         .build()).toList();
     }
+
+    @Override
+    public long getCurrentCompanyIdByName(String name) {
+        return companyRepositoryInjector.getCompanyRepository().findByName(name).get().getId();
+    }
 }

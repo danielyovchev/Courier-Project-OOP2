@@ -10,5 +10,6 @@ import lombok.*;
 public class CompanyTableModel
 {
     private long companyId;
+    private String companyName;
     private int shipmentCount;
 }

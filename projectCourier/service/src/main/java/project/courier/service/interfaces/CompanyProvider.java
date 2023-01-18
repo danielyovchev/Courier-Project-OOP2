@@ -8,4 +8,5 @@ import java.util.List;
 public interface CompanyProvider
 {
   List<CompanyTableModel> getAllCompanies();
+  long getCurrentCompanyIdByName(String name);
 }
