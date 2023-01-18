@@ -6,40 +6,44 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
 <AnchorPane fx:id="root" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.courier.presentation.controller.AdminController">
    <children>
-      <MenuBar layoutX="14.0" layoutY="14.0" prefHeight="26.0" prefWidth="459.0">
+      <MenuBar layoutX="14.0" layoutY="14.0" prefHeight="26.0" prefWidth="558.0">
         <menus>
           <Menu mnemonicParsing="false" text="Register new company">
             <items>
 <!--                <fx:include source="NewCompanyForm.fxml"/>-->
-                <MenuItem fx:id="regCompany" mnemonicParsing="false" text="Register Company" onAction="#openCompanyRegForm"/>
+                <MenuItem fx:id="regCompany" mnemonicParsing="false" onAction="#openCompanyRegForm" text="Register Company" />
               <MenuItem mnemonicParsing="false" text="Close" />
             </items>
           </Menu>
             <Menu mnemonicParsing="false" text="Register new office">
                 <items>
                     <!--                <fx:include source="NewClientForm.fxml"/>-->
-                    <MenuItem fx:id="regOffice" mnemonicParsing="false" text="Add Office" onAction="#openOfficeRegForm" />
+                    <MenuItem fx:id="regOffice" mnemonicParsing="false" onAction="#openOfficeRegForm" text="Add Office" />
                 </items>
             </Menu>
           <Menu mnemonicParsing="false" text="Register new courier">
             <items>
 
 <!--                <fx:include source="NewCourierForm.fxml"/>-->
-                <MenuItem fx:id="regCourier" mnemonicParsing="false" text="Register Courier" onAction="#openCourierRegForm"/>
+                <MenuItem fx:id="regCourier" mnemonicParsing="false" onAction="#openCourierRegForm" text="Register Courier" />
               <MenuItem mnemonicParsing="false" text="Delete" />
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="Register new client" onAction="#openCustomerRegForm">
+          <Menu mnemonicParsing="false" text="Register client">
             <items>
 <!--                <fx:include source="NewClientForm.fxml"/>-->
-              <MenuItem mnemonicParsing="false" text="About" />
+              <MenuItem fx:id="CustomerReg" mnemonicParsing="false" onAction="#openCustomerRegForm" text="Show" />
             </items>
           </Menu>
+            <Menu mnemonicParsing="false" text="Statistics">
+               <items>
+                  <MenuItem fx:id="showStatistics1" mnemonicParsing="false" onAction="#showStatistics" text="Show" />
+               </items>
+            </Menu>
         </menus>
       </MenuBar>
-      <Button fx:id="logOutBtn" onAction="#logOut" layoutX="511.0" layoutY="344.0" mnemonicParsing="false" text="Log out" />
+      <Button fx:id="logOutBtn" layoutX="511.0" layoutY="344.0" mnemonicParsing="false" onAction="#logOut" text="Log out" />
    </children>
 </AnchorPane>

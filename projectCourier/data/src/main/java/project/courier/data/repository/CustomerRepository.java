@@ -11,5 +11,11 @@ public interface CustomerRepository {
     void delete(Customer customer);
     Optional<Customer> findById(long id);
     Optional<Customer> findByEmail(String email);
+
+    Optional<Customer> findByCompanyId(long id);
+
+    List<Customer> findAllByCompanyID(long companyId);
     List<Customer> findAll();
+
+
 }
