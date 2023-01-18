@@ -23,6 +23,8 @@ public class AdminController {
     @FXML
     private NewCustomerController newCustomerController;
     @FXML
+    private AdminStatistics adminStatistics;
+    @FXML
     public void openCompanyRegForm(ActionEvent actionEvent) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/project/courier/presentation/NewCompanyForm.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
@@ -50,15 +52,6 @@ public class AdminController {
         stage.show();
     }
     @FXML
-    public void openCustomerRegForm(ActionEvent actionEvent) throws IOException{
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/project/courier/presentation/NewClientForm.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
-        Stage stage = new Stage();
-        stage.setTitle("Admin");
-        stage.setScene(scene);
-        stage.show();
-    }
-    @FXML
     public void logOut() throws IOException{
         Stage stage = (Stage) logOutBtn.getScene().getWindow();
         stage.close();
@@ -69,4 +62,24 @@ public class AdminController {
         stage.show();
         CurrentUser.role="none";
     }
-}
+    @FXML
+    public void showStatistics(ActionEvent actionEvent) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/project/courier/presentation/Admin-statistics.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        Stage stage = new Stage();
+        stage.setTitle("Admin");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void openCustomerRegForm(ActionEvent actionEvent) throws IOException {
+
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/project/courier/presentation/NewClientForm.fxml"));
+            Scene scene = new Scene(fxmlLoader.load());
+            Stage stage = new Stage();
+            stage.setTitle("Admin");
+            stage.setScene(scene);
+            stage.show();
+        }
+    }
+
