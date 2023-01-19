@@ -81,5 +81,23 @@ public class AdminController {
             stage.setScene(scene);
             stage.show();
         }
+
+    public void showCompaniesStatistics(ActionEvent actionEvent) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/project/courier/presentation/Admin-company-statistics.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        Stage stage = new Stage();
+        stage.setTitle("Admin");
+        stage.setScene(scene);
+        stage.show();
     }
+
+    public void showCustomerStatistics(ActionEvent actionEvent) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/project/courier/presentation/Admin-customer-statistics.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        Stage stage = new Stage();
+        stage.setTitle("Admin");
+        stage.setScene(scene);
+        stage.show();
+    }
+}
 

@@ -39,7 +39,8 @@
           </Menu>
             <Menu mnemonicParsing="false" text="Statistics">
                <items>
-                  <MenuItem fx:id="showStatistics1" mnemonicParsing="false" onAction="#showStatistics" text="Show" />
+                  <MenuItem fx:id="showStatistics1" mnemonicParsing="false" onAction="#showCompaniesStatistics" text="Companies" />
+                  <MenuItem fx:id="showStatistics11" mnemonicParsing="false" onAction="#showCustomerStatistics" text="Customers" />
                </items>
             </Menu>
         </menus>
