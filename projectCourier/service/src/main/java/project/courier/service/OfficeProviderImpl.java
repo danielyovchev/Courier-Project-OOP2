@@ -2,11 +2,14 @@ package project.courier.service;
 
 import project.courier.service.injector.OfficeRepositoryInjectorImpl;
 import project.courier.service.injector.interfaces.OfficeRepositoryInjector;
-import project.courier.service.interfaces.GetAllOffices;
+import project.courier.service.interfaces.OfficeProvider;
 
 import java.util.List;
 
-public class GetAllOfficesImpl implements GetAllOffices {
+/**
+ * service to provide list of offices
+ */
+public class OfficeProviderImpl implements OfficeProvider {
     final OfficeRepositoryInjector injector = new OfficeRepositoryInjectorImpl();
     @Override
     public List<String> getAllOffices() {

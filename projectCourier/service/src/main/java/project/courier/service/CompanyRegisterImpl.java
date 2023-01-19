@@ -8,6 +8,9 @@ import project.courier.service.injector.interfaces.CompanyRepositoryInjector;
 import project.courier.service.interfaces.CompanyRegister;
 import project.courier.service.model.CompanyModel;
 
+/**
+ * service that registers company
+ */
 public class CompanyRegisterImpl implements CompanyRegister {
     final CompanyRepositoryInjector injector = new CompanyRepositoryInjectorImpl();
     private static final Logger logger = LogManager.getLogger(CompanyRegisterImpl.class);

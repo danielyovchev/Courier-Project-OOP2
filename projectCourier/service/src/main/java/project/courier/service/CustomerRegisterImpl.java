@@ -10,6 +10,9 @@ import project.courier.service.injector.interfaces.CustomerRepositoryInjector;
 import project.courier.service.interfaces.CustomerRegister;
 import project.courier.service.model.CustomerModel;
 
+/**
+ * service to register customer
+ */
 public class CustomerRegisterImpl implements CustomerRegister {
     final CustomerRepositoryInjector injector = new CustomerRepositoryInjectorImpl();
     final CompanyRepositoryInjector companyRepositoryInjector = new CompanyRepositoryInjectorImpl();

@@ -7,6 +7,9 @@ import project.courier.service.model.CustomerModel;
 
 import java.util.List;
 
+/**
+ * service that provides list of customers
+ */
 public class CustomerProviderImpl implements CustomerProvider {
     CustomerRepositoryInjector injector = new CustomerRepositoryInjectorImpl();
     public List<CustomerModel> getAllCompanyCustomers(Long companyId)

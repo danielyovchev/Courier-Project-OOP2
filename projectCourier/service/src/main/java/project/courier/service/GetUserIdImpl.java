@@ -4,6 +4,9 @@ import project.courier.service.injector.UserRepositoryInjectorImpl;
 import project.courier.service.injector.interfaces.UserRepositoryInjector;
 import project.courier.service.interfaces.GetUserId;
 
+/**
+ * service to get id of user
+ */
 public class GetUserIdImpl implements GetUserId {
     final UserRepositoryInjector userRepositoryInjector= new UserRepositoryInjectorImpl();
     @Override
