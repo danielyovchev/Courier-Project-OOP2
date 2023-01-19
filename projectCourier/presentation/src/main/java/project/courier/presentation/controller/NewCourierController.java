@@ -1,15 +1,11 @@
 package project.courier.presentation.controller;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import project.courier.presentation.services.AddUserInjector;
 import project.courier.presentation.services.AddUserInjectorImpl;
@@ -40,6 +36,30 @@ public class NewCourierController implements Initializable {
     private Button closeBtn;
     @FXML
     public void registerCourier(){
+        if(firstName.getText().isEmpty()){
+            showAlert("Missing first name!");
+            return;
+        }
+        if(lastName.getText().isEmpty()){
+            showAlert("Missing last name!");
+            return;
+        }
+        if(email.getText().isEmpty()){
+            showAlert("Missing email!");
+            return;
+        }
+        if(password.getText().isEmpty()){
+            showAlert("Missing password!");
+            return;
+        }
+        if(username.getText().isEmpty()){
+            showAlert("Missing username!");
+            return;
+        }
+        if(companies.getValue().isEmpty()){
+            showAlert("No company defined");
+            return;
+        }
         final CourierRegisterInjector injector = new CourierRegisterInjectorImpl();
         final AddUserInjector addUserInjector = new AddUserInjectorImpl();
         final UserModel userModel = new UserModel();
@@ -56,6 +76,10 @@ public class NewCourierController implements Initializable {
         courierModel.setEmail(email.getText());
         courierModel.setCompany((String) companies.getValue());
         injector.register().addCourier(courierModel);
+    }
+    private void showAlert(String message){
+        Alert alert = new Alert(Alert.AlertType.WARNING, message);
+        alert.show();
     }
     @FXML
     public void closeForm(){

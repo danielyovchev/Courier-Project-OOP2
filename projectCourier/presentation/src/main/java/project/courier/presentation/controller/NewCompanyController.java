@@ -19,6 +19,16 @@ public class NewCompanyController {
     private Button closeButton;
     @FXML
     public void registerCompany(){
+        if(companyName.getText().isEmpty()){
+            Alert alert = new Alert(Alert.AlertType.WARNING, "No company name entered!");
+            alert.show();
+            return;
+        }
+        if(bulstat.getText().isEmpty()){
+            Alert alert = new Alert(Alert.AlertType.WARNING, "No bulstat entered!");
+            alert.show();
+            return;
+        }
         final CompanyRegisterInjector injector = new CompanyRegisterInjectorImpl();
         final CompanyModel companyModel = new CompanyModel(companyName.getText(), bulstat.getText());
         injector.register().addCompany(companyModel);
