@@ -1,7 +1,6 @@
 package project.courier.service;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.junit.Test;
 import project.courier.data.entity.Customer;
 import project.courier.data.entity.Office;
 import project.courier.data.entity.Shipment;
@@ -16,26 +15,35 @@ import project.courier.service.injector.interfaces.CourierRepositoryInjector;
 import project.courier.service.injector.interfaces.CustomerRepositoryInjector;
 import project.courier.service.injector.interfaces.OfficeRepositoryInjector;
 import project.courier.service.injector.interfaces.ShipmentRepositoryInjector;
-import project.courier.service.interfaces.ShipmentRegister;
 import project.courier.service.model.ShipmentModel;
 
-/**
- * register new shipment in db
- */
-public class ShipmentRegisterImpl implements ShipmentRegister {
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+public class ShipmentRegisterImplTest {
     final ShipmentRepositoryInjector injector = new ShipmentRepositoryInjectorImpl();
     final OfficeRepositoryInjector officeRepo = new OfficeRepositoryInjectorImpl();
     final CourierRepositoryInjector courierRepositoryInjector = new CourierRepositoryInjectorImpl();
     final CustomerRepositoryInjector customerRepositoryInjector = new CustomerRepositoryInjectorImpl();
-    private static final Logger logger = LogManager.getLogger(ShipmentRegisterImpl.class);
-    @Override
-    public void registerShipment(ShipmentModel model) {
+
+    @Test(expected = CustomerNotFoundException.class)
+    public void registerShipmentNoCustomerFound() {
+        final ShipmentModel model = ShipmentModel.builder().courierUsername("iv.iv").build();
+        registerShipment(model);
+//        assertThrows(CustomerNotFoundException.class, () -> registerShipment(model));
+    }
+
+    @Test
+    public void regShipment(){
+        final ShipmentModel model = ShipmentModel.builder().type("package").build();
+        assertEquals(4.50, getResult(model).getPrice().doubleValue());
+    }
+
+    void registerShipment(ShipmentModel model) {
         final Long courierId = courierRepositoryInjector.getCourierRepository()
                 .findByUsername(model.getCourierUsername()).get().getId();
         final Customer customer = customerRepositoryInjector.getCustomerRepository()
                 .findByEmail(model.getEmail()).orElse(null);
         if(customer == null){
-            logger.error("No customer found");
             throw new CustomerNotFoundException();
         }
         final Office office = officeRepo.getOfficeRepository()
@@ -63,7 +71,25 @@ public class ShipmentRegisterImpl implements ShipmentRegister {
                 .status(ShipmentStatus.IN_OFFICE)
                 .price(price)
                 .build();
-        injector.getShipmentRepository().save(shipment);
-        logger.info("Shipment with id {} registered", shipment.getId());
+    }
+
+    Shipment getResult(ShipmentModel model){
+        double price = 0;
+        if(model.getType().equalsIgnoreCase("ENVELOPE")){
+            price= 2.50;
+        }
+        else if(model.getType().equalsIgnoreCase("PARCEL")){
+            price=3.50;
+        }
+        else if(model.getType().equalsIgnoreCase("PACKAGE")){
+            price=4.50;
+        }
+        else if(model.getType().equalsIgnoreCase("CARGO")){
+            price=10.50;
+        }
+        return Shipment.builder()
+                .category(ShipmentCategory.valueOf(model.getType().toUpperCase()))
+                .price(price)
+                .build();
     }
 }

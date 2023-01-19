@@ -12,6 +12,5 @@ public interface UserRepository {
     Optional<User> findById(Long id);
     Optional<User> findByUserAndPass(String username, String password);
     List<User> findAll();
-
     Optional<User> findByUsername(String username);
 }

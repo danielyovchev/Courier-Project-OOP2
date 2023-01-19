@@ -6,8 +6,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.Set;
-
 @Getter
 @Setter
 @NoArgsConstructor
@@ -17,7 +15,7 @@ import java.util.Set;
 public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private Long id;
     private String firstName;
     private String lastName;
     private String phone;

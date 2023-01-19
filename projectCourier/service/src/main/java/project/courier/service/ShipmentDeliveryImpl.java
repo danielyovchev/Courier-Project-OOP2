@@ -9,10 +9,13 @@ import project.courier.service.interfaces.ShipmentDelivery;
 import java.time.LocalDate;
 import java.util.List;
 
+/**
+ * simulates delivery of shipments
+ */
 public class ShipmentDeliveryImpl implements ShipmentDelivery {
+    final ShipmentRepositoryInjector shipmentRepo = new ShipmentRepositoryInjectorImpl();
     @Override
     public void deliver(List<Shipment> shipments) {
-        final ShipmentRepositoryInjector shipmentRepo = new ShipmentRepositoryInjectorImpl();
         shipments.stream()
                 .peek(e -> e.setStatus(ShipmentStatus.SENT))
                 .peek(e -> e.setDateReceived(LocalDate.now()))
@@ -21,7 +24,6 @@ public class ShipmentDeliveryImpl implements ShipmentDelivery {
 
     @Override
     public void receive(List<Shipment> shipments) {
-        final ShipmentRepositoryInjector shipmentRepo = new ShipmentRepositoryInjectorImpl();
         shipments.stream()
                 .peek(e -> e.setStatus(ShipmentStatus.RECEIVED))
                 .forEach(e -> shipmentRepo.getShipmentRepository().update(e));
