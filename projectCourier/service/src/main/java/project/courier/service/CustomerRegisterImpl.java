@@ -10,12 +10,15 @@ import project.courier.service.injector.interfaces.CustomerRepositoryInjector;
 import project.courier.service.interfaces.CustomerRegister;
 import project.courier.service.model.CustomerModel;
 
+/**
+ * service to register customer
+ */
 public class CustomerRegisterImpl implements CustomerRegister {
+    final CustomerRepositoryInjector injector = new CustomerRepositoryInjectorImpl();
+    final CompanyRepositoryInjector companyRepositoryInjector = new CompanyRepositoryInjectorImpl();
     private static final Logger logger = LogManager.getLogger(CustomerRegisterImpl.class);
     @Override
     public void registerCustomer(final CustomerModel customerModel) {
-        final CustomerRepositoryInjector injector = new CustomerRepositoryInjectorImpl();
-        final CompanyRepositoryInjector companyRepositoryInjector = new CompanyRepositoryInjectorImpl();
         final Long companyId = companyRepositoryInjector.getCompanyRepository().findByName(customerModel.getCompany()).get().getId();
         Customer customer = new Customer();
         customer.setFirstName(customerModel.getFirstName());

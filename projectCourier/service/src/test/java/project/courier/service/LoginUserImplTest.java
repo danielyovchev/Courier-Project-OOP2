@@ -31,4 +31,22 @@ class LoginUserImplTest {
         password = "as";
         assertEquals("Wrong credentials", loginUser.checkLogin(username,password));
     }
+    @Test
+    void checkAdmin(){
+        username = "admin";
+        password = "admin";
+        assertEquals("admin", loginUser.checkLogin(username,password));
+    }
+    @Test
+    void checkCourier(){
+        username = "iv.iv";
+        password = "123";
+        assertEquals("courier", loginUser.checkLogin(username,password));
+    }
+    @Test
+    void checkCustomer(){
+        username = "dad";
+        password = "23";
+        assertEquals("customer", loginUser.checkLogin(username,password));
+    }
 }

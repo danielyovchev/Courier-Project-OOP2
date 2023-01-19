@@ -1,7 +1,5 @@
 package project.courier.service;
 
-import project.courier.data.repository.ShipmentRepository;
-import project.courier.data.repository.ShipmentRepositoryImpl;
 import project.courier.service.injector.CompanyRepositoryInjectorImpl;
 import project.courier.service.injector.interfaces.CompanyRepositoryInjector;
 import project.courier.service.interfaces.CompanyProvider;
@@ -9,6 +7,9 @@ import project.courier.service.model.CompanyTableModel;
 
 import java.util.List;
 
+/**
+ * service that provides company
+ */
 public class CompanyProviderImpl implements CompanyProvider {
     final CompanyRepositoryInjector companyRepositoryInjector = new CompanyRepositoryInjectorImpl();
     @Override

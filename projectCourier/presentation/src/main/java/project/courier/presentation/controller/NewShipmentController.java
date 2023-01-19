@@ -2,17 +2,14 @@ package project.courier.presentation.controller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 import project.courier.presentation.logConstants.CurrentUser;
 import project.courier.presentation.services.ShipmentRegisterInjector;
 import project.courier.presentation.services.ShipmentRegisterInjectorImpl;
-import project.courier.service.GetAllOfficesImpl;
+import project.courier.service.OfficeProviderImpl;
 import project.courier.service.exceptions.CustomerNotFoundException;
-import project.courier.service.interfaces.GetAllOffices;
+import project.courier.service.interfaces.OfficeProvider;
 import project.courier.service.model.ShipmentModel;
 
 import java.net.URL;
@@ -41,6 +38,34 @@ public class NewShipmentController implements Initializable {
     private ComboBox<String> typeList;
     @FXML
     public void registerShipment(){
+        if(firstName.getText().isEmpty()){
+            showAlert("Missing first name!");
+            return;
+        }
+        if(lastName.getText().isEmpty()){
+            showAlert("Missing last name!");
+            return;
+        }
+        if(email.getText().isEmpty()){
+            showAlert("Missing email!");
+            return;
+        }
+        if(city.getText().isEmpty()){
+            showAlert("Missing destination!");
+            return;
+        }
+        if(officeList.getValue().isEmpty()){
+            showAlert("No office chosen!");
+            return;
+        }
+        if (sentDate.getValue() == null){
+            showAlert("No date entered!");
+            return;
+        }
+        if(phone.getText().isEmpty()){
+            showAlert("Missing phone");
+            return;
+        }
         final ShipmentRegisterInjector injector = new ShipmentRegisterInjectorImpl();
         final ShipmentModel model = new ShipmentModel();
         model.setFirstName(firstName.getText());
@@ -56,9 +81,12 @@ public class NewShipmentController implements Initializable {
             injector.register().registerShipment(model);
         }
         catch (CustomerNotFoundException exception){
-            System.out.println("errr");
+            showAlert("No customer with that credentials");
         }
-
+    }
+    private void showAlert(String message){
+        Alert alert = new Alert(Alert.AlertType.ERROR, message);
+        alert.show();
     }
     @FXML
     public void closeForm(){
@@ -68,9 +96,8 @@ public class NewShipmentController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        final GetAllOffices getAllOffices = new GetAllOfficesImpl();
+        final OfficeProvider getAllOffices = new OfficeProviderImpl();
         getAllOffices.getAllOffices().forEach(e -> officeList.getItems().add(e));
-        //getAllOffices.getOfficesByCity(city.getText()).forEach(e -> officeList.getItems().add(e));
         String[] types = {"ENVELOPE", "PARCEL", "PACKAGE", "CARGO"};
         Arrays.stream(types).forEach(e -> typeList.getItems().add(e));
     }

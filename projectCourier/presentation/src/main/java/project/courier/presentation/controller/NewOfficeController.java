@@ -2,6 +2,7 @@ package project.courier.presentation.controller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
@@ -24,11 +25,23 @@ public class NewOfficeController implements Initializable {
     private Button closeBtn;
     @FXML
     public void registerOffice(){
+        if(officeCity.getText().isEmpty()){
+            showAlert("No city defined");
+            return;
+        }
+        if(companyName.getValue().isEmpty()){
+            showAlert("No company chosen");
+            return;
+        }
         final AddOfficeInjector officeInjector = new AddOfficeInjectorImpl();
         final OfficeModel officeModel = new OfficeModel();
         officeModel.setCity(officeCity.getText());
         officeModel.setCompany((String) companyName.getValue());
         officeInjector.addOffice().addOffice(officeModel);
+    }
+    private void showAlert(String message){
+        Alert alert = new Alert(Alert.AlertType.ERROR, message);
+        alert.show();
     }
     @FXML
     public void closeForm(){

@@ -9,12 +9,15 @@ import project.courier.service.injector.interfaces.UserRepositoryInjector;
 
 import java.util.Optional;
 
+/**
+ * service that checks if the user exists,
+ */
 public class LoginUserImpl implements LoginUser {
+    final UserRepositoryInjector injector = new UserRepositoryInjectorImpl();
     private static final Logger logger = LogManager.getLogger(LoginUserImpl.class);
     @Override
     public String checkLogin(String username, String password) {
         String result="";
-        final UserRepositoryInjector injector = new UserRepositoryInjectorImpl();
         final Optional<User> user = injector.userRepository().findByUserAndPass(username, password);
         if(username.isEmpty()) {
             logger.error("No username");

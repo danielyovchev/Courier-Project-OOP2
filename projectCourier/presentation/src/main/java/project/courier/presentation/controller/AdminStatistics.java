@@ -9,24 +9,19 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import project.courier.presentation.logConstants.CurrentUser;
 import project.courier.service.CompanyProviderImpl;
 import project.courier.service.CustomerProviderImpl;
 import project.courier.service.GetAllCompaniesImpl;
 import project.courier.service.ShipmentProviderImpl;
-import project.courier.service.injector.CompanyRepositoryInjectorImpl;
-import project.courier.service.injector.CustomerRepositoryInjectorImpl;
-import project.courier.service.injector.interfaces.CompanyRepositoryInjector;
-import project.courier.service.injector.interfaces.CustomerRepositoryInjector;
 import project.courier.service.interfaces.CompanyProvider;
 import project.courier.service.interfaces.CustomerProvider;
 import project.courier.service.interfaces.GetAllCompanies;
 import project.courier.service.interfaces.ShipmentProvider;
-import project.courier.service.model.*;
+import project.courier.service.model.CompanyTableModel;
+import project.courier.service.model.CustomerModel;
+import project.courier.service.model.ShipmentTableModel;
 
-import java.lang.reflect.Array;
 import java.net.URL;
-import java.util.Arrays;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -73,8 +68,9 @@ public class AdminStatistics implements Initializable {
     {
         GetAllCompanies getAllCompanies = new GetAllCompaniesImpl();
         List<String> companyNamesList = getAllCompanies.getNames();
-        for (String name: companyNamesList)
-        {companyNames.getItems().add(name);}
+        for (String name: companyNamesList) {
+            companyNames.getItems().add(name);
+        }
     }
 
     @Override
@@ -90,21 +86,14 @@ public class AdminStatistics implements Initializable {
         CompanyProvider companyProvider = new CompanyProviderImpl();
         ShipmentProvider shipmentProvider = new ShipmentProviderImpl();
         long currentCompanyId = companyProvider.getCurrentCompanyIdByName(companyNames.getValue());
-        CompanyRepositoryInjector injector = new CompanyRepositoryInjectorImpl();
-
-        System.out.println(currentCompanyId);
         ObservableList<CustomerModel> customerModels = customerList(currentCompanyId);
         ClientIdColumn.setCellValueFactory(new PropertyValueFactory<>("customerId"));
         for (CustomerModel c:customerModels)
         {
             List<ShipmentTableModel> shipmentsCountList = shipmentProvider.getCustomerShipments(c.getCustomerId());
             c.setShipmentsCount(shipmentsCountList.size());
-            System.out.println(c.getShipmentsCount());
             ClientShipmentsCount.setCellValueFactory(new PropertyValueFactory<>("shipmentsCount"));
         }
         ClientTable.setItems(customerModels);
-
-
-
     }
 }

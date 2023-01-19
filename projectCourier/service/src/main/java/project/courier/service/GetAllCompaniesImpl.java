@@ -13,16 +13,14 @@ public class GetAllCompaniesImpl implements GetAllCompanies {
     final CompanyRepositoryInjector companyRepositoryInjector = new CompanyRepositoryInjectorImpl();
     @Override
     public List<String> getNames() {
-        final CompanyRepositoryInjector injector = new CompanyRepositoryInjectorImpl();
-        return injector.getCompanyRepository().findAll().stream().map(c -> c.getName()).toList();
+        return companyRepositoryInjector.getCompanyRepository().findAll().stream().map(c -> c.getName()).toList();
     }
 
     @Override
     public String getCompanyFromCourier(String username) {
         final CourierRepositoryInjector courierRepositoryInjector = new CourierRepositoryInjectorImpl();
-        final CompanyRepositoryInjector injector = new CompanyRepositoryInjectorImpl();
         return courierRepositoryInjector.getCourierRepository().findByUsername(username)
-                .map(el -> injector.getCompanyRepository().findById(el.getCompanyId()))
+                .map(el -> companyRepositoryInjector.getCompanyRepository().findById(el.getCompanyId()))
                 .map(c -> c.get().getName()).get();
     }
 

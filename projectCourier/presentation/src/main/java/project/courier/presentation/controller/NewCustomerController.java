@@ -1,6 +1,7 @@
 package project.courier.presentation.controller;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -31,6 +32,30 @@ public class NewCustomerController {
     private TextField username;
     @FXML
     public void registerCustomer(){
+        if(firstName.getText().isEmpty()){
+            showAlert("Missing first name!");
+            return;
+        }
+        if(lastName.getText().isEmpty()){
+            showAlert("Missing last name!");
+            return;
+        }
+        if(email.getText().isEmpty()){
+            showAlert("Missing email!");
+            return;
+        }
+        if(password.getText().isEmpty()){
+            showAlert("Missing password!");
+            return;
+        }
+        if(username.getText().isEmpty()){
+            showAlert("Missing username!");
+            return;
+        }
+        if(phone.getText().isEmpty()){
+            showAlert("Missing phone");
+            return;
+        }
         final CustomerRegisterInjector customerRegisterInjector = new CustomerRegisterInjectorImpl();
         final GetAllCompanies getAllCompanies = new GetAllCompaniesImpl();
         final AddUserInjector addUserInjector = new AddUserInjectorImpl();
@@ -49,6 +74,10 @@ public class NewCustomerController {
         userModel.setUsername(username.getText());
         userModel.setType("Customer");
         addUserInjector.getService().addUser(userModel);
+    }
+    private void showAlert(String message){
+        Alert alert = new Alert(Alert.AlertType.WARNING, message);
+        alert.show();
     }
     @FXML
     public void closeForm(){
