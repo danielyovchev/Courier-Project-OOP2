@@ -9,10 +9,10 @@ import project.courier.service.interfaces.CompanyRegister;
 import project.courier.service.model.CompanyModel;
 
 public class CompanyRegisterImpl implements CompanyRegister {
+    final CompanyRepositoryInjector injector = new CompanyRepositoryInjectorImpl();
     private static final Logger logger = LogManager.getLogger(CompanyRegisterImpl.class);
     @Override
     public void addCompany(CompanyModel companyModel) {
-        final CompanyRepositoryInjector injector = new CompanyRepositoryInjectorImpl();
         Company company = new Company();
         company.setName(companyModel.getName());
         company.setBulstat(companyModel.getBulstat());

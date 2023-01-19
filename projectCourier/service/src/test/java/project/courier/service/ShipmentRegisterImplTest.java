@@ -1,6 +1,6 @@
 package project.courier.service;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import project.courier.data.entity.Customer;
 import project.courier.data.entity.Office;
 import project.courier.data.entity.Shipment;
@@ -18,24 +18,26 @@ import project.courier.service.injector.interfaces.ShipmentRepositoryInjector;
 import project.courier.service.model.ShipmentModel;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
-class ShipmentRegisterImplTest {
+public class ShipmentRegisterImplTest {
     final ShipmentRepositoryInjector injector = new ShipmentRepositoryInjectorImpl();
     final OfficeRepositoryInjector officeRepo = new OfficeRepositoryInjectorImpl();
     final CourierRepositoryInjector courierRepositoryInjector = new CourierRepositoryInjectorImpl();
     final CustomerRepositoryInjector customerRepositoryInjector = new CustomerRepositoryInjectorImpl();
-    @Test
-    void registerShipmentNoCustomerFound() {
+
+    @Test(expected = CustomerNotFoundException.class)
+    public void registerShipmentNoCustomerFound() {
         final ShipmentModel model = ShipmentModel.builder().courierUsername("iv.iv").build();
-        assertThrows(CustomerNotFoundException.class, () -> registerShipment(model));
+        registerShipment(model);
+//        assertThrows(CustomerNotFoundException.class, () -> registerShipment(model));
     }
 
     @Test
-    void regShipment(){
+    public void regShipment(){
         final ShipmentModel model = ShipmentModel.builder().type("package").build();
         assertEquals(4.50, getResult(model).getPrice().doubleValue());
     }
+
     void registerShipment(ShipmentModel model) {
         final Long courierId = courierRepositoryInjector.getCourierRepository()
                 .findByUsername(model.getCourierUsername()).get().getId();

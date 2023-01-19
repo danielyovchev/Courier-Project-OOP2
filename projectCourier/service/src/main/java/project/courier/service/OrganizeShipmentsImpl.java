@@ -16,11 +16,11 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class OrganizeShipmentsImpl implements OrganizeShipments {
+    final ShipmentRepositoryInjector shipmentRepo = new ShipmentRepositoryInjectorImpl();
+    final OfficeRepositoryInjector officeRepo = new OfficeRepositoryInjectorImpl();
     private static final Logger logger = LogManager.getLogger(OrganizeShipmentsImpl.class);
     @Override
     public void run() {
-        final ShipmentRepositoryInjector shipmentRepo = new ShipmentRepositoryInjectorImpl();
-        final OfficeRepositoryInjector officeRepo = new OfficeRepositoryInjectorImpl();
         final ShipmentDelivery shipmentDelivery = new ShipmentDeliveryImpl();
         List<Office> offices = officeRepo.getOfficeRepository().findAll();
         offices.forEach(o -> {

@@ -11,11 +11,11 @@ import project.courier.service.interfaces.CourierRegister;
 import project.courier.service.model.CourierModel;
 
 public class CourierRegisterImpl implements CourierRegister {
+    final CourierRepositoryInjector injector = new CourierRepositoryInjectorImpl();
+    final CompanyRepositoryInjector companyRepositoryInjector = new CompanyRepositoryInjectorImpl();
     private static final Logger logger = LogManager.getLogger(CourierRegisterImpl.class);
     @Override
     public void addCourier(CourierModel courierModel) {
-        final CourierRepositoryInjector injector = new CourierRepositoryInjectorImpl();
-        final CompanyRepositoryInjector companyRepositoryInjector = new CompanyRepositoryInjectorImpl();
         final Long courierId = companyRepositoryInjector.getCompanyRepository().findByName(courierModel.getCompany()).get().getId();
         Courier courier = new Courier();
         courier.setFirstName(courierModel.getFirstName());

@@ -20,13 +20,13 @@ import project.courier.service.interfaces.ShipmentRegister;
 import project.courier.service.model.ShipmentModel;
 
 public class ShipmentRegisterImpl implements ShipmentRegister {
+    final ShipmentRepositoryInjector injector = new ShipmentRepositoryInjectorImpl();
+    final OfficeRepositoryInjector officeRepo = new OfficeRepositoryInjectorImpl();
+    final CourierRepositoryInjector courierRepositoryInjector = new CourierRepositoryInjectorImpl();
+    final CustomerRepositoryInjector customerRepositoryInjector = new CustomerRepositoryInjectorImpl();
     private static final Logger logger = LogManager.getLogger(ShipmentRegisterImpl.class);
     @Override
     public void registerShipment(ShipmentModel model) {
-        final ShipmentRepositoryInjector injector = new ShipmentRepositoryInjectorImpl();
-        final OfficeRepositoryInjector officeRepo = new OfficeRepositoryInjectorImpl();
-        final CourierRepositoryInjector courierRepositoryInjector = new CourierRepositoryInjectorImpl();
-        final CustomerRepositoryInjector customerRepositoryInjector = new CustomerRepositoryInjectorImpl();
         final Long courierId = courierRepositoryInjector.getCourierRepository()
                 .findByUsername(model.getCourierUsername()).get().getId();
         final Customer customer = customerRepositoryInjector.getCustomerRepository()

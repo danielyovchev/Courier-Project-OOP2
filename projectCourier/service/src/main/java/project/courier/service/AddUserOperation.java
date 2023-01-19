@@ -9,9 +9,9 @@ import project.courier.service.injector.interfaces.UserRepositoryInjector;
 import project.courier.service.interfaces.AddUserInterface;
 import project.courier.service.model.UserModel;
 public class AddUserOperation implements AddUserInterface {
+    final UserRepositoryInjector injector = new UserRepositoryInjectorImpl();
     private static final Logger logger = LogManager.getLogger(AddUserOperation.class);
     public void addUser(final UserModel userModel){
-        final UserRepositoryInjector injector = new UserRepositoryInjectorImpl();
         User user = new User();
         user.setUsername(userModel.getUsername());
         user.setEmail(userModel.getEmail());
