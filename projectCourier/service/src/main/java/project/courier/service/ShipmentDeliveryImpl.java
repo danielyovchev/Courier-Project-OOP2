@@ -9,6 +9,9 @@ import project.courier.service.interfaces.ShipmentDelivery;
 import java.time.LocalDate;
 import java.util.List;
 
+/**
+ * simulates delivery of shipments
+ */
 public class ShipmentDeliveryImpl implements ShipmentDelivery {
     final ShipmentRepositoryInjector shipmentRepo = new ShipmentRepositoryInjectorImpl();
     @Override

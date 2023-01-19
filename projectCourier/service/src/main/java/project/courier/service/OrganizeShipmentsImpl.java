@@ -15,6 +15,9 @@ import project.courier.service.interfaces.ShipmentDelivery;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * organizes the delivery in new thread
+ */
 public class OrganizeShipmentsImpl implements OrganizeShipments {
     final ShipmentRepositoryInjector shipmentRepo = new ShipmentRepositoryInjectorImpl();
     final OfficeRepositoryInjector officeRepo = new OfficeRepositoryInjectorImpl();

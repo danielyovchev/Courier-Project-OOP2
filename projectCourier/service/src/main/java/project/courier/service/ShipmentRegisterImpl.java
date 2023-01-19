@@ -19,6 +19,9 @@ import project.courier.service.injector.interfaces.ShipmentRepositoryInjector;
 import project.courier.service.interfaces.ShipmentRegister;
 import project.courier.service.model.ShipmentModel;
 
+/**
+ * register new shipment in db
+ */
 public class ShipmentRegisterImpl implements ShipmentRegister {
     final ShipmentRepositoryInjector injector = new ShipmentRepositoryInjectorImpl();
     final OfficeRepositoryInjector officeRepo = new OfficeRepositoryInjectorImpl();

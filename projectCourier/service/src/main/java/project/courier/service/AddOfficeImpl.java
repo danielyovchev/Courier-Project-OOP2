@@ -10,6 +10,9 @@ import project.courier.service.injector.interfaces.OfficeRepositoryInjector;
 import project.courier.service.interfaces.AddOffice;
 import project.courier.service.model.OfficeModel;
 
+/**
+ * adds new office to db
+ */
 public class AddOfficeImpl implements AddOffice {
     final OfficeRepositoryInjector officeInjector = new OfficeRepositoryInjectorImpl();
     final CompanyRepositoryInjector companyInjector = new CompanyRepositoryInjectorImpl();

@@ -9,6 +9,9 @@ import project.courier.service.injector.interfaces.UserRepositoryInjector;
 
 import java.util.Optional;
 
+/**
+ * service that checks if the user exists,
+ */
 public class LoginUserImpl implements LoginUser {
     final UserRepositoryInjector injector = new UserRepositoryInjectorImpl();
     private static final Logger logger = LogManager.getLogger(LoginUserImpl.class);

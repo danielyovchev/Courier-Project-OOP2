@@ -11,6 +11,9 @@ import project.courier.service.model.ShipmentTableModel;
 import java.time.LocalDate;
 import java.util.List;
 
+/**
+ * provides list of shipments based on different criteria
+ */
 public class ShipmentProviderImpl implements ShipmentProvider {
     final ShipmentRepositoryInjector shipmentRepositoryInjector = new ShipmentRepositoryInjectorImpl();
     final OfficeRepositoryInjector officeRepositoryInjector = new OfficeRepositoryInjectorImpl();
