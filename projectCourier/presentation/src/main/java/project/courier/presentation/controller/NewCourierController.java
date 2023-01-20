@@ -11,8 +11,8 @@ import project.courier.presentation.services.AddUserInjector;
 import project.courier.presentation.services.AddUserInjectorImpl;
 import project.courier.presentation.services.CourierRegisterInjector;
 import project.courier.presentation.services.CourierRegisterInjectorImpl;
-import project.courier.service.GetAllCompaniesImpl;
-import project.courier.service.interfaces.GetAllCompanies;
+import project.courier.service.CompanyProviderImpl;
+import project.courier.service.interfaces.CompanyProvider;
 import project.courier.service.model.CourierModel;
 import project.courier.service.model.UserModel;
 
@@ -89,7 +89,7 @@ public class NewCourierController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        final GetAllCompanies getAllCompanies = new GetAllCompaniesImpl();
-        getAllCompanies.getNames().forEach(e -> companies.getItems().add(e));
+        CompanyProvider companyProvider = new CompanyProviderImpl();
+        companyProvider.getNames().forEach(e -> companies.getItems().add(e));
     }
 }

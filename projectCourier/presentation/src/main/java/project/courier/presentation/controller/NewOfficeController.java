@@ -9,8 +9,8 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import project.courier.presentation.services.AddOfficeInjector;
 import project.courier.presentation.services.AddOfficeInjectorImpl;
-import project.courier.service.GetAllCompaniesImpl;
-import project.courier.service.interfaces.GetAllCompanies;
+import project.courier.service.CompanyProviderImpl;
+import project.courier.service.interfaces.CompanyProvider;
 import project.courier.service.model.OfficeModel;
 
 import java.net.URL;
@@ -50,7 +50,7 @@ public class NewOfficeController implements Initializable {
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        final GetAllCompanies getAllCompanies = new GetAllCompaniesImpl();
-        getAllCompanies.getNames().forEach(e -> companyName.getItems().add(e));
+        CompanyProvider companyProvider = new CompanyProviderImpl();
+        companyProvider.getNames().forEach(e -> companyName.getItems().add(e));
     }
 }

@@ -11,11 +11,9 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import project.courier.service.CompanyProviderImpl;
 import project.courier.service.CustomerProviderImpl;
-import project.courier.service.GetAllCompaniesImpl;
 import project.courier.service.ShipmentProviderImpl;
 import project.courier.service.interfaces.CompanyProvider;
 import project.courier.service.interfaces.CustomerProvider;
-import project.courier.service.interfaces.GetAllCompanies;
 import project.courier.service.interfaces.ShipmentProvider;
 import project.courier.service.model.CompanyTableModel;
 import project.courier.service.model.CustomerModel;
@@ -64,10 +62,9 @@ public class AdminStatistics implements Initializable {
         CompanyShipments.setCellValueFactory(new PropertyValueFactory<>("shipmentCount"));
         CompanyTable.setItems(companyModels);
     }
-    private void fillCompanyComboBox()
-    {
-        GetAllCompanies getAllCompanies = new GetAllCompaniesImpl();
-        List<String> companyNamesList = getAllCompanies.getNames();
+    private void fillCompanyComboBox() {
+        CompanyProvider companyProvider = new CompanyProviderImpl();
+        List<String> companyNamesList = companyProvider.getNames();
         for (String name: companyNamesList) {
             companyNames.getItems().add(name);
         }

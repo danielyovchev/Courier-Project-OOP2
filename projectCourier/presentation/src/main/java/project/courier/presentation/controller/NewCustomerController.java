@@ -10,8 +10,8 @@ import project.courier.presentation.services.AddUserInjector;
 import project.courier.presentation.services.AddUserInjectorImpl;
 import project.courier.presentation.services.CustomerRegisterInjector;
 import project.courier.presentation.services.CustomerRegisterInjectorImpl;
-import project.courier.service.GetAllCompaniesImpl;
-import project.courier.service.interfaces.GetAllCompanies;
+import project.courier.service.CompanyProviderImpl;
+import project.courier.service.interfaces.CompanyProvider;
 import project.courier.service.model.CustomerModel;
 import project.courier.service.model.UserModel;
 
@@ -57,14 +57,14 @@ public class NewCustomerController {
             return;
         }
         final CustomerRegisterInjector customerRegisterInjector = new CustomerRegisterInjectorImpl();
-        final GetAllCompanies getAllCompanies = new GetAllCompaniesImpl();
+        final CompanyProvider companyProvider = new CompanyProviderImpl();
         final AddUserInjector addUserInjector = new AddUserInjectorImpl();
         CustomerModel customerModel = new CustomerModel();
         customerModel.setFirstName(firstName.getText());
         customerModel.setLastName(lastName.getText());
         customerModel.setEmail(email.getText());
         customerModel.setPhone(phone.getText());
-        customerModel.setCompany(getAllCompanies.getCompanyFromCourier(CurrentUser.username));
+        customerModel.setCompany(companyProvider.getCompanyFromCourier(CurrentUser.username));
         customerRegisterInjector.getService().registerCustomer(customerModel);
         final UserModel userModel = new UserModel();
         userModel.setFirstName(firstName.getText());

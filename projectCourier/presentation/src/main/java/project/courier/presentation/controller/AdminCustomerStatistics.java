@@ -9,13 +9,11 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import project.courier.service.CompanyProviderImpl;
 import project.courier.service.CustomerProviderImpl;
-import project.courier.service.GetAllCompaniesImpl;
 import project.courier.service.ShipmentProviderImpl;
 import project.courier.service.injector.CompanyRepositoryInjectorImpl;
 import project.courier.service.injector.interfaces.CompanyRepositoryInjector;
 import project.courier.service.interfaces.CompanyProvider;
 import project.courier.service.interfaces.CustomerProvider;
-import project.courier.service.interfaces.GetAllCompanies;
 import project.courier.service.interfaces.ShipmentProvider;
 import project.courier.service.model.CustomerModel;
 import project.courier.service.model.ShipmentTableModel;
@@ -49,12 +47,12 @@ public class AdminCustomerStatistics implements Initializable {
                 .stream().toList());
     }
 
-    private void fillCompanyComboBox()
-    {
-        GetAllCompanies getAllCompanies = new GetAllCompaniesImpl();
-        List<String> companyNamesList = getAllCompanies.getNames();
-        for (String name: companyNamesList)
-        {companyNames.getItems().add(name);}
+    private void fillCompanyComboBox() {
+        CompanyProvider companyProvider = new CompanyProviderImpl();
+        List<String> companyNamesList = companyProvider.getNames();
+        for (String name: companyNamesList) {
+            companyNames.getItems().add(name);
+        }
     }
 
     public void ShowStatisticsButton(ActionEvent actionEvent)

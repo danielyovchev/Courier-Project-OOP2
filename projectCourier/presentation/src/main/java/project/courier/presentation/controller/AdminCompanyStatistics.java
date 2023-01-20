@@ -10,19 +10,17 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import project.courier.service.CompanyProviderImpl;
 import project.courier.service.interfaces.CompanyProvider;
 import project.courier.service.model.CompanyTableModel;
-import project.courier.service.model.ShipmentTableModel;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class AdminCompanyStatistics implements Initializable
-{
+public class AdminCompanyStatistics implements Initializable {
     @FXML
     private TableView<CompanyTableModel> CompanyTable = new TableView<>();
     @FXML
-    private TableColumn<CompanyTableModel, Long> companyId = new TableColumn<>();
+    private TableColumn<CompanyTableModel, String> companyName = new TableColumn<>();
     @FXML
-    private TableColumn <ShipmentTableModel, Integer> CompanyShipments = new TableColumn<>();
+    private TableColumn <CompanyTableModel, Integer> CompanyShipments = new TableColumn<>();
     @FXML
     private DatePicker fromDate = new DatePicker();
     @FXML
@@ -40,14 +38,10 @@ public class AdminCompanyStatistics implements Initializable
     private void displayCompanyTable()
     {
         ObservableList<CompanyTableModel> companyModels = companyIdList();
-        companyId.setCellValueFactory(new PropertyValueFactory<>("companyId"));
+        companyName.setCellValueFactory(new PropertyValueFactory<>("companyName"));
         CompanyShipments.setCellValueFactory(new PropertyValueFactory<>("shipmentCount"));
         CompanyTable.setItems(companyModels);
     }
-
-
-
-
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

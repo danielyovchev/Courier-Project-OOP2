@@ -14,7 +14,7 @@
    <children>
       <TableView fx:id="CompanyTable" layoutX="45.0" layoutY="102.0" prefHeight="251.0" prefWidth="200.0">
          <columns>
-            <TableColumn fx:id="companyId" prefWidth="75.0" text="CompanyId" />
+            <TableColumn fx:id="companyName" prefWidth="75.0" text="Company" />
             <TableColumn fx:id="CompanyShipments" prefWidth="124.0" text="Shipments count" />
          </columns>
       </TableView>
