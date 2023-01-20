@@ -97,7 +97,7 @@ public class NewShipmentController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         final OfficeProvider getAllOffices = new OfficeProviderImpl();
-        getAllOffices.getAllOffices().forEach(e -> officeList.getItems().add(e));
+        getAllOffices.getAllOffices(CurrentUser.username).forEach(e -> officeList.getItems().add(e));
         String[] types = {"ENVELOPE", "PARCEL", "PACKAGE", "CARGO"};
         Arrays.stream(types).forEach(e -> typeList.getItems().add(e));
     }

@@ -40,7 +40,7 @@ public class ShipmentRegisterImpl implements ShipmentRegister {
             throw new CustomerNotFoundException();
         }
         final Office office = officeRepo.getOfficeRepository()
-                .findByCity(model.getOffice()).get();
+                .findByCityAndCompany(model.getCity(), courier.getCompanyId()).get();
         double price = 0;
         if(model.getType().equalsIgnoreCase("ENVELOPE")){
             price= 2.50;

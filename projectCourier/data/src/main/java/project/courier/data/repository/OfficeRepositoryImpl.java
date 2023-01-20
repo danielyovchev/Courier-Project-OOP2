@@ -72,13 +72,9 @@ public class OfficeRepositoryImpl implements OfficeRepository {
         Session session = dbUtils.openSession();
         Transaction transaction = session.beginTransaction();
         Office office = new Office();
-
-        try
-        {
+        try {
             office = session.createQuery("SELECT a from Office a where a.id='"+id+"'", Office.class).getSingleResult();
-        }
-        catch ( Exception e)
-        {
+        } catch ( Exception e) {
             e.printStackTrace();
         }
         finally {
@@ -116,6 +112,43 @@ public class OfficeRepositoryImpl implements OfficeRepository {
         List<Office> offices = new ArrayList<>();
         try {
             offices = session.createQuery("SELECT a from Office a where a.city='"+city+"'", Office.class).getResultList();
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        finally {
+            transaction.commit();
+            session.close();
+        }
+        return offices;
+    }
+
+    @Override
+    public Optional<Office> findByCityAndCompany(String city, Long companyId) {
+        Session session = dbUtils.openSession();
+        Transaction transaction = session.beginTransaction();
+        Office office = new Office();
+        try {
+            office = session.createQuery("SELECT a from Office a where a.city='"+city+"' and a.companyId='"+companyId+"'", Office.class).getSingleResult();
+        }
+        catch ( Exception e)
+        {
+            e.printStackTrace();
+        }
+        finally {
+            transaction.commit();
+            session.close();
+        }
+        return Optional.of(office);
+    }
+
+    @Override
+    public List<Office> findAllByCompany(Long id) {
+        Session session = dbUtils.openSession();
+        Transaction transaction = session.beginTransaction();
+        List<Office> offices = new ArrayList<>();
+        try {
+            offices = session.createQuery("SELECT a from Office a where a.companyId='"+id+"'", Office.class).getResultList();
         }
         catch (Exception e){
             e.printStackTrace();

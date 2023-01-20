@@ -32,7 +32,7 @@ public class OrganizeShipmentsImpl implements OrganizeShipments {
                         .findByOfficeAndStatus(o.getId(), ShipmentStatus.IN_OFFICE).stream()
                         .toList();
                 if(shipments.isEmpty()){
-                    logger.warn("No shipments for deliver");
+                    logger.warn("No shipments for deliver from office {}", o.getCity());
                     return;
                 }
                 shipmentDelivery.deliver(shipments);
