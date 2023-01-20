@@ -37,7 +37,7 @@ public class OrganizeShipmentsImpl implements OrganizeShipments {
                 }
                 shipmentDelivery.deliver(shipments);
                 logger.info("Shipments sent");
-                TimeUnit.MINUTES.sleep(1);
+                TimeUnit.SECONDS.sleep(15);
                 shipmentDelivery.receive(shipments);
                 logger.info("Shipments delivered");
             } catch (InterruptedException e) {
