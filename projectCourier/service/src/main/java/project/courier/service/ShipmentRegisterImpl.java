@@ -2,6 +2,7 @@ package project.courier.service;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import project.courier.data.entity.Courier;
 import project.courier.data.entity.Customer;
 import project.courier.data.entity.Office;
 import project.courier.data.entity.Shipment;
@@ -30,8 +31,8 @@ public class ShipmentRegisterImpl implements ShipmentRegister {
     private static final Logger logger = LogManager.getLogger(ShipmentRegisterImpl.class);
     @Override
     public void registerShipment(ShipmentModel model) {
-        final Long courierId = courierRepositoryInjector.getCourierRepository()
-                .findByUsername(model.getCourierUsername()).get().getId();
+        final Courier courier = courierRepositoryInjector.getCourierRepository()
+                .findByUsername(model.getCourierUsername()).get();
         final Customer customer = customerRepositoryInjector.getCustomerRepository()
                 .findByEmail(model.getEmail()).orElse(null);
         if(customer == null){
@@ -55,8 +56,9 @@ public class ShipmentRegisterImpl implements ShipmentRegister {
         }
         Shipment shipment = Shipment.builder()
                 .customerId(customer.getId())
-                .courierId(courierId)
+                .courierId(courier.getId())
                 .officeId(office.getId())
+                .companyId(courier.getCompanyId())
                 .destination(model.getCity())
                 .dateSent(model.getDateSent())
                 .category(ShipmentCategory.valueOf(model.getType().toUpperCase()))

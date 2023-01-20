@@ -13,4 +13,5 @@ public interface UserRepository {
     Optional<User> findByUserAndPass(String username, String password);
     List<User> findAll();
     Optional<User> findByUsername(String username);
+    boolean existsByUsername(String username);
 }

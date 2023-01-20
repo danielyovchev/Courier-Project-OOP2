@@ -24,6 +24,7 @@ public class CourierRegisterImpl implements CourierRegister {
         courier.setFirstName(courierModel.getFirstName());
         courier.setLastName(courierModel.getLastName());
         courier.setEmail(courierModel.getEmail());
+        courier.setUsername(courierModel.getUsername());
         courier.setCompanyId(courierId);
         injector.getCourierRepository().save(courier);
         logger.info("Courier" + courierModel.getFirstName()+" "+courierModel.getLastName() +"registered");

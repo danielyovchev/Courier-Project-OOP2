@@ -12,6 +12,7 @@ import project.courier.presentation.services.AddUserInjectorImpl;
 import project.courier.presentation.services.CourierRegisterInjector;
 import project.courier.presentation.services.CourierRegisterInjectorImpl;
 import project.courier.service.CompanyProviderImpl;
+import project.courier.service.exceptions.UserExistsException;
 import project.courier.service.interfaces.CompanyProvider;
 import project.courier.service.model.CourierModel;
 import project.courier.service.model.UserModel;
@@ -69,11 +70,17 @@ public class NewCourierController implements Initializable {
         userModel.setPassword(password.getText());
         userModel.setUsername(username.getText());
         userModel.setType("Courier");
-        addUserInjector.getService().addUser(userModel);
+        try {
+            addUserInjector.getService().addUser(userModel);
+        } catch (UserExistsException e){
+            showAlert("User already exists");
+            return;
+        }
         final CourierModel courierModel = new CourierModel();
         courierModel.setFirstName(firstName.getText());
         courierModel.setLastName(lastName.getText());
         courierModel.setEmail(email.getText());
+        courierModel.setUsername(username.getText());
         courierModel.setCompany((String) companies.getValue());
         injector.register().addCourier(courierModel);
     }

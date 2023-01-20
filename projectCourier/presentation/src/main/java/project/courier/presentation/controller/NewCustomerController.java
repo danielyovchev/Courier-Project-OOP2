@@ -11,6 +11,7 @@ import project.courier.presentation.services.AddUserInjectorImpl;
 import project.courier.presentation.services.CustomerRegisterInjector;
 import project.courier.presentation.services.CustomerRegisterInjectorImpl;
 import project.courier.service.CompanyProviderImpl;
+import project.courier.service.exceptions.UserExistsException;
 import project.courier.service.interfaces.CompanyProvider;
 import project.courier.service.model.CustomerModel;
 import project.courier.service.model.UserModel;
@@ -59,13 +60,6 @@ public class NewCustomerController {
         final CustomerRegisterInjector customerRegisterInjector = new CustomerRegisterInjectorImpl();
         final CompanyProvider companyProvider = new CompanyProviderImpl();
         final AddUserInjector addUserInjector = new AddUserInjectorImpl();
-        CustomerModel customerModel = new CustomerModel();
-        customerModel.setFirstName(firstName.getText());
-        customerModel.setLastName(lastName.getText());
-        customerModel.setEmail(email.getText());
-        customerModel.setPhone(phone.getText());
-        customerModel.setCompany(companyProvider.getCompanyFromCourier(CurrentUser.username));
-        customerRegisterInjector.getService().registerCustomer(customerModel);
         final UserModel userModel = new UserModel();
         userModel.setFirstName(firstName.getText());
         userModel.setLastName(lastName.getText());
@@ -73,7 +67,19 @@ public class NewCustomerController {
         userModel.setPassword(password.getText());
         userModel.setUsername(username.getText());
         userModel.setType("Customer");
-        addUserInjector.getService().addUser(userModel);
+        try {
+            addUserInjector.getService().addUser(userModel);
+        } catch (UserExistsException e){
+            showAlert("User already exists");
+            return;
+        }
+        CustomerModel customerModel = new CustomerModel();
+        customerModel.setFirstName(firstName.getText());
+        customerModel.setLastName(lastName.getText());
+        customerModel.setEmail(email.getText());
+        customerModel.setPhone(phone.getText());
+        customerModel.setCompany(companyProvider.getCompanyFromCourier(CurrentUser.username));
+        customerRegisterInjector.getService().registerCustomer(customerModel);
     }
     private void showAlert(String message){
         Alert alert = new Alert(Alert.AlertType.WARNING, message);

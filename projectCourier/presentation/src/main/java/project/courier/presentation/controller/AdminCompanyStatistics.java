@@ -33,7 +33,7 @@ public class AdminCompanyStatistics implements Initializable {
     private ObservableList<CompanyTableModel> companyIdList()
     {
         final CompanyProvider companyProvider = new CompanyProviderImpl();
-        return FXCollections.observableList(companyProvider.getAllCompanies().stream().toList());
+        return FXCollections.observableList(companyProvider.getDeliveriesByCompany().stream().toList());
     }
     private void displayCompanyTable()
     {

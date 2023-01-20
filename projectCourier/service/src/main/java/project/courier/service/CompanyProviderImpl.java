@@ -2,8 +2,10 @@ package project.courier.service;
 
 import project.courier.service.injector.CompanyRepositoryInjectorImpl;
 import project.courier.service.injector.CourierRepositoryInjectorImpl;
+import project.courier.service.injector.ShipmentRepositoryInjectorImpl;
 import project.courier.service.injector.interfaces.CompanyRepositoryInjector;
 import project.courier.service.injector.interfaces.CourierRepositoryInjector;
+import project.courier.service.injector.interfaces.ShipmentRepositoryInjector;
 import project.courier.service.interfaces.CompanyProvider;
 import project.courier.service.model.CompanyTableModel;
 
@@ -14,11 +16,24 @@ import java.util.List;
  */
 public class CompanyProviderImpl implements CompanyProvider {
     final CompanyRepositoryInjector companyRepositoryInjector = new CompanyRepositoryInjectorImpl();
+    final ShipmentRepositoryInjector shipmentRepositoryInjector = new ShipmentRepositoryInjectorImpl();
     @Override
     public List<CompanyTableModel> getAllCompanies() {
         return companyRepositoryInjector.getCompanyRepository().findAll().stream().
                 map(company -> CompanyTableModel.builder().companyId(company.getId()).companyName(company.getName()).shipmentCount(1)
                         .build()).toList();
+    }
+
+    @Override
+    public List<CompanyTableModel> getDeliveriesByCompany() {
+        return companyRepositoryInjector.getCompanyRepository().findAll().stream()
+                .map(company -> CompanyTableModel.builder()
+                        .companyId(company.getId())
+                        .companyName(company.getName())
+                        .shipmentCount(shipmentRepositoryInjector.getShipmentRepository()
+                                .findAllByCompany(company.getId()).size())
+                        .build())
+                .toList();
     }
 
     @Override

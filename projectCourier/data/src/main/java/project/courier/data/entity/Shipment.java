@@ -22,6 +22,7 @@ public class Shipment {
     private Long customerId;
     private Long courierId;
     private Long officeId;
+    private Long companyId;
     private String destination;
     @Enumerated(EnumType.STRING)
     private ShipmentCategory category;
@@ -39,4 +40,7 @@ public class Shipment {
     @ManyToOne
     @JoinColumn(name = "officeId", insertable = false, updatable = false)
     private Office office;
+    @ManyToOne
+    @JoinColumn(name = "companyId", insertable = false, updatable = false)
+    private Company company;
 }
