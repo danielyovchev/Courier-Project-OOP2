@@ -37,7 +37,8 @@ public class AdminCourierStatistics implements Initializable {
     @FXML
     private CheckBox periodCheckbox;
     @FXML
-    private ComboBox<String> companyNames = new ComboBox<>();
+    private ComboBox<String> companyNames;
+
     private ObservableList<CourierTableModel> courierList() {
         final CourierProvider courierProvider = new CourierProviderImpl();
         return FXCollections.observableList(courierProvider.getCouriersForCompany(companyNames.getValue()).stream().toList());
@@ -51,6 +52,10 @@ public class AdminCourierStatistics implements Initializable {
         companyProvider.getNames().forEach(e -> companyNames.getItems().add(e));
     }
     private void fillTable() {
+        if(companyNames.getValue().isEmpty()){
+            showAlert("No company defined");
+            return;
+        }
         ObservableList<CourierTableModel> courierModels;
         if(periodCheckbox.isSelected()){
             courierModels = courierListBetweenDates(fromDate.getValue(), toDate.getValue());
@@ -72,5 +77,10 @@ public class AdminCourierStatistics implements Initializable {
 
     public void ShowPeriodTable(ActionEvent actionEvent) {
         fillTable();
+    }
+
+    private void showAlert(String message){
+        Alert alert = new Alert(Alert.AlertType.WARNING, message);
+        alert.show();
     }
 }

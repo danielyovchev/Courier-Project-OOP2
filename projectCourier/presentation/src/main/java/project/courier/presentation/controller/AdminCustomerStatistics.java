@@ -9,14 +9,9 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import project.courier.service.CompanyProviderImpl;
 import project.courier.service.CustomerProviderImpl;
-import project.courier.service.ShipmentProviderImpl;
-import project.courier.service.injector.CompanyRepositoryInjectorImpl;
-import project.courier.service.injector.interfaces.CompanyRepositoryInjector;
 import project.courier.service.interfaces.CompanyProvider;
 import project.courier.service.interfaces.CustomerProvider;
-import project.courier.service.interfaces.ShipmentProvider;
-import project.courier.service.model.CustomerModel;
-import project.courier.service.model.ShipmentTableModel;
+import project.courier.service.model.CustomerTableModel;
 
 import java.net.URL;
 import java.util.List;
@@ -26,13 +21,16 @@ public class AdminCustomerStatistics implements Initializable {
 
     @FXML
     private ComboBox<String> companyNames;
-
     @FXML
-    private TableColumn<CustomerModel, Long> ClientIdColumn = new TableColumn<>();
+    private TableView<CustomerTableModel> clientTable = new TableView<>();
     @FXML
-    private TableColumn <CustomerModel, Integer> ClientShipmentsCount = new TableColumn<>();
+    private TableColumn<CustomerTableModel, Long> clientIdColumn = new TableColumn<>();
     @FXML
-    private TableView<CustomerModel> ClientTable = new TableView<>();
+    private TableColumn<CustomerTableModel, String> clientName = new TableColumn<>();
+    @FXML
+    private TableColumn<CustomerTableModel, String> clientUsername = new TableColumn<>();
+    @FXML
+    private TableColumn <CustomerTableModel, Integer> clientShipmentsCount = new TableColumn<>();
     @FXML
     private CheckBox periodCheck;
     @FXML
@@ -40,10 +38,9 @@ public class AdminCustomerStatistics implements Initializable {
     @FXML
     private DatePicker toDate;
 
-    private ObservableList<CustomerModel> customerList(long companyId)
-    {
+    private ObservableList<CustomerTableModel> customerList(String company) {
         final CustomerProvider customerProvider = new CustomerProviderImpl();
-        return FXCollections.observableList(customerProvider.getAllCompanyCustomers(companyId)
+        return FXCollections.observableList(customerProvider.getAllCompanyCustomers(company)
                 .stream().toList());
     }
 
@@ -55,29 +52,26 @@ public class AdminCustomerStatistics implements Initializable {
         }
     }
 
-    public void ShowStatisticsButton(ActionEvent actionEvent)
-    {
-        CompanyProvider companyProvider = new CompanyProviderImpl();
-        ShipmentProvider shipmentProvider = new ShipmentProviderImpl();
-        long currentCompanyId = companyProvider.getCurrentCompanyIdByName(companyNames.getValue());
-        CompanyRepositoryInjector injector = new CompanyRepositoryInjectorImpl();
-
-        System.out.println(currentCompanyId);
-        ObservableList<CustomerModel> customerModels = customerList(currentCompanyId);
-        ClientIdColumn.setCellValueFactory(new PropertyValueFactory<>("customerId"));
-        for (CustomerModel c:customerModels)
-        {
-            List<ShipmentTableModel> shipmentsCountList = shipmentProvider.getCustomerShipments(c.getCustomerId());
-            c.setShipmentsCount(shipmentsCountList.size());
-            System.out.println(c.getShipmentsCount());
-            ClientShipmentsCount.setCellValueFactory(new PropertyValueFactory<>("shipmentsCount"));
+    public void ShowStatisticsButton(ActionEvent actionEvent) {
+        if(companyNames.getValue().isEmpty()){
+            showAlert("No company defined");
+            return;
         }
-        ClientTable.setItems(customerModels);
+        ObservableList<CustomerTableModel> customerModels = customerList(companyNames.getValue());
+        clientIdColumn.setCellValueFactory(new PropertyValueFactory<>("customerId"));
+        clientName.setCellValueFactory(new PropertyValueFactory<>("name"));
+        clientUsername.setCellValueFactory(new PropertyValueFactory<>("username"));
+        clientShipmentsCount.setCellValueFactory(new PropertyValueFactory<>("shipmentsCount"));
+        clientTable.setItems(customerModels);
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources)
     {
         fillCompanyComboBox();
+    }
+    private void showAlert(String message){
+        Alert alert = new Alert(Alert.AlertType.WARNING, message);
+        alert.show();
     }
 }

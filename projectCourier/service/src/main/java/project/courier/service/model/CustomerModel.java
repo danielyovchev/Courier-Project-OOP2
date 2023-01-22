@@ -14,5 +14,4 @@ public class CustomerModel {
     private String email;
     private String phone;
     private String company;
-    private int shipmentsCount;
 }

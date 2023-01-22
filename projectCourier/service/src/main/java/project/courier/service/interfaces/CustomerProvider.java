@@ -1,10 +1,9 @@
 package project.courier.service.interfaces;
 
-import project.courier.service.model.CustomerModel;
+import project.courier.service.model.CustomerTableModel;
 
 import java.util.List;
 
-public interface CustomerProvider
-{
-    List<CustomerModel> getAllCompanyCustomers(Long companyId);
+public interface CustomerProvider {
+    List<CustomerTableModel> getAllCompanyCustomers(String company);
 }

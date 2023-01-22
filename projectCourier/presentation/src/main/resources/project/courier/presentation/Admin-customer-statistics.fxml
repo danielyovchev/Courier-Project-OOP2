@@ -11,10 +11,12 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.courier.presentation.controller.AdminCustomerStatistics">
    <children>
-      <TableView fx:id="ClientTable" layoutX="55.0" layoutY="98.0" prefHeight="258.0" prefWidth="199.0">
+      <TableView fx:id="clientTable" layoutX="55.0" layoutY="98.0" prefHeight="258.0" prefWidth="199.0">
          <columns>
-            <TableColumn fx:id="ClientIdColumn" prefWidth="75.0" text="ClientId" />
-            <TableColumn fx:id="ClientShipmentsCount" prefWidth="124.0" text="Shipments count" />
+            <TableColumn fx:id="clientIdColumn" prefWidth="75.0" text="ClientId" />
+            <TableColumn fx:id="clientName" prefWidth="75.0" text="ClientName" />
+            <TableColumn fx:id="clientUsername" prefWidth="75.0" text="ClientName" />
+            <TableColumn fx:id="clientShipmentsCount" prefWidth="124.0" text="Shipments count" />
          </columns>
       </TableView>
       <ComboBox fx:id="companyNames" layoutX="383.0" layoutY="72.0" prefWidth="150.0" />
