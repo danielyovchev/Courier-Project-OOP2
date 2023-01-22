@@ -4,17 +4,18 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.control.*;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import project.courier.service.CompanyProviderImpl;
 import project.courier.service.interfaces.CompanyProvider;
 import project.courier.service.model.CompanyTableModel;
 
-import java.net.URL;
-import java.util.ResourceBundle;
+import java.time.LocalDate;
 
-public class AdminCompanyStatistics implements Initializable {
+public class AdminCompanyStatistics{
     @FXML
     private TableView<CompanyTableModel> CompanyTable = new TableView<>();
     @FXML
@@ -22,34 +23,40 @@ public class AdminCompanyStatistics implements Initializable {
     @FXML
     private TableColumn <CompanyTableModel, Integer> CompanyShipments = new TableColumn<>();
     @FXML
-    private DatePicker fromDate = new DatePicker();
+    private DatePicker fromDate;
     @FXML
-    private DatePicker tomDate = new DatePicker();
+    private DatePicker toDate;
     @FXML
-    private CheckBox periodCheck= new CheckBox();
-    @FXML
-    private Button showButton = new Button();
+    private CheckBox periodCheck;
 
-    private ObservableList<CompanyTableModel> companyIdList()
-    {
+    private ObservableList<CompanyTableModel> companyIdList() {
         final CompanyProvider companyProvider = new CompanyProviderImpl();
         return FXCollections.observableList(companyProvider.getDeliveriesByCompany().stream().toList());
     }
-    private void displayCompanyTable()
-    {
+    private ObservableList<CompanyTableModel> companyBetweenDatesSalesList(LocalDate date1, LocalDate date2) {
+        final CompanyProvider companyProvider = new CompanyProviderImpl();
+        return FXCollections.observableList(companyProvider.getDeliveriesByCompanyBetweenDates(date1, date2).stream().toList());
+    }
+    private void displayCompanyTable() {
         ObservableList<CompanyTableModel> companyModels = companyIdList();
         companyName.setCellValueFactory(new PropertyValueFactory<>("companyName"));
         CompanyShipments.setCellValueFactory(new PropertyValueFactory<>("shipmentCount"));
         CompanyTable.setItems(companyModels);
     }
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-
+    private void displayCompaniesBetweenDates(LocalDate date1, LocalDate date2){
+        ObservableList<CompanyTableModel> companyModels = companyBetweenDatesSalesList(date1, date2);
+        companyName.setCellValueFactory(new PropertyValueFactory<>("companyName"));
+        CompanyShipments.setCellValueFactory(new PropertyValueFactory<>("shipmentCount"));
+        CompanyTable.setItems(companyModels);
     }
-
     public void ShowStatisticsButton(ActionEvent actionEvent)
     {
-        displayCompanyTable();
+        if(periodCheck.isSelected()){
+            displayCompaniesBetweenDates(fromDate.getValue(), toDate.getValue());
+        }
+        else {
+            displayCompanyTable();
+        }
     }
 }

@@ -9,6 +9,7 @@ import project.courier.service.injector.interfaces.ShipmentRepositoryInjector;
 import project.courier.service.interfaces.CompanyProvider;
 import project.courier.service.model.CompanyTableModel;
 
+import java.time.LocalDate;
 import java.util.List;
 
 /**
@@ -32,6 +33,23 @@ public class CompanyProviderImpl implements CompanyProvider {
                         .companyName(company.getName())
                         .shipmentCount(shipmentRepositoryInjector.getShipmentRepository()
                                 .findAllByCompany(company.getId()).size())
+                        .build())
+                .toList();
+    }
+
+    @Override
+    public List<CompanyTableModel> getDeliveriesByCompanyBetweenDates(LocalDate date1, LocalDate date2) {
+        return companyRepositoryInjector.getCompanyRepository().findAll().stream()
+                .map(company -> CompanyTableModel.builder()
+                        .companyId(company.getId())
+                        .companyName(company.getName())
+                        .shipmentCount(shipmentRepositoryInjector.getShipmentRepository()
+                                .findAllByCompany(company.getId())
+                                .stream()
+                                .filter(s -> date1.isBefore(s.getDateSent()))
+                                .filter(s -> date2.isAfter(s.getDateReceived()))
+                                .toList()
+                                .size())
                         .build())
                 .toList();
     }

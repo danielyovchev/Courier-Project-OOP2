@@ -45,7 +45,8 @@ public class CourierProviderImpl implements CourierProvider {
                         .shipmentsCount(shipmentRepositoryInjector.getShipmentRepository()
                                 .findAllByCourier(c.getId()).stream()
                                 .filter(s -> date1.isBefore(s.getDateSent()))
-                                .filter(s -> date2.isAfter(s.getDateReceived())).toList().size())
+                                .filter(s -> date2.isAfter(s.getDateReceived()))
+                                .toList().size())
                         .build())
                 .toList();
     }
