@@ -9,6 +9,5 @@ import lombok.*;
 public class CustomerTableModel {
     private long customerId;
     private String name;
-    private String username;
     private int shipmentsCount;
 }

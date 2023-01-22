@@ -20,15 +20,13 @@ import java.util.ResourceBundle;
 public class AdminCustomerStatistics implements Initializable {
 
     @FXML
-    private ComboBox<String> companyNames;
+    private ComboBox<String> companyNames = new ComboBox<>();
     @FXML
     private TableView<CustomerTableModel> clientTable = new TableView<>();
     @FXML
     private TableColumn<CustomerTableModel, Long> clientIdColumn = new TableColumn<>();
     @FXML
     private TableColumn<CustomerTableModel, String> clientName = new TableColumn<>();
-    @FXML
-    private TableColumn<CustomerTableModel, String> clientUsername = new TableColumn<>();
     @FXML
     private TableColumn <CustomerTableModel, Integer> clientShipmentsCount = new TableColumn<>();
     @FXML
@@ -52,7 +50,7 @@ public class AdminCustomerStatistics implements Initializable {
         }
     }
 
-    public void ShowStatisticsButton(ActionEvent actionEvent) {
+    public void showStatisticsButton(ActionEvent actionEvent) {
         if(companyNames.getValue().isEmpty()){
             showAlert("No company defined");
             return;
@@ -60,7 +58,6 @@ public class AdminCustomerStatistics implements Initializable {
         ObservableList<CustomerTableModel> customerModels = customerList(companyNames.getValue());
         clientIdColumn.setCellValueFactory(new PropertyValueFactory<>("customerId"));
         clientName.setCellValueFactory(new PropertyValueFactory<>("name"));
-        clientUsername.setCellValueFactory(new PropertyValueFactory<>("username"));
         clientShipmentsCount.setCellValueFactory(new PropertyValueFactory<>("shipmentsCount"));
         clientTable.setItems(customerModels);
     }
