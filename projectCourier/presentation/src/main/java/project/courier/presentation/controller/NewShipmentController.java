@@ -54,7 +54,7 @@ public class NewShipmentController implements Initializable {
             showAlert("Missing destination!");
             return;
         }
-        if(officeList.getValue().isEmpty()){
+        if(officeList.getValue() == null){
             showAlert("No office chosen!");
             return;
         }
@@ -63,7 +63,11 @@ public class NewShipmentController implements Initializable {
             return;
         }
         if(phone.getText().isEmpty()){
-            showAlert("Missing phone");
+            showAlert("Missing phone!");
+            return;
+        }
+        if(typeList.getValue() == null){
+            showAlert("No type chosen!");
             return;
         }
         final ShipmentRegisterInjector injector = new ShipmentRegisterInjectorImpl();

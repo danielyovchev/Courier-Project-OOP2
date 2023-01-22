@@ -52,7 +52,7 @@ public class AdminCourierStatistics implements Initializable {
         companyProvider.getNames().forEach(e -> companyNames.getItems().add(e));
     }
     private void fillTable() {
-        if(companyNames.getValue().isEmpty()){
+        if(companyNames.getValue() == null){
             showAlert("No company defined");
             return;
         }

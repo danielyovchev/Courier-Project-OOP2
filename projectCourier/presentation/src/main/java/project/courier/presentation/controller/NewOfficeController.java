@@ -29,7 +29,7 @@ public class NewOfficeController implements Initializable {
             showAlert("No city defined");
             return;
         }
-        if(companyName.getValue().isEmpty()){
+        if(companyName.getValue() == null){
             showAlert("No company chosen");
             return;
         }

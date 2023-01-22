@@ -57,7 +57,7 @@ public class NewCourierController implements Initializable {
             showAlert("Missing username!");
             return;
         }
-        if(companies.getValue().isEmpty()){
+        if(companies.getValue() == null){
             showAlert("No company defined");
             return;
         }

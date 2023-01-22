@@ -51,7 +51,7 @@ public class AdminCustomerStatistics implements Initializable {
     }
 
     public void showStatisticsButton(ActionEvent actionEvent) {
-        if(companyNames.getValue().isEmpty()){
+        if(companyNames.getValue() == null){
             showAlert("No company defined");
             return;
         }
