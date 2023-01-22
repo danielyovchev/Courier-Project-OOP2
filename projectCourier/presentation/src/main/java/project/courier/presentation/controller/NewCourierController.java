@@ -74,7 +74,7 @@ public class NewCourierController implements Initializable {
         courierModel.setFirstName(firstName.getText());
         courierModel.setLastName(lastName.getText());
         courierModel.setEmail(email.getText());
-        courierModel.setCompany((String) companies.getValue());
+        courierModel.setCompanyName((String) companies.getValue());
         injector.register().addCourier(courierModel);
     }
     private void showAlert(String message){

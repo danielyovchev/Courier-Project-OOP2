@@ -99,5 +99,14 @@ public class AdminController {
         stage.setScene(scene);
         stage.show();
     }
+
+    public void showCourierStatistics(ActionEvent actionEvent) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/project/courier/presentation/Admin-courier-statistics.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        Stage stage = new Stage();
+        stage.setTitle("Admin");
+        stage.setScene(scene);
+        stage.show();
+    }
 }
 

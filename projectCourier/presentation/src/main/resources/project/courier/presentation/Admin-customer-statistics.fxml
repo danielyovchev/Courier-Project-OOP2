@@ -11,19 +11,20 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.courier.presentation.controller.AdminCustomerStatistics">
    <children>
-      <TableView fx:id="ClientTable" layoutX="55.0" layoutY="98.0" prefHeight="258.0" prefWidth="199.0">
+      <TableView fx:id="ClientTable" layoutX="22.0" layoutY="98.0" prefHeight="258.0" prefWidth="307.0">
          <columns>
-            <TableColumn fx:id="ClientIdColumn" prefWidth="75.0" text="ClientId" />
-            <TableColumn fx:id="ClientShipmentsCount" prefWidth="124.0" text="Shipments count" />
+            <TableColumn fx:id="CompanyName" prefWidth="75.0" text="Company" />
+            <TableColumn fx:id="ClientName" prefWidth="124.0" text="ClientName" />
+            <TableColumn fx:id="ClientShipmentsCount" prefWidth="107.19998474121093" text="Shipments count" />
          </columns>
       </TableView>
-      <ComboBox fx:id="companyNames" layoutX="383.0" layoutY="72.0" prefWidth="150.0" />
-      <Button fx:id="ShowButton" layoutX="494.0" layoutY="196.0" mnemonicParsing="false" onAction="#ShowStatisticsButton" text="Show" />
-      <CheckBox fx:id="PeriodCheck" layoutX="384.0" layoutY="191.0" mnemonicParsing="false" text="For period" />
-      <DatePicker fx:id="FromDate" layoutX="384.0" layoutY="110.0" />
-      <DatePicker fx:id="ToDate" layoutX="384.0" layoutY="149.0" />
-      <Label layoutX="343.0" layoutY="114.0" text="From:" />
-      <Label layoutX="355.0" layoutY="153.0" text="To:" />
-      <Label layoutX="322.0" layoutY="76.0" text="Company:" />
+      <ComboBox fx:id="companyNames" layoutX="409.0" layoutY="98.0" prefWidth="150.0" />
+      <Button fx:id="ShowButton" layoutX="520.0" layoutY="222.0" mnemonicParsing="false" onAction="#ShowStatisticsButton" text="Show" />
+      <CheckBox fx:id="periodCheck" layoutX="410.0" layoutY="217.0" mnemonicParsing="false" text="For period" />
+      <DatePicker fx:id="fromDate" layoutX="410.0" layoutY="136.0" />
+      <DatePicker fx:id="toDate" layoutX="410.0" layoutY="175.0" />
+      <Label layoutX="369.0" layoutY="140.0" text="From:" />
+      <Label layoutX="381.0" layoutY="179.0" text="To:" />
+      <Label layoutX="348.0" layoutY="102.0" text="Company:" />
    </children>
 </AnchorPane>

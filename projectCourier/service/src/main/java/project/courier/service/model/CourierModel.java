@@ -1,15 +1,18 @@
 package project.courier.service.model;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Getter
 @Setter
+@Builder
 @NoArgsConstructor
+@AllArgsConstructor
 public class CourierModel {
+    private long courierId;
     private String firstName;
     private String lastName;
+    private String username;
+    private String companyName;
     private String email;
-    private String company;
+    private int shipmentsCount;
 }

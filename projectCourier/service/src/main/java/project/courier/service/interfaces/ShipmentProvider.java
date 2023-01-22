@@ -10,4 +10,7 @@ public interface ShipmentProvider {
     List<ShipmentModel> getShipmentsBetweenDates(LocalDate date1, LocalDate date2);
     ShipmentModel getShipment(Long id);
     List<ShipmentTableModel> getCustomerShipments(Long id);
+
+    List<ShipmentTableModel> getCourierShipments(Long id);
+    List<ShipmentTableModel> getCompanyShipments();
 }

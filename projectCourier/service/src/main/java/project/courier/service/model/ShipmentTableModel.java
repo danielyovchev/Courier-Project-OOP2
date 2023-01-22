@@ -16,4 +16,5 @@ public class ShipmentTableModel {
     private Double price;
     private String status;
     private LocalDate dateSent;
+    private long companyId;
 }

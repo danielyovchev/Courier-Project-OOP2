@@ -1,7 +1,9 @@
 package project.courier.service;
 
+import project.courier.service.injector.CourierRepositoryInjectorImpl;
 import project.courier.service.injector.OfficeRepositoryInjectorImpl;
 import project.courier.service.injector.ShipmentRepositoryInjectorImpl;
+import project.courier.service.injector.interfaces.CourierRepositoryInjector;
 import project.courier.service.injector.interfaces.OfficeRepositoryInjector;
 import project.courier.service.injector.interfaces.ShipmentRepositoryInjector;
 import project.courier.service.interfaces.ShipmentProvider;
@@ -17,6 +19,7 @@ import java.util.List;
 public class ShipmentProviderImpl implements ShipmentProvider {
     final ShipmentRepositoryInjector shipmentRepositoryInjector = new ShipmentRepositoryInjectorImpl();
     final OfficeRepositoryInjector officeRepositoryInjector = new OfficeRepositoryInjectorImpl();
+    final CourierRepositoryInjector courierRepositoryInjector = new CourierRepositoryInjectorImpl();
     @Override
     public List<ShipmentModel> getShipmentsBetweenDates(LocalDate date1, LocalDate date2) {
         return shipmentRepositoryInjector.getShipmentRepository().findAllBetweenDates(date1, date2).stream()
@@ -61,6 +64,35 @@ public class ShipmentProviderImpl implements ShipmentProvider {
                         .destination(s.getDestination())
                         .price(s.getPrice())
                         .status(s.getStatus().toString())
+                        .build()).toList();
+    }
+
+    @Override
+    public List<ShipmentTableModel> getCourierShipments(Long id) {
+        return shipmentRepositoryInjector.getShipmentRepository().findAllByCourier(id).stream()
+                .map(s -> ShipmentTableModel.builder()
+                        .shipmentId(s.getId())
+                        .category(s.getCategory().toString())
+                        .dateSent(s.getDateSent())
+                        .office(officeRepositoryInjector.getOfficeRepository().findById(s.getOfficeId()).toString())
+                        .destination(s.getDestination())
+                        .price(s.getPrice())
+                        .status(s.getStatus().toString())
+                        .build()).toList();
+    }
+
+    @Override
+    public List<ShipmentTableModel> getCompanyShipments() {
+        return shipmentRepositoryInjector.getShipmentRepository().findAll().stream()
+                .map(s -> ShipmentTableModel.builder()
+                        .shipmentId(s.getId())
+                        .category(s.getCategory().toString())
+                        .dateSent(s.getDateSent())
+                        .office(officeRepositoryInjector.getOfficeRepository().findById(s.getOfficeId()).toString())
+                        .destination(s.getDestination())
+                        .price(s.getPrice())
+                        .status(s.getStatus().toString())
+                        .companyId(courierRepositoryInjector.getCourierRepository().findById(s.getCourierId()).get().getCompanyId())
                         .build()).toList();
     }
 }

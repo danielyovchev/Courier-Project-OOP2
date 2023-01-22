@@ -19,7 +19,7 @@ public class CustomerProviderImpl implements CustomerProvider {
                         .customerId(s.getId())
                         .firstName(s.getFirstName())
                         .lastName(s.getLastName())
-                        .company(s.getCompanyId().toString())
+                        .company(s.getCompany().getName())
                         .email(s.getEmail())
                         .phone(s.getPhone())
                         .build())

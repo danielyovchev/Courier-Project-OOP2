@@ -19,7 +19,7 @@ public class CourierRegisterImpl implements CourierRegister {
     private static final Logger logger = LogManager.getLogger(CourierRegisterImpl.class);
     @Override
     public void addCourier(CourierModel courierModel) {
-        final Long courierId = companyRepositoryInjector.getCompanyRepository().findByName(courierModel.getCompany()).get().getId();
+        final Long courierId = companyRepositoryInjector.getCompanyRepository().findByName(courierModel.getCompanyName()).get().getId();
         Courier courier = new Courier();
         courier.setFirstName(courierModel.getFirstName());
         courier.setLastName(courierModel.getLastName());

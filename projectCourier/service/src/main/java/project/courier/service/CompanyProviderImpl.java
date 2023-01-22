@@ -15,7 +15,8 @@ public class CompanyProviderImpl implements CompanyProvider {
     @Override
     public List<CompanyTableModel> getAllCompanies() {
         return companyRepositoryInjector.getCompanyRepository().findAll().stream().
-                map(company -> CompanyTableModel.builder().companyId(company.getId()).shipmentCount(1)
+                map(company -> CompanyTableModel.builder().companyId(company.getId())
+                        .companyName(company.getName())
                         .build()).toList();
     }
 
