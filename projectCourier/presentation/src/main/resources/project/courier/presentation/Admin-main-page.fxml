@@ -41,6 +41,7 @@
                <items>
                   <MenuItem fx:id="showStatistics1" mnemonicParsing="false" onAction="#showCompaniesStatistics" text="Companies" />
                   <MenuItem fx:id="showStatistics11" mnemonicParsing="false" onAction="#showCustomerStatistics" text="Customers" />
+                   <MenuItem fx:id="showStatistics111" mnemonicParsing="false" onAction="#showCourierStatistics" text="Couriers" />
                </items>
             </Menu>
         </menus>

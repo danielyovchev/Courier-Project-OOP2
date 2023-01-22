@@ -181,6 +181,24 @@ public class ShipmentRepositoryImpl implements ShipmentRepository {
     }
 
     @Override
+    public List<Shipment> findAllByCourier(Long id) {
+        Session session = dbUtils.openSession();
+        Transaction transaction = session.beginTransaction();
+        List<Shipment> shipments = new ArrayList<>();
+        try {
+            shipments = session.createQuery("SELECT a from Shipment a where a.courierId='"+id+"'", Shipment.class).getResultList();
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        finally {
+            transaction.commit();
+            session.close();
+        }
+        return shipments;
+    }
+
+    @Override
     public List<Shipment> findAllByCompany(Long id) {
         Session session = dbUtils.openSession();
         Transaction transaction = session.beginTransaction();

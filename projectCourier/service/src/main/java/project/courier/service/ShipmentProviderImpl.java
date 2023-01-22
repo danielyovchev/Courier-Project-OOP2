@@ -15,8 +15,8 @@ import java.util.List;
  * provides list of shipments based on different criteria
  */
 public class ShipmentProviderImpl implements ShipmentProvider {
-    final ShipmentRepositoryInjector shipmentRepositoryInjector = new ShipmentRepositoryInjectorImpl();
-    final OfficeRepositoryInjector officeRepositoryInjector = new OfficeRepositoryInjectorImpl();
+    private final ShipmentRepositoryInjector shipmentRepositoryInjector = new ShipmentRepositoryInjectorImpl();
+    private final OfficeRepositoryInjector officeRepositoryInjector = new OfficeRepositoryInjectorImpl();
     @Override
     public List<ShipmentModel> getShipmentsBetweenDates(LocalDate date1, LocalDate date2) {
         return shipmentRepositoryInjector.getShipmentRepository().findAllBetweenDates(date1, date2).stream()

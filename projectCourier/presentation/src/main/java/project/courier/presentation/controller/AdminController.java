@@ -3,10 +3,8 @@ package project.courier.presentation.controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.MenuItem;
 import javafx.stage.Stage;
 import project.courier.presentation.HelloApplication;
 import project.courier.presentation.logConstants.CurrentUser;
@@ -93,6 +91,14 @@ public class AdminController {
 
     public void showCustomerStatistics(ActionEvent actionEvent) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/project/courier/presentation/Admin-customer-statistics.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        Stage stage = new Stage();
+        stage.setTitle("Admin");
+        stage.setScene(scene);
+        stage.show();
+    }
+    public void showCourierStatistics(ActionEvent actionEvent) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/project/courier/presentation/Admin-courier-statistics.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         Stage stage = new Stage();
         stage.setTitle("Admin");

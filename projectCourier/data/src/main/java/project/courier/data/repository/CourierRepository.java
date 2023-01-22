@@ -12,4 +12,5 @@ public interface CourierRepository {
     Optional<Courier> findById(long id);
     Optional<Courier> findByUsername(String username);
     List<Courier> findAll();
+    List<Courier> findAllByCompany(Long companyId);
 }

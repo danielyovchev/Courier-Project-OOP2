@@ -122,4 +122,22 @@ public class CourierRepositoryImpl implements CourierRepository {
         }
         return couriers;
     }
+
+    @Override
+    public List<Courier> findAllByCompany(Long companyId) {
+        Session session = dbUtils.openSession();
+        Transaction transaction = session.beginTransaction();
+        List<Courier> couriers = new ArrayList<>();
+        try {
+            couriers = session.createQuery("SELECT a from Courier a where a.companyId='"+companyId+"'", Courier.class).getResultList();
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        finally {
+            transaction.commit();
+            session.close();
+        }
+        return couriers;
+    }
 }

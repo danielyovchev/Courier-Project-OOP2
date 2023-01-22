@@ -12,8 +12,7 @@ import java.util.List;
  */
 public class CustomerProviderImpl implements CustomerProvider {
     CustomerRepositoryInjector injector = new CustomerRepositoryInjectorImpl();
-    public List<CustomerModel> getAllCompanyCustomers(Long companyId)
-    {
+    public List<CustomerModel> getAllCompanyCustomers(Long companyId) {
         return injector.getCustomerRepository().findAllByCompanyID(companyId).stream()
                 .map(s -> CustomerModel.builder()
                         .customerId(s.getId())
