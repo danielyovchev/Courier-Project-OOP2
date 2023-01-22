@@ -13,7 +13,7 @@ import java.util.Optional;
  * service that checks if the user exists,
  */
 public class LoginUserImpl implements LoginUser {
-    final UserRepositoryInjector injector = new UserRepositoryInjectorImpl();
+    private final UserRepositoryInjector injector = new UserRepositoryInjectorImpl();
     private static final Logger logger = LogManager.getLogger(LoginUserImpl.class);
     @Override
     public String checkLogin(String username, String password) {

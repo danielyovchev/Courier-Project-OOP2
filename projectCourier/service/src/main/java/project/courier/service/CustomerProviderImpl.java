@@ -11,7 +11,7 @@ import java.util.List;
  * service that provides list of customers
  */
 public class CustomerProviderImpl implements CustomerProvider {
-    CustomerRepositoryInjector injector = new CustomerRepositoryInjectorImpl();
+    private final CustomerRepositoryInjector injector = new CustomerRepositoryInjectorImpl();
     public List<CustomerModel> getAllCompanyCustomers(Long companyId) {
         return injector.getCustomerRepository().findAllByCompanyID(companyId).stream()
                 .map(s -> CustomerModel.builder()

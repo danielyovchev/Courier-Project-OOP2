@@ -12,7 +12,7 @@ import project.courier.service.model.CompanyModel;
  * service that registers company
  */
 public class CompanyRegisterImpl implements CompanyRegister {
-    final CompanyRepositoryInjector injector = new CompanyRepositoryInjectorImpl();
+    private final CompanyRepositoryInjector injector = new CompanyRepositoryInjectorImpl();
     private static final Logger logger = LogManager.getLogger(CompanyRegisterImpl.class);
     @Override
     public void addCompany(CompanyModel companyModel) {

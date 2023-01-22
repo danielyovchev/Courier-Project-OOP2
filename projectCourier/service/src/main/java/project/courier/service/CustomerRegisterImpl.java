@@ -14,8 +14,8 @@ import project.courier.service.model.CustomerModel;
  * service to register customer
  */
 public class CustomerRegisterImpl implements CustomerRegister {
-    final CustomerRepositoryInjector injector = new CustomerRepositoryInjectorImpl();
-    final CompanyRepositoryInjector companyRepositoryInjector = new CompanyRepositoryInjectorImpl();
+    private final CustomerRepositoryInjector injector = new CustomerRepositoryInjectorImpl();
+    private final CompanyRepositoryInjector companyRepositoryInjector = new CompanyRepositoryInjectorImpl();
     private static final Logger logger = LogManager.getLogger(CustomerRegisterImpl.class);
     @Override
     public void registerCustomer(final CustomerModel customerModel) {

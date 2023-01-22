@@ -13,7 +13,7 @@ import java.util.List;
  * simulates delivery of shipments
  */
 public class ShipmentDeliveryImpl implements ShipmentDelivery {
-    final ShipmentRepositoryInjector shipmentRepo = new ShipmentRepositoryInjectorImpl();
+    private final ShipmentRepositoryInjector shipmentRepo = new ShipmentRepositoryInjectorImpl();
     @Override
     public void deliver(List<Shipment> shipments) {
         shipments.stream()

@@ -16,8 +16,8 @@ import java.util.List;
  * service that provides company
  */
 public class CompanyProviderImpl implements CompanyProvider {
-    final CompanyRepositoryInjector companyRepositoryInjector = new CompanyRepositoryInjectorImpl();
-    final ShipmentRepositoryInjector shipmentRepositoryInjector = new ShipmentRepositoryInjectorImpl();
+    private final CompanyRepositoryInjector companyRepositoryInjector = new CompanyRepositoryInjectorImpl();
+    private final ShipmentRepositoryInjector shipmentRepositoryInjector = new ShipmentRepositoryInjectorImpl();
     @Override
     public List<CompanyTableModel> getAllCompanies() {
         return companyRepositoryInjector.getCompanyRepository().findAll().stream().

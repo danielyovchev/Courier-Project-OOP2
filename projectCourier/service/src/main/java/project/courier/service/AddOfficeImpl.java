@@ -14,8 +14,8 @@ import project.courier.service.model.OfficeModel;
  * adds new office to db
  */
 public class AddOfficeImpl implements AddOffice {
-    final OfficeRepositoryInjector officeInjector = new OfficeRepositoryInjectorImpl();
-    final CompanyRepositoryInjector companyInjector = new CompanyRepositoryInjectorImpl();
+    private final OfficeRepositoryInjector officeInjector = new OfficeRepositoryInjectorImpl();
+    private final CompanyRepositoryInjector companyInjector = new CompanyRepositoryInjectorImpl();
     private static final Logger logger = LogManager.getLogger(AddOfficeImpl.class);
     @Override
     public void addOffice(OfficeModel officeModel) {

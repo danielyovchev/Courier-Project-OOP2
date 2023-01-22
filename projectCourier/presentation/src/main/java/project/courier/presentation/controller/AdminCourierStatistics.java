@@ -29,13 +29,13 @@ public class AdminCourierStatistics implements Initializable {
     @FXML
     private TableColumn<CourierTableModel,Integer> shipments = new TableColumn<>();
     @FXML
-    private DatePicker fromDate = new DatePicker();
+    private DatePicker fromDate;
     @FXML
-    private DatePicker toDate = new DatePicker();
+    private DatePicker toDate;
     @FXML
-    private Button ShowButton = new Button();
+    private Button showButton;
     @FXML
-    private CheckBox periodCheckbox = new CheckBox();
+    private CheckBox periodCheckbox;
     @FXML
     private ComboBox<String> companyNames = new ComboBox<>();
     private ObservableList<CourierTableModel> courierList() {

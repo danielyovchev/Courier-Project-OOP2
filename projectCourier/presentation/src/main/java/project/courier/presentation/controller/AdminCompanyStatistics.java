@@ -37,6 +37,7 @@ public class AdminCompanyStatistics{
         final CompanyProvider companyProvider = new CompanyProviderImpl();
         return FXCollections.observableList(companyProvider.getDeliveriesByCompanyBetweenDates(date1, date2).stream().toList());
     }
+
     private void displayCompanyTable() {
         ObservableList<CompanyTableModel> companyModels = companyIdList();
         companyName.setCellValueFactory(new PropertyValueFactory<>("companyName"));
@@ -50,8 +51,8 @@ public class AdminCompanyStatistics{
         CompanyShipments.setCellValueFactory(new PropertyValueFactory<>("shipmentCount"));
         CompanyTable.setItems(companyModels);
     }
-    public void ShowStatisticsButton(ActionEvent actionEvent)
-    {
+
+    public void ShowStatisticsButton(ActionEvent actionEvent) {
         if(periodCheck.isSelected()){
             displayCompaniesBetweenDates(fromDate.getValue(), toDate.getValue());
         }

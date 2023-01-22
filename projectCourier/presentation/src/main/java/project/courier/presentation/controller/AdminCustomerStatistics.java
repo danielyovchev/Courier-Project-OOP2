@@ -25,7 +25,7 @@ import java.util.ResourceBundle;
 public class AdminCustomerStatistics implements Initializable {
 
     @FXML
-    private ComboBox<String> companyNames = new ComboBox<>();
+    private ComboBox<String> companyNames;
 
     @FXML
     private TableColumn<CustomerModel, Long> ClientIdColumn = new TableColumn<>();
@@ -34,11 +34,11 @@ public class AdminCustomerStatistics implements Initializable {
     @FXML
     private TableView<CustomerModel> ClientTable = new TableView<>();
     @FXML
-    private CheckBox periodCheck = new CheckBox();
+    private CheckBox periodCheck;
     @FXML
-    private DatePicker fromDate = new DatePicker();
+    private DatePicker fromDate;
     @FXML
-    private  DatePicker toDate= new DatePicker();
+    private DatePicker toDate;
 
     private ObservableList<CustomerModel> customerList(long companyId)
     {

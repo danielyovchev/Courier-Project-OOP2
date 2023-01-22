@@ -14,7 +14,7 @@ import project.courier.service.model.UserModel;
  * adds new user to db
  */
 public class AddUserOperation implements AddUserInterface {
-    final UserRepositoryInjector injector = new UserRepositoryInjectorImpl();
+    private final UserRepositoryInjector injector = new UserRepositoryInjectorImpl();
     private static final Logger logger = LogManager.getLogger(AddUserOperation.class);
     public void addUser(final UserModel userModel){
         boolean exists = injector.userRepository().existsByUsername(userModel.getUsername());

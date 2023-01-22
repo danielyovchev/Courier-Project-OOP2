@@ -19,8 +19,8 @@ import java.util.concurrent.TimeUnit;
  * organizes the delivery in new thread
  */
 public class OrganizeShipmentsImpl implements OrganizeShipments {
-    final ShipmentRepositoryInjector shipmentRepo = new ShipmentRepositoryInjectorImpl();
-    final OfficeRepositoryInjector officeRepo = new OfficeRepositoryInjectorImpl();
+    private final ShipmentRepositoryInjector shipmentRepo = new ShipmentRepositoryInjectorImpl();
+    private final OfficeRepositoryInjector officeRepo = new OfficeRepositoryInjectorImpl();
     private static final Logger logger = LogManager.getLogger(OrganizeShipmentsImpl.class);
     @Override
     public void run() {

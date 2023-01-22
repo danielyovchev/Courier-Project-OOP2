@@ -12,8 +12,8 @@ import java.util.List;
  * service to provide list of offices
  */
 public class OfficeProviderImpl implements OfficeProvider {
-    final OfficeRepositoryInjector injector = new OfficeRepositoryInjectorImpl();
-    final CourierRepositoryInjector courierRepositoryInjector = new CourierRepositoryInjectorImpl();
+    private final OfficeRepositoryInjector injector = new OfficeRepositoryInjectorImpl();
+    private final CourierRepositoryInjector courierRepositoryInjector = new CourierRepositoryInjectorImpl();
     @Override
     public List<String> getAllOffices(String username) {
         return injector.getOfficeRepository()

@@ -14,8 +14,8 @@ import project.courier.service.model.CourierModel;
  * service that registers courier
  */
 public class CourierRegisterImpl implements CourierRegister {
-    final CourierRepositoryInjector injector = new CourierRepositoryInjectorImpl();
-    final CompanyRepositoryInjector companyRepositoryInjector = new CompanyRepositoryInjectorImpl();
+    private final CourierRepositoryInjector injector = new CourierRepositoryInjectorImpl();
+    private final CompanyRepositoryInjector companyRepositoryInjector = new CompanyRepositoryInjectorImpl();
     private static final Logger logger = LogManager.getLogger(CourierRegisterImpl.class);
     @Override
     public void addCourier(CourierModel courierModel) {

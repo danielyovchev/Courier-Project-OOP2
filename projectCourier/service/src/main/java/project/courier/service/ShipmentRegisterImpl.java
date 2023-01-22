@@ -24,10 +24,10 @@ import project.courier.service.model.ShipmentModel;
  * register new shipment in db
  */
 public class ShipmentRegisterImpl implements ShipmentRegister {
-    final ShipmentRepositoryInjector injector = new ShipmentRepositoryInjectorImpl();
-    final OfficeRepositoryInjector officeRepo = new OfficeRepositoryInjectorImpl();
-    final CourierRepositoryInjector courierRepositoryInjector = new CourierRepositoryInjectorImpl();
-    final CustomerRepositoryInjector customerRepositoryInjector = new CustomerRepositoryInjectorImpl();
+    private final ShipmentRepositoryInjector injector = new ShipmentRepositoryInjectorImpl();
+    private final OfficeRepositoryInjector officeRepo = new OfficeRepositoryInjectorImpl();
+    private final CourierRepositoryInjector courierRepositoryInjector = new CourierRepositoryInjectorImpl();
+    private final CustomerRepositoryInjector customerRepositoryInjector = new CustomerRepositoryInjectorImpl();
     private static final Logger logger = LogManager.getLogger(ShipmentRegisterImpl.class);
     @Override
     public void registerShipment(ShipmentModel model) {
