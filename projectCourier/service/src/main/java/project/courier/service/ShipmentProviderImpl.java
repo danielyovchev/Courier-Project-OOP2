@@ -35,17 +35,15 @@ public class ShipmentProviderImpl implements ShipmentProvider {
     }
 
     @Override
-    public ShipmentModel getShipment(Long id) {
-        return shipmentRepositoryInjector.getShipmentRepository().findById(id).map(s -> ShipmentModel.builder()
-                .type(s.getCategory().toString())
+    public ShipmentTableModel getShipment(Long id) {
+        return shipmentRepositoryInjector.getShipmentRepository().findById(id).map(s -> ShipmentTableModel.builder()
+                .shipmentId(s.getId())
+                .category(s.getCategory().toString())
                 .dateSent(s.getDateSent())
-                .email("")
-                .office("")
-                .phone("")
-                .courierUsername("")
-                .city(s.getDestination())
-                .firstName("")
-                .lastName("")
+                .office(officeRepositoryInjector.getOfficeRepository().findById(s.getOfficeId()).toString())
+                .destination(s.getDestination())
+                .price(s.getPrice())
+                .status(s.getStatus().toString())
                 .build())
                 .get();
     }

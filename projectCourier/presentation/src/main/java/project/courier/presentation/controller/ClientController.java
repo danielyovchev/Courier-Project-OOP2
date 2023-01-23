@@ -2,6 +2,7 @@ package project.courier.presentation.controller;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -75,5 +76,23 @@ public class ClientController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         displayTable();
+    }
+
+    public void showShipmentCheck(ActionEvent actionEvent) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/project/courier/presentation/CustomerShipmentCheck.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        Stage stage = new Stage();
+        stage.setTitle("Admin");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void showReferences(ActionEvent actionEvent) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/project/courier/presentation/CustomerShipmentReference.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        Stage stage = new Stage();
+        stage.setTitle("Admin");
+        stage.setScene(scene);
+        stage.show();
     }
 }

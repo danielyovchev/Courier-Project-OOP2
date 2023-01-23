@@ -8,6 +8,6 @@ import java.util.List;
 
 public interface ShipmentProvider {
     List<ShipmentModel> getShipmentsBetweenDates(LocalDate date1, LocalDate date2);
-    ShipmentModel getShipment(Long id);
+    ShipmentTableModel getShipment(Long id);
     List<ShipmentTableModel> getCustomerShipments(Long id);
 }

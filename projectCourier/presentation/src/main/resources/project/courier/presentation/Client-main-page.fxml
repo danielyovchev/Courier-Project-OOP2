@@ -20,15 +20,15 @@
               <MenuItem mnemonicParsing="false" text="Close" />
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="допълнителни функционалности">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Delete" />
-            </items>
+          <Menu mnemonicParsing="false" text="Check Shipment">
+              <items>
+                  <MenuItem mnemonicParsing="false" text="Check shipment" onAction="#showShipmentCheck"/>
+              </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="Help">
-            <items>
-              <MenuItem mnemonicParsing="false" text="About" />
-            </items>
+          <Menu mnemonicParsing="false" text="Shipments Reference">
+              <items>
+                  <MenuItem mnemonicParsing="false" text="References" onAction="#showReferences"/>
+              </items>
           </Menu>
         </menus>
       </MenuBar>
