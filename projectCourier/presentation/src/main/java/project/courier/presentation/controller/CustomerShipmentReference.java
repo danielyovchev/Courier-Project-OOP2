@@ -49,7 +49,7 @@ public class CustomerShipmentReference {
         return FXCollections.observableList(shipmentProvider.getCustomerShipments(getUserId.getId(CurrentUser.username)));
     }
     private ObservableList<ShipmentTableModel> shipmentListBetweenDates(LocalDate date1, LocalDate date2){
-        return null;
+        return FXCollections.observableList(shipmentProvider.getShipmentsBetweenDates(getUserId.getId(CurrentUser.username), date1, date2));
     }
     public void refreshButtonAction(ActionEvent actionEvent) {
 

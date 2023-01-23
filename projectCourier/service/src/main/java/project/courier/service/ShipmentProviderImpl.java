@@ -17,8 +17,15 @@ public class ShipmentProviderImpl implements ShipmentProvider {
     private final ShipmentRepositoryInjector shipmentRepositoryInjector = new ShipmentRepositoryInjectorImpl();
     private final OfficeRepositoryInjector officeRepositoryInjector = new OfficeRepositoryInjectorImpl();
     @Override
-    public List<ShipmentTableModel> getShipmentsBetweenDates(LocalDate date1, LocalDate date2) {
-        return null;
+    public List<ShipmentTableModel> getShipmentsBetweenDates(Long id, LocalDate date1, LocalDate date2) {
+        return shipmentRepositoryInjector.getShipmentRepository().findAllByCustomer(id).stream()
+                .filter(s -> date1.isBefore(s.getDateSent()))
+                .filter(s -> date2.isAfter(s.getDateReceived()))
+                .map(s -> ShipmentTableModel.builder()
+                        .shipmentId(s.getId())
+                        .status(s.getStatus().toString())
+                        .build())
+                .toList();
     }
 
     @Override
