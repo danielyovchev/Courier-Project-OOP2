@@ -21,6 +21,7 @@ public class CourierRegisterImpl implements CourierRegister {
     public void addCourier(CourierModel courierModel) {
         final Long courierId = companyRepositoryInjector.getCompanyRepository().findByName(courierModel.getCompany()).get().getId();
         Courier courier = new Courier();
+        courier.setId(courierModel.getId());
         courier.setFirstName(courierModel.getFirstName());
         courier.setLastName(courierModel.getLastName());
         courier.setEmail(courierModel.getEmail());

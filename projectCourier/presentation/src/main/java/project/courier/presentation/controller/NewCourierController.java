@@ -12,8 +12,10 @@ import project.courier.presentation.services.AddUserInjectorImpl;
 import project.courier.presentation.services.CourierRegisterInjector;
 import project.courier.presentation.services.CourierRegisterInjectorImpl;
 import project.courier.service.CompanyProviderImpl;
+import project.courier.service.GetUserIdImpl;
 import project.courier.service.exceptions.UserExistsException;
 import project.courier.service.interfaces.CompanyProvider;
+import project.courier.service.interfaces.GetUserId;
 import project.courier.service.model.CourierModel;
 import project.courier.service.model.UserModel;
 
@@ -61,6 +63,7 @@ public class NewCourierController implements Initializable {
             showAlert("No company defined");
             return;
         }
+        final GetUserId getUserId = new GetUserIdImpl();
         final CourierRegisterInjector injector = new CourierRegisterInjectorImpl();
         final AddUserInjector addUserInjector = new AddUserInjectorImpl();
         final UserModel userModel = new UserModel();
@@ -77,6 +80,7 @@ public class NewCourierController implements Initializable {
             return;
         }
         final CourierModel courierModel = new CourierModel();
+        courierModel.setId(getUserId.getId(userModel.getUsername()));
         courierModel.setFirstName(firstName.getText());
         courierModel.setLastName(lastName.getText());
         courierModel.setEmail(email.getText());

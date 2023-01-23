@@ -21,6 +21,7 @@ public class CustomerRegisterImpl implements CustomerRegister {
     public void registerCustomer(final CustomerModel customerModel) {
         final Long companyId = companyRepositoryInjector.getCompanyRepository().findByName(customerModel.getCompany()).get().getId();
         Customer customer = new Customer();
+        customer.setId(customerModel.getCustomerId());
         customer.setFirstName(customerModel.getFirstName());
         customer.setLastName(customerModel.getLastName());
         customer.setEmail(customerModel.getEmail());

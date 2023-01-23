@@ -11,8 +11,10 @@ import project.courier.presentation.services.AddUserInjectorImpl;
 import project.courier.presentation.services.CustomerRegisterInjector;
 import project.courier.presentation.services.CustomerRegisterInjectorImpl;
 import project.courier.service.CompanyProviderImpl;
+import project.courier.service.GetUserIdImpl;
 import project.courier.service.exceptions.UserExistsException;
 import project.courier.service.interfaces.CompanyProvider;
+import project.courier.service.interfaces.GetUserId;
 import project.courier.service.model.CustomerModel;
 import project.courier.service.model.UserModel;
 
@@ -31,6 +33,7 @@ public class NewCustomerController {
     private TextField phone;
     @FXML
     private TextField username;
+    private final GetUserId getUserId = new GetUserIdImpl();
     @FXML
     public void registerCustomer(){
         if(firstName.getText().isEmpty()){
@@ -74,6 +77,7 @@ public class NewCustomerController {
             return;
         }
         CustomerModel customerModel = new CustomerModel();
+        customerModel.setCustomerId(getUserId.getId(userModel.getUsername()));
         customerModel.setFirstName(firstName.getText());
         customerModel.setLastName(lastName.getText());
         customerModel.setEmail(email.getText());

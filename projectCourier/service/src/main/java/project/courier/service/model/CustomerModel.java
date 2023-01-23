@@ -8,7 +8,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CustomerModel {
-    private long customerId;
+    private Long customerId;
     private String firstName;
     private String lastName;
     private String email;

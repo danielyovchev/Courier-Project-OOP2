@@ -52,5 +52,6 @@ public class CustomerShipmentCheck {
         return FXCollections.observableList(Stream.of(shipmentProvider.getShipment(Long.valueOf(findShipmentId.getText()))).toList());
     }
     public void refreshButtonAction(ActionEvent actionEvent) {
+
     }
 }

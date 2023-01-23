@@ -17,7 +17,7 @@
         <Label layoutX="339.0" layoutY="159.0" text="To:" />
         <Button fx:id="showbutton" layoutX="434.0" layoutY="200.0" mnemonicParsing="false" onAction="#showButtonAction" text="Show" />
         <CheckBox fx:id="forPeriod" layoutX="347.0" layoutY="204.0" mnemonicParsing="false" text="For Period" />
-        <TableView fx:id="shipmentStatusTable" layoutX="46.0" layoutY="85.0" prefHeight="279.0" prefWidth="226.0">
+        <TableView fx:id="shipmentReferenceTable" layoutX="46.0" layoutY="85.0" prefHeight="279.0" prefWidth="226.0">
             <columns>
                 <TableColumn fx:id="shipmentId" prefWidth="116.79998397827148" text="ShipmentId" />
                 <TableColumn fx:id="shipmentStatus" prefWidth="108.79997253417969" text="ShipmentStatus" />
