@@ -42,7 +42,7 @@ public class ShipmentProviderImpl implements ShipmentProvider {
                         .shipmentId(s.getId())
                         .category(s.getCategory().toString())
                         .dateSent(s.getDateSent())
-                        .office(officeRepositoryInjector.getOfficeRepository().findById(s.getOfficeId()).toString())
+                        .office(officeRepositoryInjector.getOfficeRepository().findById(s.getOfficeId()).get().getCity())
                         .destination(s.getDestination())
                         .price(s.getPrice())
                         .status(s.getStatus().toString())
