@@ -4,10 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import project.courier.presentation.logConstants.CurrentUser;
 import project.courier.service.GetUserIdImpl;
@@ -36,6 +33,10 @@ public class CustomerShipmentReference {
     public void showButtonAction(ActionEvent actionEvent) {
         ObservableList<ShipmentTableModel> shipments;
         if(forPeriod.isSelected()){
+            if(fromDate.getValue() == null || toDate.getValue() == null){
+                showAlert("No dates chosen");
+                return;
+            }
             shipments = shipmentListBetweenDates(fromDate.getValue(), toDate.getValue());
         }
         else{
@@ -53,5 +54,9 @@ public class CustomerShipmentReference {
     }
     public void refreshButtonAction(ActionEvent actionEvent) {
 
+    }
+    private void showAlert(String message){
+        Alert alert = new Alert(Alert.AlertType.WARNING, message);
+        alert.show();
     }
 }

@@ -58,6 +58,10 @@ public class AdminCourierStatistics implements Initializable {
         }
         ObservableList<CourierTableModel> courierModels;
         if(periodCheckbox.isSelected()){
+            if(fromDate.getValue() == null || toDate.getValue() == null){
+                showAlert("No dates chosen");
+                return;
+            }
             courierModels = courierListBetweenDates(fromDate.getValue(), toDate.getValue());
         }
         else{

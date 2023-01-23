@@ -58,7 +58,7 @@ public class NewShipmentController implements Initializable {
             showAlert("No office chosen!");
             return;
         }
-        if (sentDate.getValue() == null){
+        if(sentDate.getValue() == null){
             showAlert("No date entered!");
             return;
         }

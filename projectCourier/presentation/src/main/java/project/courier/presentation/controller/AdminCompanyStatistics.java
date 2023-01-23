@@ -4,10 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import project.courier.service.CompanyProviderImpl;
 import project.courier.service.interfaces.CompanyProvider;
@@ -54,10 +51,18 @@ public class AdminCompanyStatistics{
 
     public void ShowStatisticsButton(ActionEvent actionEvent) {
         if(periodCheck.isSelected()){
+            if(fromDate.getValue() == null || toDate.getValue() == null){
+                showAlert("No dates chosen");
+                return;
+            }
             displayCompaniesBetweenDates(fromDate.getValue(), toDate.getValue());
         }
         else {
             displayCompanyTable();
         }
+    }
+    private void showAlert(String message){
+        Alert alert = new Alert(Alert.AlertType.WARNING, message);
+        alert.show();
     }
 }
