@@ -32,7 +32,6 @@
           </Menu>
         </menus>
       </MenuBar>
-      <Text layoutX="14.0" layoutY="89.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Orders information:" />
       <ButtonBar layoutX="14.0" layoutY="235.0" prefHeight="40.0" prefWidth="200.0" />
     <Button fx:id="logOutBtn" layoutX="519.0" layoutY="360.0" mnemonicParsing="false" onAction="#logOut" text="Log out" />
    </children>
