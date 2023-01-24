@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Text?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.courier.presentation.controller.ShipmentsReceiveController">
+   <children>
+      <Button layoutX="271.0" layoutY="288.0" mnemonicParsing="false" onAction="#receiveShipments" prefHeight="33.0" prefWidth="70.0" text="Receive" />
+      <ListView fx:id="shipmentList" layoutX="200.0" layoutY="66.0" prefHeight="200.0" prefWidth="200.0" />
+      <Text layoutX="221.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Receive your shipments" textAlignment="CENTER" wrappingWidth="143.73675537109375" />
+      <Button fx:id="closeBtn" onAction="#closeForm" layoutX="484.0" layoutY="337.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="70.0" text="Close" />
+   </children>
+</Pane>

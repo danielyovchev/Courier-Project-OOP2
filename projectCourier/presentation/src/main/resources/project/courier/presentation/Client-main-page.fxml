@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.courier.presentation.controller.ClientController">
+   <children>
+      <Text layoutX="475.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+      <MenuBar prefHeight="26.0" prefWidth="449.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="Receive shipment">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Receive" onAction="#openReceiveWindow"/>
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Check Shipment">
+              <items>
+                  <MenuItem mnemonicParsing="false" text="Check shipment" onAction="#showShipmentCheck"/>
+              </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Shipments Reference">
+              <items>
+                  <MenuItem mnemonicParsing="false" text="References" onAction="#showReferences"/>
+              </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <Text layoutX="14.0" layoutY="89.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Orders information:" />
+      <ButtonBar layoutX="14.0" layoutY="235.0" prefHeight="40.0" prefWidth="200.0" />
+    <Button fx:id="logOutBtn" layoutX="519.0" layoutY="360.0" mnemonicParsing="false" onAction="#logOut" text="Log out" />
+   </children>
+</AnchorPane>

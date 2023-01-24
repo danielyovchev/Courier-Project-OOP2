@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.courier.presentation.controller.CourierController">
+   <children>
+      <AnchorPane layoutX="7.0" layoutY="3.0" prefHeight="400.0" prefWidth="600.0">
+         <children>
+            <Button fx:id="logOutBtn" onAction="#logOut" layoutX="513.0" layoutY="343.0" mnemonicParsing="false" text="Log out" />
+            <Text layoutX="491.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Courier's name" />
+            <MenuBar layoutX="-7.0" layoutY="1.0" prefHeight="17.0" prefWidth="414.0">
+              <menus>
+                <Menu mnemonicParsing="false" text="Clients">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="Register new client" onAction="#openCustomerRegForm" />
+                      <MenuItem onAction="#openShipmentRegisterForm" text="Register new shipment" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Account">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="Delete" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Help">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="About" />
+                  </items>
+                </Menu>
+              </menus>
+            </MenuBar>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
