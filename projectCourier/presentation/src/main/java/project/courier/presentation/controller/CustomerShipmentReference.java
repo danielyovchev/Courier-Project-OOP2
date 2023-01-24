@@ -63,7 +63,7 @@ public class CustomerShipmentReference {
             result.addAll(rejected);
         }
         ObservableList<ShipmentTableModel> delivered = shipmentList()
-                .filtered(s -> s.getStatus().equalsIgnoreCase("received"));
+                .filtered(s -> s.getStatus().equalsIgnoreCase("delivered"));
         if(delivered.size()>0){
             showDeliveredNotification(delivered.size());
             result.addAll(delivered);

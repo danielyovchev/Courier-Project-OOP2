@@ -15,9 +15,9 @@
       <Text layoutX="475.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" />
       <MenuBar prefHeight="26.0" prefWidth="449.0">
         <menus>
-          <Menu mnemonicParsing="false" text="Change Account info">
+          <Menu mnemonicParsing="false" text="Receive shipment">
             <items>
-              <MenuItem mnemonicParsing="false" text="Close" />
+              <MenuItem mnemonicParsing="false" text="Receive" onAction="#openReceiveWindow"/>
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Check Shipment">

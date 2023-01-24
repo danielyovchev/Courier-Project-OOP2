@@ -31,7 +31,7 @@ public class ClientController{
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/project/courier/presentation/CustomerShipmentCheck.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         Stage stage = new Stage();
-        stage.setTitle("Admin");
+        stage.setTitle("Customer");
         stage.setScene(scene);
         stage.show();
     }
@@ -40,7 +40,16 @@ public class ClientController{
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/project/courier/presentation/CustomerShipmentReference.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         Stage stage = new Stage();
-        stage.setTitle("Admin");
+        stage.setTitle("Customer");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void openReceiveWindow(ActionEvent actionEvent) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/project/courier/presentation/Client-receive-shipments.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        Stage stage = new Stage();
+        stage.setTitle("Customer");
         stage.setScene(scene);
         stage.show();
     }
