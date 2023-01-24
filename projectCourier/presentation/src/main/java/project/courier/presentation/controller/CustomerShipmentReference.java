@@ -14,6 +14,8 @@ import project.courier.service.interfaces.ShipmentProvider;
 import project.courier.service.model.ShipmentTableModel;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 public class CustomerShipmentReference {
     @FXML
@@ -53,7 +55,31 @@ public class CustomerShipmentReference {
         return FXCollections.observableList(shipmentProvider.getShipmentsBetweenDates(getUserId.getId(CurrentUser.username), date1, date2));
     }
     public void refreshButtonAction(ActionEvent actionEvent) {
-
+        List<ShipmentTableModel> result = new ArrayList<>();
+        ObservableList<ShipmentTableModel> rejected = shipmentList()
+                .filtered(s -> s.getStatus().equalsIgnoreCase("rejected"));
+        if(rejected.size()>0){
+            showRejectedNotification(rejected.size());
+            result.addAll(rejected);
+        }
+        ObservableList<ShipmentTableModel> delivered = shipmentList()
+                .filtered(s -> s.getStatus().equalsIgnoreCase("received"));
+        if(delivered.size()>0){
+            showDeliveredNotification(delivered.size());
+            result.addAll(delivered);
+        }
+        ObservableList<ShipmentTableModel> observableList = FXCollections.observableList(result);
+        shipmentId.setCellValueFactory(new PropertyValueFactory<>("shipmentId"));
+        shipmentStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
+        shipmentReferenceTable.setItems(observableList);
+    }
+    private void showRejectedNotification(int count){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION, "You have "+count+" rejected shipments");
+        alert.show();
+    }
+    private void showDeliveredNotification(int count){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION, "You have "+count+" delivered shipments");
+        alert.show();
     }
     private void showAlert(String message){
         Alert alert = new Alert(Alert.AlertType.WARNING, message);
