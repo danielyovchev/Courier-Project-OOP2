@@ -16,7 +16,6 @@ public class DBUtils {
     }
 
     public Session openSession(){
-//        sessionFactory = new Configuration().configure().buildSessionFactory();
         return sessionFactory.openSession();
     }
 
