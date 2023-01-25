@@ -16,9 +16,9 @@ public class LoginController {
     private TextField textFieldUsername;
     @FXML
     private PasswordField passFieldPassword;
+    private final LoginUserInjector loginUserInjector = LoginUserImpl::new;
     @FXML
     private void onLoginClick(){
-        final LoginUserInjector loginUserInjector = LoginUserImpl::new;
         final String username = textFieldUsername.getText();
         final String password = passFieldPassword.getText();
         final String role = loginUserInjector.getLogin().checkLogin(username, password);
@@ -58,5 +58,7 @@ public class LoginController {
         } catch (Exception e){
             Alert alert = new Alert(Alert.AlertType.ERROR, "Internal Server Error");
         }
+        textFieldUsername.clear();
+        passFieldPassword.clear();
     }
 }
