@@ -10,15 +10,10 @@ import java.util.List;
 import java.util.Optional;
 
 public class CompanyRepositoryImpl implements CompanyRepository {
-    private final DBUtils dbUtils;
-
-    public CompanyRepositoryImpl(DBUtils dbUtils) {
-        this.dbUtils = dbUtils;
-    }
 
     @Override
     public void save(Company company) {
-        Session session = dbUtils.openSession();
+        Session session = DBUtils.openSession();
         Transaction transaction = session.beginTransaction();
         try{
             session.save(company);
@@ -35,7 +30,7 @@ public class CompanyRepositoryImpl implements CompanyRepository {
 
     @Override
     public void update(Company company) {
-        Session session = dbUtils.openSession();
+        Session session = DBUtils.openSession();
         Transaction transaction = session.beginTransaction();
         try
         {
@@ -53,11 +48,9 @@ public class CompanyRepositoryImpl implements CompanyRepository {
 
     @Override
     public void delete(Company company) {
-        Session session = dbUtils.openSession();
+        Session session = DBUtils.openSession();
         Transaction transaction = session.beginTransaction();
-
-        try
-        {
+        try {
             session.delete(company);
         }
         catch (Exception e)
@@ -72,7 +65,7 @@ public class CompanyRepositoryImpl implements CompanyRepository {
 
     @Override
     public Optional<Company> findById(long id) {
-        Session session = dbUtils.openSession();
+        Session session = DBUtils.openSession();
         Transaction transaction = session.beginTransaction();
         Company company = new Company();
         try {
@@ -90,7 +83,7 @@ public class CompanyRepositoryImpl implements CompanyRepository {
 
     @Override
     public List<Company> findAll() {
-        Session session = dbUtils.openSession();
+        Session session = DBUtils.openSession();
         Transaction transaction = session.beginTransaction();
         List<Company> companies = new ArrayList<>();
         try {
@@ -108,7 +101,7 @@ public class CompanyRepositoryImpl implements CompanyRepository {
 
     @Override
     public Optional<Company> findByName(String name) {
-        Session session = dbUtils.openSession();
+        Session session = DBUtils.openSession();
         Transaction transaction = session.beginTransaction();
         Company company = new Company();
         try {

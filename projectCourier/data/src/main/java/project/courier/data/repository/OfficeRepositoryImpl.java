@@ -10,15 +10,9 @@ import java.util.List;
 import java.util.Optional;
 
 public class OfficeRepositoryImpl implements OfficeRepository {
-    private final DBUtils dbUtils;
-
-    public OfficeRepositoryImpl(DBUtils dbUtils) {
-        this.dbUtils = dbUtils;
-    }
-
     @Override
     public void save(Office office) {
-        Session session = dbUtils.openSession();
+        Session session = DBUtils.openSession();
         Transaction transaction = session.beginTransaction();
         try{
             session.save(office);
@@ -35,7 +29,7 @@ public class OfficeRepositoryImpl implements OfficeRepository {
 
     @Override
     public void update(Office office) {
-        Session session = dbUtils.openSession();
+        Session session = DBUtils.openSession();
         Transaction transaction = session.beginTransaction();
         try{
             session.update(office);
@@ -52,7 +46,7 @@ public class OfficeRepositoryImpl implements OfficeRepository {
 
     @Override
     public void delete(Office office) {
-        Session session = dbUtils.openSession();
+        Session session = DBUtils.openSession();
         Transaction transaction = session.beginTransaction();
         try{
             session.delete( office);
@@ -69,7 +63,7 @@ public class OfficeRepositoryImpl implements OfficeRepository {
 
     @Override
     public Optional<Office> findById(long id) {
-        Session session = dbUtils.openSession();
+        Session session = DBUtils.openSession();
         Transaction transaction = session.beginTransaction();
         Office office = new Office();
         try {
@@ -86,7 +80,7 @@ public class OfficeRepositoryImpl implements OfficeRepository {
 
     @Override
     public Optional<Office> findByCity(String city) {
-        Session session = dbUtils.openSession();
+        Session session = DBUtils.openSession();
         Transaction transaction = session.beginTransaction();
         Office office = new Office();
 
@@ -107,7 +101,7 @@ public class OfficeRepositoryImpl implements OfficeRepository {
 
     @Override
     public List<Office> findAllByCity(String city) {
-        Session session = dbUtils.openSession();
+        Session session = DBUtils.openSession();
         Transaction transaction = session.beginTransaction();
         List<Office> offices = new ArrayList<>();
         try {
@@ -125,7 +119,7 @@ public class OfficeRepositoryImpl implements OfficeRepository {
 
     @Override
     public Optional<Office> findByCityAndCompany(String city, Long companyId) {
-        Session session = dbUtils.openSession();
+        Session session = DBUtils.openSession();
         Transaction transaction = session.beginTransaction();
         Office office = new Office();
         try {
@@ -144,7 +138,7 @@ public class OfficeRepositoryImpl implements OfficeRepository {
 
     @Override
     public List<Office> findAllByCompany(Long id) {
-        Session session = dbUtils.openSession();
+        Session session = DBUtils.openSession();
         Transaction transaction = session.beginTransaction();
         List<Office> offices = new ArrayList<>();
         try {
@@ -162,7 +156,7 @@ public class OfficeRepositoryImpl implements OfficeRepository {
 
     @Override
     public List<Office> findAll() {
-        Session session = dbUtils.openSession();
+        Session session = DBUtils.openSession();
         Transaction transaction = session.beginTransaction();
         List<Office> offices = new ArrayList<>();
         try {

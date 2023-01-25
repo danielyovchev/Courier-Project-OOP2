@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class UserRepositoryTest {
     private final DBUtils dbUtils = new DBUtils();
-    private UserRepository userRepository = new UserRepositoryImpl(dbUtils);
+    private UserRepository userRepository = new UserRepositoryImpl();
     private User user;
     @BeforeEach
     void setUp(){
