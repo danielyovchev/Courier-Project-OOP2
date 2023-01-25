@@ -100,6 +100,25 @@ public class CompanyRepositoryImpl implements CompanyRepository {
     }
 
     @Override
+    public boolean existsByBulstatAndName(String name, String bulstat) {
+        Session session = DBUtils.openSession();
+        Transaction transaction = session.beginTransaction();
+        Optional<Company> company = Optional.of(new Company());
+        try {
+            company = session.createQuery("SELECT a from Company a where a.name='"+name+"' AND a.bulstat='"+bulstat+"'", Company.class)
+                    .getResultList().stream().findFirst();
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        finally {
+            transaction.commit();
+            session.close();
+        }
+        return company.isPresent();
+    }
+
+    @Override
     public Optional<Company> findByName(String name) {
         Session session = DBUtils.openSession();
         Transaction transaction = session.beginTransaction();
