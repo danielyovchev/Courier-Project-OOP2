@@ -9,8 +9,8 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import project.courier.service.ShipmentProviderImpl;
-import project.courier.service.interfaces.ShipmentProvider;
+import project.courier.service.services.shipment.ShipmentProviderImpl;
+import project.courier.service.services.shipment.ShipmentProvider;
 import project.courier.service.model.CompanyTableModel;
 import project.courier.service.model.ShipmentTableModel;
 

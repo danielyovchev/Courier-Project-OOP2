@@ -7,10 +7,10 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import project.courier.presentation.logConstants.CurrentUser;
-import project.courier.service.GetUserIdImpl;
-import project.courier.service.ShipmentProviderImpl;
-import project.courier.service.interfaces.GetUserId;
-import project.courier.service.interfaces.ShipmentProvider;
+import project.courier.service.services.user.GetUserIdImpl;
+import project.courier.service.services.shipment.ShipmentProviderImpl;
+import project.courier.service.services.user.GetUserId;
+import project.courier.service.services.shipment.ShipmentProvider;
 import project.courier.service.model.ShipmentTableModel;
 
 import java.time.LocalDate;

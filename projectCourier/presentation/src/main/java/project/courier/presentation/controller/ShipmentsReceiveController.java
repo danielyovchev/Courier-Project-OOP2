@@ -11,10 +11,10 @@ import javafx.stage.Stage;
 import project.courier.presentation.logConstants.CurrentUser;
 import project.courier.presentation.services.ShipmentReceiveInjector;
 import project.courier.presentation.services.ShipmentReceiveInjectorImpl;
-import project.courier.service.GetUserIdImpl;
-import project.courier.service.ShipmentProviderImpl;
-import project.courier.service.interfaces.GetUserId;
-import project.courier.service.interfaces.ShipmentProvider;
+import project.courier.service.services.user.GetUserIdImpl;
+import project.courier.service.services.shipment.ShipmentProviderImpl;
+import project.courier.service.services.user.GetUserId;
+import project.courier.service.services.shipment.ShipmentProvider;
 
 import java.net.URL;
 import java.util.List;

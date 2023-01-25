@@ -9,7 +9,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import project.courier.presentation.logConstants.CurrentUser;
 import project.courier.presentation.services.LoginUserInjector;
-import project.courier.service.LoginUserImpl;
+import project.courier.service.services.user.LoginUserImpl;
 
 public class LoginController {
     @FXML

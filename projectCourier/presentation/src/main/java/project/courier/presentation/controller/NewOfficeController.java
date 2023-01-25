@@ -9,8 +9,8 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import project.courier.presentation.services.AddOfficeInjector;
 import project.courier.presentation.services.AddOfficeInjectorImpl;
-import project.courier.service.CompanyProviderImpl;
-import project.courier.service.interfaces.CompanyProvider;
+import project.courier.service.services.company.CompanyProviderImpl;
+import project.courier.service.services.company.CompanyProvider;
 import project.courier.service.model.OfficeModel;
 
 import java.net.URL;
