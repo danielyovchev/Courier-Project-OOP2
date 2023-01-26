@@ -26,6 +26,10 @@ public class OrganizeShipmentsImpl implements OrganizeShipments {
         List<Office> offices = officeRepo.getOfficeRepository().findAll();
         offices.forEach(o -> {
             try {
+                List<Shipment> toReject = shipmentRepo.getShipmentRepository()
+                        .findByOfficeAndStatus(o.getId(), ShipmentStatus.SENT).stream().toList();
+                shipmentDelivery.reject(toReject);
+                logger.info("{} shipments from office {} rejected", toReject.size(), o.getCity());
                 List<Shipment> shipments = shipmentRepo.getShipmentRepository()
                         .findByOfficeAndStatus(o.getId(), ShipmentStatus.IN_OFFICE).stream()
                         .toList();
@@ -34,10 +38,10 @@ public class OrganizeShipmentsImpl implements OrganizeShipments {
                     return;
                 }
                 shipmentDelivery.deliver(shipments);
-                logger.info("Shipments sent");
+                logger.info("Shipments from office {} sent", o.getCity());
                 TimeUnit.SECONDS.sleep(15);
                 shipmentDelivery.receive(shipments);
-                logger.info("Shipments delivered");
+                logger.info("Shipments from office {} delivered", o.getCity());
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }

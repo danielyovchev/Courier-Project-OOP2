@@ -40,14 +40,14 @@ class LoginUserImplTest {
     }
     @Test
     void checkCourier(){
-        username = "iv.iv";
+        username = "m.minchev";
         password = "123";
         assertEquals("courier", loginUser.checkLogin(username,password));
     }
     @Test
     void checkCustomer(){
-        username = "dad";
-        password = "23";
+        username = "b.iliev";
+        password = "0000";
         assertEquals("customer", loginUser.checkLogin(username,password));
     }
 }

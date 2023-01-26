@@ -27,4 +27,12 @@ public class ShipmentDeliveryImpl implements ShipmentDelivery {
                 .peek(e -> e.setStatus(ShipmentStatus.RECEIVED))
                 .forEach(e -> shipmentRepo.getShipmentRepository().update(e));
     }
+
+    @Override
+    public void reject(List<Shipment> shipments) {
+        shipments.stream()
+                .peek(shipment -> shipment.setStatus(ShipmentStatus.REJECTED))
+                .peek(shipment -> shipment.setDateReceived(LocalDate.now()))
+                .forEach(shipment -> shipmentRepo.getShipmentRepository().update(shipment));
+    }
 }
