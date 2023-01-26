@@ -19,11 +19,25 @@ public class ShipmentRegisterImplTest {
     }
 
     @Test
-    public void regShipment(){
+    public void regShipmentPriceForPackage(){
         final ShipmentModel model = ShipmentModel.builder().type("package").build();
         assertEquals(4.50, getResult(model).getPrice().doubleValue());
     }
-
+    @Test
+    public void regShipmentPriceForParcel(){
+        final ShipmentModel model = ShipmentModel.builder().type("parcel").build();
+        assertEquals(3.50, getResult(model).getPrice().doubleValue());
+    }
+    @Test
+    public void regShipmentPriceForEnvelope(){
+        final ShipmentModel model = ShipmentModel.builder().type("envelope").build();
+        assertEquals(2.50, getResult(model).getPrice().doubleValue());
+    }
+    @Test
+    public void regShipmentPriceForCargo(){
+        final ShipmentModel model = ShipmentModel.builder().type("cargo").build();
+        assertEquals(10.50, getResult(model).getPrice().doubleValue());
+    }
     Shipment getResult(ShipmentModel model){
         double price = 0;
         if(model.getType().equalsIgnoreCase("ENVELOPE")){

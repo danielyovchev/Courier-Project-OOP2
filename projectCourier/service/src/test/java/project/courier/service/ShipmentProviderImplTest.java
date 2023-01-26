@@ -17,13 +17,11 @@ class ShipmentProviderImplTest {
     private final ShipmentRepositoryInjector shipmentRepositoryInjector = new ShipmentRepositoryInjectorImpl();
     private final OfficeRepositoryInjector officeRepositoryInjector = new OfficeRepositoryInjectorImpl();
     private final ShipmentProvider shipmentProvider = new ShipmentProviderImpl();
-    /*@Test
-    void getShipmentsBetweenDates() {
-    }
 
     @Test
     void getShipment() {
-    }*/
+        assertEquals(Long.valueOf(502), shipmentProvider.getShipment(502L).getShipmentId());
+    }
 
     @Test
     void getCustomerShipments() {
