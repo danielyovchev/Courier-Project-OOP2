@@ -34,7 +34,7 @@ public class ShipmentsReceiveController implements Initializable {
         }
         final List selected = shipmentList.getSelectionModel().getSelectedItems().stream().toList();
         shipmentReceiveInjector.getShipmentReceive().shipmentReceive(selected);
-
+        shipmentList.getItems().clear();
     }
     private void listViewFill(){
         shipmentList.getItems()

@@ -24,7 +24,7 @@ public class ShipmentDeliveryImpl implements ShipmentDelivery {
     @Override
     public void receive(List<Shipment> shipments) {
         shipments.stream()
-                .peek(e -> e.setStatus(ShipmentStatus.RECEIVED))
+                .peek(e -> e.setStatus(ShipmentStatus.DELIVERED))
                 .forEach(e -> shipmentRepo.getShipmentRepository().update(e));
     }
 

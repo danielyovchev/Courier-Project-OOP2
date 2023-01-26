@@ -34,6 +34,9 @@ public class NewCustomerController {
     @FXML
     private TextField username;
     private final GetUserId getUserId = new GetUserIdImpl();
+    private final CustomerRegisterInjector customerRegisterInjector = new CustomerRegisterInjectorImpl();
+    private final CompanyProvider companyProvider = new CompanyProviderImpl();
+    private final AddUserInjector addUserInjector = new AddUserInjectorImpl();
     @FXML
     public void registerCustomer(){
         if(firstName.getText().isEmpty()){
@@ -60,9 +63,7 @@ public class NewCustomerController {
             showAlert("Missing phone");
             return;
         }
-        final CustomerRegisterInjector customerRegisterInjector = new CustomerRegisterInjectorImpl();
-        final CompanyProvider companyProvider = new CompanyProviderImpl();
-        final AddUserInjector addUserInjector = new AddUserInjectorImpl();
+
         final UserModel userModel = new UserModel();
         userModel.setFirstName(firstName.getText());
         userModel.setLastName(lastName.getText());

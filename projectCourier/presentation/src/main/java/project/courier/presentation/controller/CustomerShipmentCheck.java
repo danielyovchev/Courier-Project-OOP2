@@ -4,19 +4,16 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import project.courier.service.services.shipment.ShipmentProviderImpl;
-import project.courier.service.services.shipment.ShipmentProvider;
 import project.courier.service.model.CompanyTableModel;
 import project.courier.service.model.ShipmentTableModel;
+import project.courier.service.services.shipment.ShipmentProvider;
+import project.courier.service.services.shipment.ShipmentProviderImpl;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.stream.Stream;
 
 public class CustomerShipmentCheck {
@@ -53,29 +50,5 @@ public class CustomerShipmentCheck {
     private ObservableList<ShipmentTableModel> getModels(){
         final ShipmentProvider shipmentProvider = new ShipmentProviderImpl();
         return FXCollections.observableList(Stream.of(shipmentProvider.getShipment(Long.valueOf(findShipmentId.getText()))).toList());
-    }
-    public void refreshButtonAction(ActionEvent actionEvent) {
-        List<ShipmentTableModel> result = new ArrayList<>();
-        ObservableList<ShipmentTableModel> rejected = getModels()
-                .filtered(s -> s.getStatus().equalsIgnoreCase("rejected"));
-        if(rejected.size()>0){
-            showRejectedNotification(rejected.size());
-            result.addAll(rejected);
-        }
-        ObservableList<ShipmentTableModel> delivered = getModels()
-                .filtered(s -> s.getStatus().equalsIgnoreCase("delivered"));
-        if(delivered.size()>0){
-            showDeliveredNotification(delivered.size());
-            result.addAll(delivered);
-        }
-        ObservableList<ShipmentTableModel> observableList = FXCollections.observableList(result);
-    }
-    private void showRejectedNotification(int count){
-        Alert alert = new Alert(Alert.AlertType.INFORMATION, "You have "+count+" rejected shipments");
-        alert.show();
-    }
-    private void showDeliveredNotification(int count){
-        Alert alert = new Alert(Alert.AlertType.INFORMATION, "You have "+count+" delivered shipments");
-        alert.show();
     }
 }

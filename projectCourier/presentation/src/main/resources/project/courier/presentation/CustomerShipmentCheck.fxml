@@ -24,6 +24,5 @@
         <Text layoutX="37.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ShipmentId:" />
         <TextField fx:id="findShipmentId" layoutX="108.0" layoutY="65.0" />
         <Button fx:id="ShowButton" layoutX="274.0" layoutY="65.0" mnemonicParsing="false" onAction="#showButtonAction" text="Show" />
-        <Button fx:id="RefreshButton" layoutX="330.0" layoutY="65.0" mnemonicParsing="false" onAction="#refreshButtonAction" text="Refresh" />
     </children>
 </AnchorPane>

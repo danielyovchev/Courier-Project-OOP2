@@ -12,28 +12,24 @@
         <menus>
           <Menu mnemonicParsing="false" text="Register new company">
             <items>
-<!--                <fx:include source="NewCompanyForm.fxml"/>-->
                 <MenuItem fx:id="regCompany" mnemonicParsing="false" onAction="#openCompanyRegForm" text="Register Company" />
               <MenuItem mnemonicParsing="false" text="Close" />
             </items>
           </Menu>
             <Menu mnemonicParsing="false" text="Register new office">
                 <items>
-                    <!--                <fx:include source="NewClientForm.fxml"/>-->
                     <MenuItem fx:id="regOffice" mnemonicParsing="false" onAction="#openOfficeRegForm" text="Add Office" />
                 </items>
             </Menu>
           <Menu mnemonicParsing="false" text="Register new courier">
             <items>
 
-<!--                <fx:include source="NewCourierForm.fxml"/>-->
                 <MenuItem fx:id="regCourier" mnemonicParsing="false" onAction="#openCourierRegForm" text="Register Courier" />
               <MenuItem mnemonicParsing="false" text="Delete" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Register client">
             <items>
-<!--                <fx:include source="NewClientForm.fxml"/>-->
               <MenuItem fx:id="CustomerReg" mnemonicParsing="false" onAction="#openCustomerRegForm" text="Show" />
             </items>
           </Menu>

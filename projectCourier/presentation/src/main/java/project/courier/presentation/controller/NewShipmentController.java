@@ -17,7 +17,6 @@ import java.util.Arrays;
 import java.util.ResourceBundle;
 
 public class NewShipmentController implements Initializable {
-
     @FXML
     private Button closeBtn;
     @FXML
@@ -36,6 +35,7 @@ public class NewShipmentController implements Initializable {
     private ComboBox<String> officeList;
     @FXML
     private ComboBox<String> typeList;
+    private final ShipmentRegisterInjector injector = new ShipmentRegisterInjectorImpl();
     @FXML
     public void registerShipment(){
         if(firstName.getText().isEmpty()){
@@ -70,7 +70,7 @@ public class NewShipmentController implements Initializable {
             showAlert("No type chosen!");
             return;
         }
-        final ShipmentRegisterInjector injector = new ShipmentRegisterInjectorImpl();
+
         final ShipmentModel model = new ShipmentModel();
         model.setFirstName(firstName.getText());
         model.setLastName(lastName.getText());

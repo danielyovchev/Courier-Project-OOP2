@@ -24,8 +24,6 @@
       <ComboBox fx:id="officeList" layoutX="245.0" layoutY="234.0" />
       <Label layoutX="156.0" layoutY="270.0" prefHeight="18.0" prefWidth="60.0" text="Date " textAlignment="RIGHT" />
       <DatePicker fx:id="sentDate" layoutX="246.0" layoutY="266.0" />
-<!--      <Label layoutX="114.0" layoutY="309.0" prefHeight="18.0" prefWidth="102.0" text="Courier Username" textAlignment="RIGHT" />-->
-<!--      <TextField fx:id="CourierUsername" layoutX="246.0" layoutY="305.0" />-->
 
       <ComboBox fx:id="typeList" layoutX="245.0" layoutY="345.0" prefWidth="150.0" promptText="Shipment category" />
 
