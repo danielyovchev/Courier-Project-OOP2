@@ -10,18 +10,12 @@ import java.util.List;
 import java.util.Optional;
 
 public class UserRepositoryImpl implements UserRepository {
-    private final DBUtils dbUtils;
-
-    public UserRepositoryImpl(DBUtils dbUtils) {
-        this.dbUtils = dbUtils;
-    }
     @Override
     public void save(User user){
-        Session session = dbUtils.openSession();
+        Session session = DBUtils.openSession();
         Transaction transaction = session.beginTransaction();
         try{
             session.save(user);
-
         }
         catch (Exception e){
             e.printStackTrace();
@@ -35,7 +29,7 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public void update(User user) {
-        Session session = dbUtils.openSession();
+        Session session = DBUtils.openSession();
         Transaction transaction = session.beginTransaction();
         try {
             session.update(user);
@@ -51,7 +45,7 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public void delete(User user) {
-        Session session = dbUtils.openSession();
+        Session session = DBUtils.openSession();
         Transaction transaction = session.beginTransaction();
         try {
             session.delete(user);
@@ -67,7 +61,7 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public Optional<User> findById(Long id) {
-        Session session = dbUtils.openSession();
+        Session session = DBUtils.openSession();
         Transaction transaction = session.beginTransaction();
         User user = new User();
         try {
@@ -85,7 +79,7 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public List<User> findAll() {
-        Session session = dbUtils.openSession();
+        Session session = DBUtils.openSession();
         Transaction transaction = session.beginTransaction();
         List<User> users = new ArrayList<>();
         try {
@@ -103,7 +97,7 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public Optional<User> findByUsername(String username) {
-        Session session = dbUtils.openSession();
+        Session session = DBUtils.openSession();
         Transaction transaction = session.beginTransaction();
         Optional<User> user = Optional.of(new User());
         try {
@@ -122,7 +116,7 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public boolean existsByUsername(String username) {
-        Session session = dbUtils.openSession();
+        Session session = DBUtils.openSession();
         Transaction transaction = session.beginTransaction();
         Optional<User> user = Optional.of(new User());
         try {
@@ -136,15 +130,12 @@ public class UserRepositoryImpl implements UserRepository {
             transaction.commit();
             session.close();
         }
-        if(user.isPresent()){
-            return true;
-        }
-        return false;
+        return user.isPresent();
     }
 
     @Override
     public Optional<User> findByUserAndPass(String username, String password) {
-        Session session = dbUtils.openSession();
+        Session session = DBUtils.openSession();
         Transaction transaction = session.beginTransaction();
         Optional<User> user = Optional.of(new User());
         try {

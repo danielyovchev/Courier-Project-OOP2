@@ -7,10 +7,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import project.courier.service.CompanyProviderImpl;
-import project.courier.service.CourierProviderImpl;
-import project.courier.service.interfaces.CompanyProvider;
-import project.courier.service.interfaces.CourierProvider;
+import project.courier.service.services.company.CompanyProviderImpl;
+import project.courier.service.services.courier.CourierProviderImpl;
+import project.courier.service.services.company.CompanyProvider;
+import project.courier.service.services.courier.CourierProvider;
 import project.courier.service.model.CourierTableModel;
 
 import java.net.URL;

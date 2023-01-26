@@ -11,11 +11,11 @@ import project.courier.presentation.services.AddUserInjector;
 import project.courier.presentation.services.AddUserInjectorImpl;
 import project.courier.presentation.services.CourierRegisterInjector;
 import project.courier.presentation.services.CourierRegisterInjectorImpl;
-import project.courier.service.CompanyProviderImpl;
-import project.courier.service.GetUserIdImpl;
+import project.courier.service.services.company.CompanyProviderImpl;
+import project.courier.service.services.user.GetUserIdImpl;
 import project.courier.service.exceptions.UserExistsException;
-import project.courier.service.interfaces.CompanyProvider;
-import project.courier.service.interfaces.GetUserId;
+import project.courier.service.services.company.CompanyProvider;
+import project.courier.service.services.user.GetUserId;
 import project.courier.service.model.CourierModel;
 import project.courier.service.model.UserModel;
 

@@ -1,7 +1,7 @@
 package project.courier.presentation.services;
 
-import project.courier.service.ShipmentReceiveImpl;
-import project.courier.service.interfaces.ShipmentReceive;
+import project.courier.service.services.shipment.ShipmentReceiveImpl;
+import project.courier.service.services.shipment.ShipmentReceive;
 
 public class ShipmentReceiveInjectorImpl implements ShipmentReceiveInjector {
     @Override

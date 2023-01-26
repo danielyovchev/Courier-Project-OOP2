@@ -8,6 +8,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import project.courier.presentation.services.CompanyRegisterInjector;
 import project.courier.presentation.services.CompanyRegisterInjectorImpl;
+import project.courier.service.exceptions.CompanyExistsException;
 import project.courier.service.model.CompanyModel;
 
 public class NewCompanyController {
@@ -17,6 +18,7 @@ public class NewCompanyController {
     private TextField bulstat;
     @FXML
     private Button closeButton;
+    private final CompanyRegisterInjector injector = new CompanyRegisterInjectorImpl();
     @FXML
     public void registerCompany(){
         if(companyName.getText().isEmpty()){
@@ -29,10 +31,17 @@ public class NewCompanyController {
             alert.show();
             return;
         }
-        final CompanyRegisterInjector injector = new CompanyRegisterInjectorImpl();
         final CompanyModel companyModel = new CompanyModel(companyName.getText(), bulstat.getText());
-        injector.register().addCompany(companyModel);
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Success");
+        try {
+            injector.register().addCompany(companyModel);
+            showAlert(Alert.AlertType.CONFIRMATION, "Company registered");
+        } catch (CompanyExistsException e){
+            showAlert(Alert.AlertType.WARNING,"Company already exists");
+        }
+
+    }
+    private void showAlert(Alert.AlertType alertType, String message){
+        Alert alert = new Alert(alertType, message);
         alert.show();
     }
     @FXML

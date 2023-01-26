@@ -1,7 +1,7 @@
 package project.courier.presentation.services;
 
-import project.courier.service.AddUserOperation;
-import project.courier.service.interfaces.AddUserInterface;
+import project.courier.service.services.user.AddUserOperation;
+import project.courier.service.services.user.AddUserInterface;
 
 public class AddUserInjectorImpl implements AddUserInjector {
     @Override

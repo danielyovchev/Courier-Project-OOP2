@@ -3,6 +3,7 @@ package project.courier.service;
 import org.junit.jupiter.api.Test;
 import project.courier.service.injector.UserRepositoryInjectorImpl;
 import project.courier.service.injector.interfaces.UserRepositoryInjector;
+import project.courier.service.services.user.LoginUserImpl;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 class LoginUserImplTest {

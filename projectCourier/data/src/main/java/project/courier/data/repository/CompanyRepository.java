@@ -12,4 +12,5 @@ public interface CompanyRepository {
     Optional<Company> findById(long id);
     Optional<Company> findByName(String name);
     List<Company> findAll();
+    boolean existsByBulstatAndName(String name, String bulstat);
 }

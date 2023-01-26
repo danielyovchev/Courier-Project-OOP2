@@ -10,15 +10,10 @@ import java.util.List;
 import java.util.Optional;
 
 public class CourierRepositoryImpl implements CourierRepository {
-    private final DBUtils dbUtils;
-
-    public CourierRepositoryImpl(DBUtils dbUtils) {
-        this.dbUtils = dbUtils;
-    }
 
     @Override
     public void save(Courier courier) {
-        Session session = dbUtils.openSession();
+        Session session = DBUtils.openSession();
         Transaction transaction = session.beginTransaction();
         try{
             session.save(courier);
@@ -35,7 +30,7 @@ public class CourierRepositoryImpl implements CourierRepository {
 
     @Override
     public void update(Courier courier) {
-        Session session = dbUtils.openSession();
+        Session session = DBUtils.openSession();
         Transaction transaction = session.beginTransaction();
         try
         {
@@ -53,7 +48,7 @@ public class CourierRepositoryImpl implements CourierRepository {
 
     @Override
     public void delete(Courier courier) {
-        Session session = dbUtils.openSession();
+        Session session = DBUtils.openSession();
         Transaction transaction = session.beginTransaction();
 
         try
@@ -72,7 +67,7 @@ public class CourierRepositoryImpl implements CourierRepository {
 
     @Override
     public Optional<Courier> findById(long id) {
-        Session session = dbUtils.openSession();
+        Session session = DBUtils.openSession();
         Transaction transaction = session.beginTransaction();
         Courier courier = new Courier();
         try {
@@ -90,7 +85,7 @@ public class CourierRepositoryImpl implements CourierRepository {
 
     @Override
     public Optional<Courier> findByUsername(String username) {
-        Session session = dbUtils.openSession();
+        Session session = DBUtils.openSession();
         Transaction transaction = session.beginTransaction();
         Courier courier = new Courier();
         try {
@@ -107,7 +102,7 @@ public class CourierRepositoryImpl implements CourierRepository {
     }
     @Override
     public List<Courier> findAll() {
-        Session session = dbUtils.openSession();
+        Session session = DBUtils.openSession();
         Transaction transaction = session.beginTransaction();
         List<Courier> couriers = new ArrayList<>();
         try {
@@ -125,7 +120,7 @@ public class CourierRepositoryImpl implements CourierRepository {
 
     @Override
     public List<Courier> findAllByCompany(Long companyId) {
-        Session session = dbUtils.openSession();
+        Session session = DBUtils.openSession();
         Transaction transaction = session.beginTransaction();
         List<Courier> couriers = new ArrayList<>();
         try {

@@ -15,12 +15,11 @@ public class DBUtils {
         }
     }
 
-    public Session openSession(){
-//        sessionFactory = new Configuration().configure().buildSessionFactory();
+    public static Session openSession(){
         return sessionFactory.openSession();
     }
 
-    public void closeSession(){
+    public static void closeSession(){
         sessionFactory.close();
     }
 }

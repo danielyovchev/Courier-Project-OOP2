@@ -13,16 +13,9 @@ import java.util.Optional;
 
 
 public class CustomerRepositoryImpl implements CustomerRepository{
-    private final DBUtils dbUtils;
-
-
-    public CustomerRepositoryImpl(DBUtils dbUtils) {
-        this.dbUtils = dbUtils;
-    }
-
     @Override
     public void save(Customer customer) {
-        Session session = dbUtils.openSession();
+        Session session = DBUtils.openSession();
         Transaction transaction = session.beginTransaction();
         try{
             session.save(customer);
@@ -39,7 +32,7 @@ public class CustomerRepositoryImpl implements CustomerRepository{
 
     @Override
     public void update(Customer customer) {
-        Session session = dbUtils.openSession();
+        Session session = DBUtils.openSession();
         Transaction transaction = session.beginTransaction();
         try {
             session.update(customer);
@@ -54,7 +47,7 @@ public class CustomerRepositoryImpl implements CustomerRepository{
 
     @Override
     public void delete(Customer customer) {
-        Session session = dbUtils.openSession();
+        Session session = DBUtils.openSession();
         Transaction transaction = session.beginTransaction();
         try{
             session.delete(customer);
@@ -71,12 +64,10 @@ public class CustomerRepositoryImpl implements CustomerRepository{
 
     @Override
     public Optional<Customer> findById(long id) {
-        Session session = dbUtils.openSession();
+        Session session = DBUtils.openSession();
         Transaction transaction = session.beginTransaction();
         Customer customer = new Customer();
-
-        try
-        {
+        try {
             customer = session.createQuery("SELECT a from Customer a where a.id='"+id+"'", Customer.class).getSingleResultOrNull();
         }
         catch ( Exception e)
@@ -92,11 +83,10 @@ public class CustomerRepositoryImpl implements CustomerRepository{
 
     @Override
     public Optional<Customer> findByEmail(String email) {
-        Session session = dbUtils.openSession();
+        Session session = DBUtils.openSession();
         Transaction transaction = session.beginTransaction();
         Optional<Customer> customer = Optional.of(new Customer());
-        try
-        {
+        try {
             customer = session.createQuery("SELECT a from Customer a where a.email='"+email+"'", Customer.class).getResultList().stream().findFirst();
         }
         catch ( Exception e)
@@ -112,12 +102,10 @@ public class CustomerRepositoryImpl implements CustomerRepository{
 
     @Override
     public Optional<Customer> findByCompanyId(long companyId) {
-        Session session = dbUtils.openSession();
+        Session session = DBUtils.openSession();
         Transaction transaction = session.beginTransaction();
         Customer customer = new Customer();
-
-        try
-        {
+        try {
             customer = session.createQuery("SELECT a from Customer a where a.companyId='"+companyId+"'", Customer.class).getSingleResult();
         }
         catch ( Exception e)
@@ -132,7 +120,7 @@ public class CustomerRepositoryImpl implements CustomerRepository{
     }
 
     public List<Customer> findAllByCompanyID(long companyId)  {
-        Session session = dbUtils.openSession();
+        Session session = DBUtils.openSession();
         Transaction transaction = session.beginTransaction();
         List<Customer> customers = new ArrayList<>();
         try {
@@ -149,7 +137,7 @@ public class CustomerRepositoryImpl implements CustomerRepository{
     }
     @Override
     public List<Customer> findAll() {
-        Session session = dbUtils.openSession();
+        Session session = DBUtils.openSession();
         Transaction transaction = session.beginTransaction();
         List<Customer> customers = new ArrayList<>();
         try {

@@ -7,9 +7,9 @@ import javafx.stage.Stage;
 import project.courier.presentation.logConstants.CurrentUser;
 import project.courier.presentation.services.ShipmentRegisterInjector;
 import project.courier.presentation.services.ShipmentRegisterInjectorImpl;
-import project.courier.service.OfficeProviderImpl;
+import project.courier.service.services.office.OfficeProviderImpl;
 import project.courier.service.exceptions.CustomerNotFoundException;
-import project.courier.service.interfaces.OfficeProvider;
+import project.courier.service.services.office.OfficeProvider;
 import project.courier.service.model.ShipmentModel;
 
 import java.net.URL;

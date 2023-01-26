@@ -1,7 +1,7 @@
 package project.courier.presentation.services;
 
-import project.courier.service.ShipmentRegisterImpl;
-import project.courier.service.interfaces.ShipmentRegister;
+import project.courier.service.services.shipment.ShipmentRegisterImpl;
+import project.courier.service.services.shipment.ShipmentRegister;
 
 public class ShipmentRegisterInjectorImpl implements ShipmentRegisterInjector {
     @Override
