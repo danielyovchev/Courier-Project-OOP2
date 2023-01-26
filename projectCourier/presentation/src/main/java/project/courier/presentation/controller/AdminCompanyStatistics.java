@@ -25,13 +25,11 @@ public class AdminCompanyStatistics{
     private DatePicker toDate;
     @FXML
     private CheckBox periodCheck;
-
+    private final CompanyProvider companyProvider = new CompanyProviderImpl();
     private ObservableList<CompanyTableModel> companyIdList() {
-        final CompanyProvider companyProvider = new CompanyProviderImpl();
         return FXCollections.observableList(companyProvider.getDeliveriesByCompany().stream().toList());
     }
     private ObservableList<CompanyTableModel> companyBetweenDatesSalesList(LocalDate date1, LocalDate date2) {
-        final CompanyProvider companyProvider = new CompanyProviderImpl();
         return FXCollections.observableList(companyProvider.getDeliveriesByCompanyBetweenDates(date1, date2).stream().toList());
     }
 

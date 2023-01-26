@@ -24,6 +24,5 @@
       <DatePicker fx:id="toDate" layoutX="383.0" layoutY="186.0" />
       <Label layoutX="342.0" layoutY="151.0" text="From:" />
       <Label layoutX="354.0" layoutY="190.0" text="To:" />
-      <Label layoutX="321.0" layoutY="113.0" text="Company:" />
    </children>
 </AnchorPane>

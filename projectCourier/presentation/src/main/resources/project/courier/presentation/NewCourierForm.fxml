@@ -22,6 +22,5 @@
       <ComboBox fx:id="companies" layoutX="247.0" layoutY="237.0"/>
       <Button onAction="#registerCourier" layoutX="239.0" layoutY="289.0" mnemonicParsing="false" text="Register" />
       <Button layoutX="344.0" layoutY="289.0" mnemonicParsing="false" onAction="#closeForm" fx:id="closeBtn" text="Cancel" />
-
    </children>
 </AnchorPane>

@@ -16,9 +16,8 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 public class CompanyRegisterTest {
     final CompanyRegister companyRegister = new CompanyRegisterImpl();
     final CompanyRepositoryInjector companyRepositoryInjector = new CompanyRepositoryInjectorImpl();
-    private CompanyModel companyModel = new CompanyModel("Name", "123123");
     int initialSize = companyRepositoryInjector.getCompanyRepository().findAll().size();
-
+    private CompanyModel companyModel = new CompanyModel("Name", "123123");
     @Test
     public void addCompany() {
         Company company = new Company();
