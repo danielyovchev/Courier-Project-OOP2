@@ -40,27 +40,27 @@ public class NewCourierController implements Initializable {
     @FXML
     public void registerCourier(){
         if(firstName.getText().isEmpty()){
-            showAlert("Missing first name!");
+            showAlert(Alert.AlertType.WARNING,"Missing first name!");
             return;
         }
         if(lastName.getText().isEmpty()){
-            showAlert("Missing last name!");
+            showAlert(Alert.AlertType.WARNING,"Missing last name!");
             return;
         }
         if(email.getText().isEmpty()){
-            showAlert("Missing email!");
+            showAlert(Alert.AlertType.WARNING,"Missing email!");
             return;
         }
         if(password.getText().isEmpty()){
-            showAlert("Missing password!");
+            showAlert(Alert.AlertType.WARNING,"Missing password!");
             return;
         }
         if(username.getText().isEmpty()){
-            showAlert("Missing username!");
+            showAlert(Alert.AlertType.WARNING,"Missing username!");
             return;
         }
         if(companies.getValue() == null){
-            showAlert("No company defined");
+            showAlert(Alert.AlertType.WARNING,"No company defined");
             return;
         }
         final GetUserId getUserId = new GetUserIdImpl();
@@ -76,7 +76,7 @@ public class NewCourierController implements Initializable {
         try {
             addUserInjector.getService().addUser(userModel);
         } catch (UserExistsException e){
-            showAlert("User already exists");
+            showAlert(Alert.AlertType.WARNING,"User already exists");
             return;
         }
         final CourierModel courierModel = new CourierModel();
@@ -87,9 +87,10 @@ public class NewCourierController implements Initializable {
         courierModel.setUsername(username.getText());
         courierModel.setCompany((String) companies.getValue());
         injector.register().addCourier(courierModel);
+        showAlert(Alert.AlertType.CONFIRMATION, "Courier registered");
     }
-    private void showAlert(String message){
-        Alert alert = new Alert(Alert.AlertType.WARNING, message);
+    private void showAlert(Alert.AlertType alertType, String message){
+        Alert alert = new Alert(alertType, message);
         alert.show();
     }
     @FXML

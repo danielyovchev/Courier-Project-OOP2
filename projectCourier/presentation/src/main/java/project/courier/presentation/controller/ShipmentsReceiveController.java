@@ -30,11 +30,12 @@ public class ShipmentsReceiveController implements Initializable {
     private final ShipmentReceiveInjector shipmentReceiveInjector = new ShipmentReceiveInjectorImpl();
     public void receiveShipments(ActionEvent actionEvent) {
         if(shipmentList.getItems().size() == 0){
-            showAlert("No shipments selected");
+            showAlert(Alert.AlertType.WARNING,"No shipments selected");
         }
         final List selected = shipmentList.getSelectionModel().getSelectedItems().stream().toList();
         shipmentReceiveInjector.getShipmentReceive().shipmentReceive(selected);
         shipmentList.getItems().clear();
+        showAlert(Alert.AlertType.CONFIRMATION, selected.size()+ " shipments received");
     }
     private void listViewFill(){
         shipmentList.getItems()
@@ -48,8 +49,8 @@ public class ShipmentsReceiveController implements Initializable {
         listViewFill();
         shipmentList.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
     }
-    private void showAlert(String message){
-        Alert alert = new Alert(Alert.AlertType.WARNING, message);
+    private void showAlert(Alert.AlertType alertType, String message){
+        Alert alert = new Alert(alertType, message);
         alert.show();
     }
     public void closeForm(ActionEvent actionEvent) {

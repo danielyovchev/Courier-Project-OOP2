@@ -26,11 +26,11 @@ public class NewOfficeController implements Initializable {
     @FXML
     public void registerOffice(){
         if(officeCity.getText().isEmpty()){
-            showAlert("No city defined");
+            showAlert(Alert.AlertType.WARNING,"No city defined");
             return;
         }
         if(companyName.getValue() == null){
-            showAlert("No company chosen");
+            showAlert(Alert.AlertType.WARNING,"No company chosen");
             return;
         }
         final AddOfficeInjector officeInjector = new AddOfficeInjectorImpl();
@@ -38,9 +38,10 @@ public class NewOfficeController implements Initializable {
         officeModel.setCity(officeCity.getText());
         officeModel.setCompany((String) companyName.getValue());
         officeInjector.addOffice().addOffice(officeModel);
+        showAlert(Alert.AlertType.CONFIRMATION, "Office registered");
     }
-    private void showAlert(String message){
-        Alert alert = new Alert(Alert.AlertType.ERROR, message);
+    private void showAlert(Alert.AlertType alertType, String message){
+        Alert alert = new Alert(alertType, message);
         alert.show();
     }
     @FXML

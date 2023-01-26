@@ -39,35 +39,35 @@ public class NewShipmentController implements Initializable {
     @FXML
     public void registerShipment(){
         if(firstName.getText().isEmpty()){
-            showAlert("Missing first name!");
+            showAlert(Alert.AlertType.WARNING,"Missing first name!");
             return;
         }
         if(lastName.getText().isEmpty()){
-            showAlert("Missing last name!");
+            showAlert(Alert.AlertType.WARNING,"Missing last name!");
             return;
         }
         if(email.getText().isEmpty()){
-            showAlert("Missing email!");
+            showAlert(Alert.AlertType.WARNING,"Missing email!");
             return;
         }
         if(city.getText().isEmpty()){
-            showAlert("Missing destination!");
+            showAlert(Alert.AlertType.WARNING,"Missing destination!");
             return;
         }
         if(officeList.getValue() == null){
-            showAlert("No office chosen!");
+            showAlert(Alert.AlertType.WARNING,"No office chosen!");
             return;
         }
         if(sentDate.getValue() == null){
-            showAlert("No date entered!");
+            showAlert(Alert.AlertType.WARNING,"No date entered!");
             return;
         }
         if(phone.getText().isEmpty()){
-            showAlert("Missing phone!");
+            showAlert(Alert.AlertType.WARNING,"Missing phone!");
             return;
         }
         if(typeList.getValue() == null){
-            showAlert("No type chosen!");
+            showAlert(Alert.AlertType.WARNING,"No type chosen!");
             return;
         }
 
@@ -83,13 +83,14 @@ public class NewShipmentController implements Initializable {
         model.setCourierUsername(CurrentUser.username);
         try {
             injector.register().registerShipment(model);
+            showAlert(Alert.AlertType.CONFIRMATION, "Shipment registered");
         }
         catch (CustomerNotFoundException exception){
-            showAlert("No customer with that credentials");
+            showAlert(Alert.AlertType.WARNING,"No customer with that credentials");
         }
     }
-    private void showAlert(String message){
-        Alert alert = new Alert(Alert.AlertType.ERROR, message);
+    private void showAlert(Alert.AlertType alertType, String message){
+        Alert alert = new Alert(alertType, message);
         alert.show();
     }
     @FXML

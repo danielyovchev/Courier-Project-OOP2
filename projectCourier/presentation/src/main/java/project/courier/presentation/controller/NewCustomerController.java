@@ -40,27 +40,27 @@ public class NewCustomerController {
     @FXML
     public void registerCustomer(){
         if(firstName.getText().isEmpty()){
-            showAlert("Missing first name!");
+            showAlert(Alert.AlertType.WARNING, "Missing first name!");
             return;
         }
         if(lastName.getText().isEmpty()){
-            showAlert("Missing last name!");
+            showAlert(Alert.AlertType.WARNING,"Missing last name!");
             return;
         }
         if(email.getText().isEmpty()){
-            showAlert("Missing email!");
+            showAlert(Alert.AlertType.WARNING,"Missing email!");
             return;
         }
         if(password.getText().isEmpty()){
-            showAlert("Missing password!");
+            showAlert(Alert.AlertType.WARNING,"Missing password!");
             return;
         }
         if(username.getText().isEmpty()){
-            showAlert("Missing username!");
+            showAlert(Alert.AlertType.WARNING,"Missing username!");
             return;
         }
         if(phone.getText().isEmpty()){
-            showAlert("Missing phone");
+            showAlert(Alert.AlertType.WARNING,"Missing phone");
             return;
         }
 
@@ -74,7 +74,7 @@ public class NewCustomerController {
         try {
             addUserInjector.getService().addUser(userModel);
         } catch (UserExistsException e){
-            showAlert("User already exists");
+            showAlert(Alert.AlertType.WARNING,"User already exists");
             return;
         }
         CustomerModel customerModel = new CustomerModel();
@@ -85,9 +85,10 @@ public class NewCustomerController {
         customerModel.setPhone(phone.getText());
         customerModel.setCompany(companyProvider.getCompanyFromCourier(CurrentUser.username));
         customerRegisterInjector.getService().registerCustomer(customerModel);
+        showAlert(Alert.AlertType.CONFIRMATION, "Customer registered");
     }
-    private void showAlert(String message){
-        Alert alert = new Alert(Alert.AlertType.WARNING, message);
+    private void showAlert(Alert.AlertType alertType, String message){
+        Alert alert = new Alert(alertType, message);
         alert.show();
     }
     @FXML
