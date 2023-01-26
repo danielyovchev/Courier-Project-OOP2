@@ -34,14 +34,14 @@ public class OrganizeShipmentsImpl implements OrganizeShipments {
                         .findByOfficeAndStatus(o.getId(), ShipmentStatus.IN_OFFICE).stream()
                         .toList();
                 if(shipments.isEmpty()){
-                    logger.warn("No shipments for deliver from office {}", o.getCity());
+                    logger.info("No shipments for deliver from office {}", o.getCity());
                     return;
                 }
                 shipmentDelivery.deliver(shipments);
-                logger.info("Shipments from office {} sent", o.getCity());
+                logger.info("{} shipments from office {} sent", shipments.size() , o.getCity());
                 TimeUnit.SECONDS.sleep(15);
                 shipmentDelivery.receive(shipments);
-                logger.info("Shipments from office {} delivered", o.getCity());
+                logger.info("{} shipments from office {} delivered",shipments.size() ,o.getCity());
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
